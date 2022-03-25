@@ -1,0 +1,39 @@
+using EGamePlay;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerCursorEntity : Entity
+{
+    InputComponent input = UnitControllerComponent.inputComponent;
+    PlayerRotateEntity PlayerRotateEntity = Player.Instance.PlayerRotateEntity;
+
+    public void Init()
+    {
+        //按住Z键显示鼠标指针
+        input.BindInputAction(KeyCode.Z,() => {
+            CursorUnLock();
+        }, KeyCodeType.DOWN);
+        input.BindInputAction(KeyCode.Z, () => {
+            CursorLock();
+        }, KeyCodeType.UP);
+        //鼠标指针显示之后，鼠标左键点击屏幕隐藏指针
+        input.BindInputAction(KeyCode.Mouse0, () => {
+            CursorLock();
+        }, KeyCodeType.DOWN);
+        //默认隐藏鼠标指针
+        CursorLock();
+    }
+
+    public static void CursorLock()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        PlayerRotateEntity.RotEnable = true;
+    }
+
+    public static void CursorUnLock()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        PlayerRotateEntity.RotEnable = false;
+    }
+}

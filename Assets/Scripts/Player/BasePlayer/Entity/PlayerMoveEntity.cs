@@ -3,7 +3,7 @@ using EGamePlay.Combat;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class PlayerMoveEntity : Entity,MoveCtrlInterface
 {
     public Transform PlayerTransform;
@@ -138,7 +138,13 @@ public class PlayerMoveEntity : Entity,MoveCtrlInterface
         {
             Skill_1_Move.movePosition.Normalize();
             PlayerTransform.Translate(Skill_1_Move.movePosition * Time.deltaTime * combatEntity.UnitPropertyEntity.MoveSpeed.Value);
+
+            Quaternion origin = ModelTransform.rotation;
             ModelTransform.LookAt(Skill_1_Move.movePosition + PlayerTransform.position);
+            Quaternion quaternion = ModelTransform.rotation;
+            ModelTransform.rotation = origin;
+            ModelTransform.DORotateQuaternion(quaternion, 0.15f);
+
             Player.currentState = unitAnimatorComponent.Play(unitAnimatorComponent.animationClipsDict["SwordsmanMove"]);
             Player.PlayerAction = PlayerAction.Move;
             Player.AnimState = AnimState.None;

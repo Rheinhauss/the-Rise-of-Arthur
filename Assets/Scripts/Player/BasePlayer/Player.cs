@@ -60,6 +60,10 @@ public class Player : UnitControllerComponent
     /// </summary>
     public PlayerMoveEntity PlayerMoveEntity;
     /// <summary>
+    /// Player旋转实体
+    /// </summary>
+    public PlayerRotateEntity PlayerRotateEntity;
+    /// <summary>
     /// Player所有UI的控制
     /// </summary>
     public PlayerUIController PlayerUIController;
@@ -67,8 +71,10 @@ public class Player : UnitControllerComponent
     /// Player的死亡检测+控制+死亡后事件
     /// </summary>
     public PlayerDeathEntity PlayerDeathEntity;
-
-
+    /// <summary>
+    /// Player鼠标控制
+    /// </summary>
+    public PlayerCursorEntity PlayerCursorEntity;
 
     private void Awake()
     {
@@ -88,8 +94,16 @@ public class Player : UnitControllerComponent
         PlayerMoveEntity = combatEntity.AddChild<PlayerMoveEntity>();
         PlayerMoveEntity.Init(this.transform, this.transform.GetChild(0));
 
+        //挂载旋转实体
+        PlayerRotateEntity = combatEntity.AddChild<PlayerRotateEntity>();
+        PlayerRotateEntity.Init();
+
         // 挂载Death实体
         PlayerDeathEntity = combatEntity.AddChild<PlayerDeathEntity>();
+
+        //鼠标指针实体
+        PlayerCursorEntity = combatEntity.AddChild<PlayerCursorEntity>();
+        PlayerCursorEntity.Init();
 
         //事件监听
         combatEntity.ListenActionPoint(ActionPointType.PostReceiveDamage, OnReceiveDamage);
