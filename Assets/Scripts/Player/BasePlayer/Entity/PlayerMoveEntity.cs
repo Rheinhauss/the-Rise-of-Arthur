@@ -26,6 +26,8 @@ public class PlayerMoveEntity : Entity,MoveCtrlInterface
     private CombatEntity combatEntity => PlayerTransform.GetComponent<Player>().combatEntity;
     private Player Player => Player.Instance;
 
+    private Rigidbody rigidbody => PlayerTransform.GetComponent<Rigidbody>();
+
     public bool CanMove { get; set; }
     /// <summary>
     /// ³õÊ¼»¯º¯Êý
@@ -134,11 +136,10 @@ public class PlayerMoveEntity : Entity,MoveCtrlInterface
     {
         if (CanMove == false)
             return;
+        Skill_1_Move.movePosition.Normalize();
+        rigidbody.velocity = Skill_1_Move.movePosition * combatEntity.UnitPropertyEntity.MoveSpeed.Value;
         if (Skill_1_Move.CurrentPosition != CurrentPosition.None && Skill_1_Move.CurrentPosition != CurrentPosition.Cross)
         {
-            Skill_1_Move.movePosition.Normalize();
-            PlayerTransform.Translate(Skill_1_Move.movePosition * Time.deltaTime * combatEntity.UnitPropertyEntity.MoveSpeed.Value);
-
             Quaternion origin = ModelTransform.rotation;
             ModelTransform.LookAt(Skill_1_Move.movePosition + PlayerTransform.position);
             Quaternion quaternion = ModelTransform.rotation;
@@ -175,6 +176,10 @@ public class PlayerMoveEntity : Entity,MoveCtrlInterface
         if ((int)Player.PlayerAction <= (int)PlayerAction.Move)
         {
             Move();
+        }
+        else
+        {
+            rigidbody.velocity = Vector3.zero;
         }
         ClearMoveData();
     }
