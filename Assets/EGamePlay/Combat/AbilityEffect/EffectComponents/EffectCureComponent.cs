@@ -42,7 +42,7 @@ namespace EGamePlay.Combat
             var expression = ExpressionHelper.ExpressionParser.EvaluateExpression(CureValueProperty);
             if (expression.Parameters.ContainsKey("生命值上限"))
             {
-                expression.Parameters["生命值上限"].Value = GetEntity<AbilityEffect>().OwnerEntity.GetComponent<AttributeComponent>().HealthPoint.Value;
+                expression.Parameters["生命值上限"].Value = GetEntity<AbilityEffect>().OwnerEntity.UnitPropertyEntity.HP.MaxValue;
             }
             return Mathf.CeilToInt((float)expression.Value);
         }

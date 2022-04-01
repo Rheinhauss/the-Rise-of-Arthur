@@ -69,7 +69,7 @@ namespace EGamePlay.Combat
                 if (MoveTimer.IsRunning)
                 {
                     MoveTimer.UpdateAsFinish(Time.deltaTime, MoveFinish);
-                    var speed = GetEntity<CombatEntity>().GetComponent<AttributeComponent>().MoveSpeed.Value;
+                    var speed = GetEntity<CombatEntity>().UnitPropertyEntity.MoveSpeed.Value;
                     Position += MoveVector * speed;
                 }
             }
