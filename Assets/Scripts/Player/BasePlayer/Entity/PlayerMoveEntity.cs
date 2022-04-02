@@ -137,7 +137,7 @@ public class PlayerMoveEntity : Entity,MoveCtrlInterface
         if (CanMove == false)
             return;
         Skill_1_Move.movePosition.Normalize();
-        rigidbody.velocity += Skill_1_Move.movePosition * combatEntity.UnitPropertyEntity.MoveSpeed.Value;
+        rigidbody.velocity = (Skill_1_Move.movePosition * combatEntity.UnitPropertyEntity.MoveSpeed.Value + new Vector3(0, rigidbody.velocity.y, 0));
         if (Skill_1_Move.CurrentPosition != CurrentPosition.None && Skill_1_Move.CurrentPosition != CurrentPosition.Cross)
         {
             Quaternion origin = ModelTransform.rotation;
@@ -166,8 +166,7 @@ public class PlayerMoveEntity : Entity,MoveCtrlInterface
 
     public void ClearMoveData()
     {
-        rigidbody.velocity -= Skill_1_Move.movePosition * combatEntity.UnitPropertyEntity.MoveSpeed.Value;
-        Skill_1_Move.movePosition = Vector3.zero;
+        //Skill_1_Move.movePosition = Vector3.zero;
         Skill_1_Move.CurrentPosition = CurrentPosition.None;
     }
 
