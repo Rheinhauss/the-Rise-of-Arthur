@@ -26,6 +26,8 @@ public class PlayerMoveEntity : Entity,MoveCtrlInterface
     private CombatEntity combatEntity => PlayerTransform.GetComponent<Player>().combatEntity;
     private Player Player => Player.Instance;
 
+    private Transform CameraTransform => Camera.main.transform;
+
     private Rigidbody rigidbody => PlayerTransform.GetComponent<Rigidbody>();
 
     public bool CanMove { get; set; }
@@ -47,7 +49,6 @@ public class PlayerMoveEntity : Entity,MoveCtrlInterface
         moveEnd_left.SetAction(() =>
         {
             Skill_1_Move.CurrentPosition = Skill_1_Move.CurrentPosition & ~CurrentPosition.Left;
-            Skill_1_Move.movePosition += PlayerTransform.right;
             if (Skill_1_Move.CurrentPosition == CurrentPosition.None)
                 Skill_1_Move.CurrentPosition = CurrentPosition.Cross;
         });
@@ -58,7 +59,6 @@ public class PlayerMoveEntity : Entity,MoveCtrlInterface
         moveEnd_right.SetAction(() =>
         {
             Skill_1_Move.CurrentPosition = Skill_1_Move.CurrentPosition & ~CurrentPosition.Right;
-            Skill_1_Move.movePosition -= PlayerTransform.right;
             if (Skill_1_Move.CurrentPosition == CurrentPosition.None)
                 Skill_1_Move.CurrentPosition = CurrentPosition.Cross;
         });
@@ -68,7 +68,6 @@ public class PlayerMoveEntity : Entity,MoveCtrlInterface
         moveEnd_backward.SetAction(() =>
         {
             Skill_1_Move.CurrentPosition = Skill_1_Move.CurrentPosition & ~CurrentPosition.Backward;
-            Skill_1_Move.movePosition += PlayerTransform.forward;
             if (Skill_1_Move.CurrentPosition == CurrentPosition.None)
                 Skill_1_Move.CurrentPosition = CurrentPosition.Cross;
         });
@@ -78,7 +77,6 @@ public class PlayerMoveEntity : Entity,MoveCtrlInterface
         moveEnd_forward.SetAction(() =>
         {
             Skill_1_Move.CurrentPosition = Skill_1_Move.CurrentPosition & ~CurrentPosition.Forward;
-            Skill_1_Move.movePosition -= PlayerTransform.forward;
             if (Skill_1_Move.CurrentPosition == CurrentPosition.None)
                 Skill_1_Move.CurrentPosition = CurrentPosition.Cross;
         });
@@ -96,7 +94,9 @@ public class PlayerMoveEntity : Entity,MoveCtrlInterface
         skill_1_move_left.SetAction(() =>
         {
             Skill_1_Move.CurrentPosition = Skill_1_Move.CurrentPosition | CurrentPosition.Left;
-            Skill_1_Move.movePosition -= PlayerTransform.right;
+            skill_1_move_left.position = CameraTransform.right;
+            skill_1_move_left.position.y = 0;
+            Skill_1_Move.movePosition -= skill_1_move_left.position.normalized;
         });
         this.skillControllerComponent.AddSkillObject(skill_1_move_left);
         UnitControllerComponent.inputComponent.BindInputAction(KeyCode.A, skill_1_move_left.action, KeyCodeType.ING);
@@ -106,7 +106,9 @@ public class PlayerMoveEntity : Entity,MoveCtrlInterface
         skill_1_move_backward.SetAction(() =>
         {
             Skill_1_Move.CurrentPosition = Skill_1_Move.CurrentPosition | CurrentPosition.Backward;
-            Skill_1_Move.movePosition -= PlayerTransform.forward;
+            skill_1_move_backward.position = CameraTransform.forward;
+            skill_1_move_backward.position.y = 0;
+            Skill_1_Move.movePosition -= skill_1_move_backward.position.normalized;
         });
         this.skillControllerComponent.AddSkillObject(skill_1_move_backward);
         UnitControllerComponent.inputComponent.BindInputAction(KeyCode.S, skill_1_move_backward.action, KeyCodeType.ING);
@@ -116,17 +118,20 @@ public class PlayerMoveEntity : Entity,MoveCtrlInterface
         skill_1_move_right.SetAction(() =>
         {
             Skill_1_Move.CurrentPosition = Skill_1_Move.CurrentPosition | CurrentPosition.Right;
-            Skill_1_Move.movePosition += PlayerTransform.right;
+            skill_1_move_right.position = CameraTransform.right;
+            skill_1_move_right.position.y = 0;
+            Skill_1_Move.movePosition += skill_1_move_right.position.normalized;
         });
         this.skillControllerComponent.AddSkillObject(skill_1_move_right);
         UnitControllerComponent.inputComponent.BindInputAction(KeyCode.D, skill_1_move_right.action, KeyCodeType.ING);
         //forward
         skill_1_move_forward = new Skill_1_Move();
-        skill_1_move_forward.position = new Vector3(0, 0, 1);
         skill_1_move_forward.SetAction(() =>
         {
             Skill_1_Move.CurrentPosition = Skill_1_Move.CurrentPosition | CurrentPosition.Forward;
-            Skill_1_Move.movePosition += PlayerTransform.forward;
+            skill_1_move_forward.position = CameraTransform.forward;
+            skill_1_move_forward.position.y = 0;
+            Skill_1_Move.movePosition += skill_1_move_forward.position.normalized;
         });
         this.skillControllerComponent.AddSkillObject(skill_1_move_forward);
         UnitControllerComponent.inputComponent.BindInputAction(KeyCode.W, skill_1_move_forward.action, KeyCodeType.ING);
@@ -166,7 +171,7 @@ public class PlayerMoveEntity : Entity,MoveCtrlInterface
 
     public void ClearMoveData()
     {
-        //Skill_1_Move.movePosition = Vector3.zero;
+        Skill_1_Move.movePosition = Vector3.zero;
         Skill_1_Move.CurrentPosition = CurrentPosition.None;
     }
 

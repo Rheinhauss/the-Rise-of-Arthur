@@ -6,16 +6,22 @@ using UnityEngine;
 public class PlayerRotateEntity : Entity
 {
     private Player Player => Player.Instance;
-    public Transform CameraTransform => Player.transform.GetChild(3);
+    public Transform CameraTransform => Camera.main.transform;
+    public Transform CameraCenterPoint => Player.transform.GetChild(3);
 
-    public float rotSpeed { get; private set; }
+    public float rotSpeedX { get; private set; }
+    public float rotSpeedY { get; private set; }
 
     public static bool RotEnable { get; set; }
+
+    public float radius { get; set; }
 
     public void Init()
     {
         AddComponent<UpdateComponent>();
-        rotSpeed = 200;
+        rotSpeedX = 400;
+        rotSpeedY = 0.1f;
+        radius = 1.2f;
         RotEnable = true;
     }
 
@@ -25,13 +31,21 @@ public class PlayerRotateEntity : Entity
         {
             return;
         }
-        //// 获得鼠标当前位置的X和Y
-        //float mouseX = Input.GetAxis("Mouse X") * rotSpeed * Time.deltaTime;
-        ////float mouseY = Input.GetAxis("Mouse Y") * rotSpeed;
+        // 获得鼠标当前位置的X和Y
+        float mouseX = Input.GetAxis("Mouse X") * rotSpeedX * Time.deltaTime;
+        //float mouseY = Input.GetAxis("Mouse Y") * rotSpeedY * Time.deltaTime;
 
-        //// 鼠标在Y轴上的移动号转为摄像机的上下运动，即是绕着X轴反向旋转
-        ////Camera.main.transform.localRotation = Camera.main.transform.localRotation * Quaternion.Euler(-mouseY, 0, 0);
-        //// 鼠标在X轴上的移动转为主角左右的移动，同时带动其子物体摄像机的左右移动
-        //CameraTransform.localRotation = CameraTransform.localRotation * Quaternion.Euler(0, mouseX, 0);
+        // 鼠标在X轴上的移动转为主角左右的移动，同时带动其子物体摄像机的左右移动
+        CameraTransform.RotateAround(CameraCenterPoint.position, new Vector3(0, 1, 0), mouseX);
+        //Q往上
+        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.Q, () =>
+         {
+             CameraTransform.RotateAround(CameraCenterPoint.position, CameraTransform.right, rotSpeedY*Time.deltaTime);
+         }, KeyCodeType.ING);
+        //E往下
+        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.E, () =>
+        {
+            CameraTransform.RotateAround(CameraCenterPoint.position, CameraTransform.right, -rotSpeedY*Time.deltaTime);
+        }, KeyCodeType.ING);
     }
 }

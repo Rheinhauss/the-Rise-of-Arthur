@@ -12,10 +12,10 @@ namespace EGamePlay.Combat
     {
         public Action<Collider> OnTriggerEnterCallbackAction;
 
-        private void Awake()
-        {
-            Player.Instance.AnimState = AnimState.ForcePost;
-        }
+        //private void Awake()
+        //{
+        //    Player.Instance.AnimState = AnimState.ForcePost;
+        //}
         private void OnTriggerEnter(Collider other)
         {
             //Debug.Log($"OnTriggerEnterCallback OnTriggerEnter {other.name}");
