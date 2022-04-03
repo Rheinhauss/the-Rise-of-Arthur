@@ -9,7 +9,7 @@ public class PlayerDeathEntity : Entity
 {
     private CombatEntity combatEntity => GetParent<CombatEntity>();
 
-    private List<Action> actions;
+    private List<Action> actions = new List<Action>();
 
     private Player player => Player.Instance;
     private UnitSkillControllerComponent skillControllerComponent => player.skillControllerComponent;

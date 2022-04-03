@@ -15,7 +15,10 @@ public enum PlayerAction
 {
     Idle,
     Move,
+    Attack1,
     Death,
+    Evade,
+    AttackHeavy,
 }
 /// <summary>
 /// 枚举：Action类型的阶段
@@ -75,6 +78,18 @@ public class Player : UnitControllerComponent
     /// Player鼠标控制
     /// </summary>
     public PlayerCursorEntity PlayerCursorEntity;
+    /// <summary>
+    /// 闪避Skill实体
+    /// </summary>
+    public PlayerEvadeEntity PlayerEvadeEntity;
+    /// <summary>
+    /// 轻击Skill实体
+    /// </summary>
+    public Skill_2_Attack1_Entity Skill_2_Attack1_Entity;
+    /// <summary>
+    /// 重击Skill实体
+    /// </summary>
+    public Skill_6_AttackHeavy Skill_6_AttackHeavy;
 
     private void Awake()
     {
@@ -87,7 +102,7 @@ public class Player : UnitControllerComponent
         // 初始化CombatEntity
         combatEntity = CombatContext.Instance.AddChild<CombatEntity>();
         CombatContext.Instance.Object2Entities.Add(gameObject, combatEntity);
-
+        combatEntity.ModelObject = this.gameObject;
         currentState = unitAnimatorComponent.Play(unitAnimatorComponent.animationClipsDict["SwordsmanIdle"]);
         
         // 挂载移动Skill实体
@@ -104,6 +119,18 @@ public class Player : UnitControllerComponent
         //鼠标指针实体
         PlayerCursorEntity = combatEntity.AddChild<PlayerCursorEntity>();
         PlayerCursorEntity.Init();
+
+        // 挂载轻击Skill实体，已经挂载CanAttack
+        Skill_2_Attack1_Entity = combatEntity.AddChild<Skill_2_Attack1_Entity>();
+        Skill_2_Attack1_Entity.Init();
+
+        // 挂载重击Skill实体，已经挂载CanAttack
+        Skill_6_AttackHeavy = combatEntity.AddChild<Skill_6_AttackHeavy>();
+        Skill_6_AttackHeavy.Init();
+
+        // 挂载闪避Skill实体
+        PlayerEvadeEntity = combatEntity.AddChild<PlayerEvadeEntity>();
+        PlayerEvadeEntity.Init();
 
         //事件监听
         combatEntity.ListenActionPoint(ActionPointType.PostReceiveDamage, OnReceiveDamage);

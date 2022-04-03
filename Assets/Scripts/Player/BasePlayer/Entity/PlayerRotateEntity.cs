@@ -7,7 +7,7 @@ public class PlayerRotateEntity : Entity
 {
     private Player Player => Player.Instance;
     public Transform CameraTransform => Camera.main.transform;
-    public Transform CameraCenterPoint => Player.transform.GetChild(3);
+    public Transform CameraCenterPoint => Player.transform.GetChild(2);
 
     public float rotSpeedX { get; private set; }
     public float rotSpeedY { get; private set; }

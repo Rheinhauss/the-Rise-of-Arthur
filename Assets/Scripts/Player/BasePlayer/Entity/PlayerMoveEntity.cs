@@ -187,6 +187,7 @@ public class PlayerMoveEntity : Entity,MoveCtrlInterface
             rigidbody.velocity = Vector3.zero;
         }
         ClearMoveData();
+        //rigidbody.AddForce(new Vector3(0, -9.81f, 0));
     }
 
 }

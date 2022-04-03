@@ -16,8 +16,8 @@ TagManager:
   - PlayerSkill
   - EnemySkill
   - Terrain
+  - PlayerTerrain
   - Plane
-  - 
   - 
   - 
   - 
