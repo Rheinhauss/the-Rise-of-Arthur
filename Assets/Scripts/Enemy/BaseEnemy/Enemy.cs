@@ -42,6 +42,10 @@ public class Enemy : UnitControllerComponent
     /// Enemy死亡控制实体
     /// </summary>
     public EnemyDeathEntity EnemyDeathEntity;
+    /// <summary>
+    /// 敌人移动实体
+    /// </summary>
+    public EnemyMoveEntity EnemyMoveEntity;
 
     public void Start()
     {
@@ -56,12 +60,22 @@ public class Enemy : UnitControllerComponent
 
         EnemyDeathEntity = combatEntity.AddChild<EnemyDeathEntity>();
 
+        EnemyMoveEntity = combatEntity.AddChild<EnemyMoveEntity>();
+        EnemyMoveEntity.Init();
+        EnemyMoveEntity.NavMove(new Vector3(10, 0, 0));
+
         // Action监听函数
         combatEntity.ListenActionPoint(ActionPointType.PostReceiveDamage, OnReceiveDamage);
         combatEntity.ListenActionPoint(ActionPointType.PostReceiveCure, OnReceiveCure);
         combatEntity.ListenActionPoint(ActionPointType.PostReceiveStatus, OnReceiveStatus);
         combatEntity.Subscribe<RemoveStatusEvent>(OnRemoveStatus);
     }
+
+    private void Update()
+    {
+        this.transform.rotation = Quaternion.identity;
+    }
+
     /// <summary>
     /// 接受治愈Action，进行跳字UI
     /// </summary>

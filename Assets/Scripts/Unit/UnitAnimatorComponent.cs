@@ -21,7 +21,7 @@ public class UnitAnimatorComponent : MonoBehaviour
     public float Speed { get; set; } = 1f;
 
 
-    private void Start()
+    private void Awake()
     {
         AnimancerComponent.Animator.fireEvents = false;
         foreach (var item in animationClipsStruct)
@@ -40,11 +40,11 @@ public class UnitAnimatorComponent : MonoBehaviour
         
     }
 
-    public AnimancerState PlayFade(AnimationClip clip)
+    public AnimancerState PlayFade(AnimationClip clip, float time = 0.25f)
     {
         var state = AnimancerComponent.States.GetOrCreate(clip);
         state.Speed = Speed;
-        AnimancerComponent.Play(state, 0.25f);
+        AnimancerComponent.Play(state, time);
         return state;
     }
 

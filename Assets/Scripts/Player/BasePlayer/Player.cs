@@ -103,7 +103,7 @@ public class Player : UnitControllerComponent
         combatEntity = CombatContext.Instance.AddChild<CombatEntity>();
         CombatContext.Instance.Object2Entities.Add(gameObject, combatEntity);
         combatEntity.ModelObject = this.gameObject;
-        currentState = unitAnimatorComponent.Play(unitAnimatorComponent.animationClipsDict["SwordsmanIdle"]);
+        currentState = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["SwordsmanIdle"]);
         
         // π“‘ÿ“∆∂ØSkill µÃÂ
         PlayerMoveEntity = combatEntity.AddChild<PlayerMoveEntity>();

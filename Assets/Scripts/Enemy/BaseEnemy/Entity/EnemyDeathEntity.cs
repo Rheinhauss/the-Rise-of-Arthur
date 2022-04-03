@@ -28,7 +28,7 @@ public class EnemyDeathEntity : Entity
 
     private void DeathAction()
     {
-        var state = unitAnimatorComponent.Play(unitAnimatorComponent.animationClipsDict["EnemyDeath"]);
+        var state = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["EnemyDeath"]);
         enemy.currentState = state;
         enemy.AnimState = AnimState.ForcePost;
         enemy.PlayerAction = EnemyAction.Death;

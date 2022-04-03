@@ -151,18 +151,18 @@ public class PlayerMoveEntity : Entity,MoveCtrlInterface
             ModelTransform.rotation = origin;
             ModelTransform.DORotateQuaternion(quaternion, 0.15f);
 
-            Player.currentState = unitAnimatorComponent.Play(unitAnimatorComponent.animationClipsDict["SwordsmanMove"]);
+            Player.currentState = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["SwordsmanMove"]);
             Player.PlayerAction = PlayerAction.Move;
             Player.AnimState = AnimState.None;
         }
         if (Skill_1_Move.CurrentPosition == CurrentPosition.Cross)
         {
-            var state = unitAnimatorComponent.Play(unitAnimatorComponent.animationClipsDict["SwordsmanMoveToStand"]);
+            var state = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["SwordsmanMoveToStand"]);
             Player.currentState = state;
             Player.AnimState = AnimState.None;
             state.Events.OnEnd = () =>
             {
-                unitAnimatorComponent.Play(unitAnimatorComponent.animationClipsDict["SwordsmanIdle"]);
+                unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["SwordsmanIdle"]);
                 Player.PlayerAction = PlayerAction.Idle;
                 Player.AnimState = AnimState.None;
             };

@@ -28,7 +28,7 @@ public class PlayerDeathEntity : Entity
 
     private void DeathAction()
     {
-        var state = unitAnimatorComponent.Play(unitAnimatorComponent.animationClipsDict["SwordsmanDeath"]);
+        var state = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["SwordsmanDeath"]);
         player.currentState = state;
         player.AnimState = AnimState.ForcePost;
         player.PlayerAction = PlayerAction.Death;
