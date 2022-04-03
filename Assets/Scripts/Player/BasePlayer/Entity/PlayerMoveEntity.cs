@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-public class PlayerMoveEntity : Entity,MoveCtrlInterface
+public class PlayerMoveEntity : Entity
 {
     public Transform PlayerTransform;
     public Transform ModelTransform;
@@ -30,7 +30,6 @@ public class PlayerMoveEntity : Entity,MoveCtrlInterface
 
     private Rigidbody rigidbody => PlayerTransform.GetComponent<Rigidbody>();
 
-    public bool CanMove { get; set; }
     /// <summary>
     /// 初始化函数
     /// 里面进行了移动的逻辑计算，但是不涉及具体移动
@@ -40,7 +39,7 @@ public class PlayerMoveEntity : Entity,MoveCtrlInterface
         PlayerTransform = playerTrans;
         ModelTransform = modelTrans;
         AddComponent<UpdateComponent>();
-        CanMove = true;
+        Player.CanMove = true;
         #region 按键抬起
         //moveEnd_left
         moveEnd_left = new SkillObject();
@@ -139,7 +138,7 @@ public class PlayerMoveEntity : Entity,MoveCtrlInterface
     }
     public void Move()
     {
-        if (CanMove == false)
+        if (Player.CanMove == false)
             return;
         Skill_1_Move.movePosition.Normalize();
         rigidbody.velocity = (Skill_1_Move.movePosition * combatEntity.UnitPropertyEntity.MoveSpeed.Value + new Vector3(0, rigidbody.velocity.y, 0));

@@ -43,6 +43,8 @@ public class Skill_2_Attack1_Entity : Entity
         Skill_2_Attack1_4();
 
         UnitControllerComponent.inputComponent.BindInputAction(KeyCode.Mouse0, () => {
+            if (Player.CanAttack == false)
+                return;
             if (Player.PlayerAction == PlayerAction.Evade)
             {
                 Skill_2_Attack1[3].action.Invoke();

@@ -36,7 +36,7 @@ public enum AnimState
 /// 玩家基类；后续女侠、老外等角色脚本会继承Player
 /// 继承：UnityControllerComponent
 /// </summary>
-public class Player : UnitControllerComponent
+public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInterface
 {
     /// <summary>
     /// 初始化Player
@@ -90,6 +90,18 @@ public class Player : UnitControllerComponent
     /// 重击Skill实体
     /// </summary>
     public Skill_6_AttackHeavy Skill_6_AttackHeavy;
+    /// <summary>
+    /// 移动禁制
+    /// </summary>
+    public bool CanMove { get; set; }
+    /// <summary>
+    /// 攻击禁制
+    /// </summary>
+    public bool CanAttack { get; set; }
+    /// <summary>
+    /// 摄像机旋转禁止
+    /// </summary>
+    public bool CanCameraRot { get { return PlayerRotateEntity.RotEnable; } set { PlayerRotateEntity.RotEnable = value; } }
 
     private void Awake()
     {
@@ -135,7 +147,7 @@ public class Player : UnitControllerComponent
         //事件监听
         combatEntity.ListenActionPoint(ActionPointType.PostReceiveDamage, OnReceiveDamage);
         combatEntity.ListenActionPoint(ActionPointType.PostReceiveCure, OnReceiveCure);
-
+        CanAttack = true;
     }
 
 

@@ -24,7 +24,7 @@ public class Skill_6_AttackHeavy : Entity
         Skill_AttackHeavy();
         UnitControllerComponent.inputComponent.BindInputAction(KeyCode.Mouse1, () =>
         {
-            if (Player.AnimState == AnimState.ForcePost)
+            if (Player.AnimState == AnimState.ForcePost || Player.CanAttack == false)
             {
                 return;
             }

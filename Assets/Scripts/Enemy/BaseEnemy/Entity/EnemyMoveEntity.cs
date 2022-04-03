@@ -32,6 +32,9 @@ public class EnemyMoveEntity : Entity
     {
         ChangeMoveType(MoveType.Walk);
         AddComponent<UpdateComponent>();
+        agent.stoppingDistance = 0.8f;
+        agent.enabled = true;
+        Enemy.CanMove = true;
     }
 
     public override void Update()
@@ -41,11 +44,13 @@ public class EnemyMoveEntity : Entity
             Enemy.currentState = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["EnemyIdle"]);
             Enemy.PlayerAction = EnemyAction.Idle;
             Enemy.AnimState = AnimState.None;
+            agent.enabled = false;
         }
     }
+
     public bool IsMoving()
     {
-        if (!agent.enabled)
+        if (!agent.enabled || !Enemy.CanMove)
             return false;
         bool r = agent.pathPending ||
         agent.remainingDistance > agent.stoppingDistance ||
@@ -71,16 +76,18 @@ public class EnemyMoveEntity : Entity
 
     public void NavMove(Vector3 targetPos)
     {
+        agent.enabled = true;
         Quaternion origin = ModelTransform.rotation;
         ModelTransform.LookAt(targetPos);
         Quaternion quaternion = ModelTransform.rotation;
         ModelTransform.rotation = origin;
         ModelTransform.DORotateQuaternion(quaternion, 0.15f);
 
-        agent.destination = targetPos;
         Enemy.currentState = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict[MoveAnim]);
         Enemy.PlayerAction = EnemyAction.Move;
         Enemy.AnimState = AnimState.None;
+
+        agent.destination = targetPos;
     }
 
 }

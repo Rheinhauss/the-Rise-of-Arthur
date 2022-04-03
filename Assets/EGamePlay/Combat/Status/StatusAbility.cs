@@ -130,14 +130,11 @@ namespace EGamePlay.Combat
                 //Log.Debug($"{OwnerEntity.ActionControlType}");
                 if (ParentEntity.ActionControlType.HasFlag(ActionControlType.MoveForbid))
                 {
-                    try
-                    {
-                        ParentEntity.GetChild<PlayerMoveEntity>().CanMove = false;
-                    }
-                    catch
-                    {
-                        //通过CombatEntity获得敌人的移动脚本，将CanMove = false；这样敌人不可移动
-                    }
+                    MoveCtrl(false);
+                }
+                if (ParentEntity.ActionControlType.HasFlag(ActionControlType.AttackForbid))
+                {
+                    AttackCtrl(false);
                 }
             }
             //属性修饰
@@ -195,14 +192,11 @@ namespace EGamePlay.Combat
                 //Log.Debug($"{OwnerEntity.ActionControlType}");
                 if (ParentEntity.ActionControlType.HasFlag(ActionControlType.MoveForbid) == false)
                 {
-                    try
-                    {
-                        ParentEntity.GetChild<PlayerMoveEntity>().CanMove = true;
-                    }
-                    catch
-                    {
-                        //通过CombatEntity获得敌人的移动脚本，将CanMove = true；这样敌人可移动
-                    }
+                    MoveCtrl(true);
+                }
+                if (ParentEntity.ActionControlType.HasFlag(ActionControlType.AttackForbid) == false)
+                {
+                    AttackCtrl(true);
                 }
             }
             //属性修饰
@@ -236,6 +230,33 @@ namespace EGamePlay.Combat
         {
             return Duration;
         }
+
+        public void MoveCtrl(bool b)
+        {
+            try
+            {
+                ParentEntity.ModelObject.GetComponent<Player>().CanMove = b;
+            }
+            catch
+            {
+                //通过CombatEntity获得敌人的移动脚本，将CanMove = false；这样敌人不可移动
+                ParentEntity.ModelObject.GetComponent<Enemy>().CanMove = b;
+            }
+        }
+
+        public void AttackCtrl(bool b)
+        {
+            try
+            {
+                ParentEntity.ModelObject.GetComponent<Player>().CanAttack = b;
+            }
+            catch
+            {
+                //通过CombatEntity获得敌人的移动脚本，将CanMove = false；这样敌人不可移动
+                ParentEntity.ModelObject.GetComponent<Enemy>().CanAttack = b;
+            }
+        }
+
     }
 }
 #endif

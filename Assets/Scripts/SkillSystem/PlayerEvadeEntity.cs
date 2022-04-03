@@ -31,7 +31,7 @@ public class PlayerEvadeEntity : Entity
         Skill_Evade();
         UnitControllerComponent.inputComponent.BindInputAction(KeyCode.Space, () =>
         {
-            if (Player.AnimState == AnimState.ForcePost)
+            if (Player.AnimState == AnimState.ForcePost || Player.CanMove == false)
             {
                 return;
             }

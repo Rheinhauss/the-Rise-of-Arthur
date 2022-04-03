@@ -1,3 +1,4 @@
+using BehaviorDesigner.Runtime;
 using DG.Tweening;
 using EGamePlay.Combat;
 using System.Collections;
@@ -20,7 +21,7 @@ public enum EnemyAction
 }
 
 
-public class Enemy : UnitControllerComponent
+public class Enemy : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInterface
 {
     /// <summary>
     /// Enemy当前Action类型
@@ -46,29 +47,36 @@ public class Enemy : UnitControllerComponent
     /// 敌人移动实体
     /// </summary>
     public EnemyMoveEntity EnemyMoveEntity;
+    /// <summary>
+    /// 移动禁止
+    /// </summary>
+    public bool CanMove { get; set; }
+    public bool CanAttack { get; set; }
+
+    private Rigidbody Rigidbody;
 
     public void Start()
     {
-
+        Rigidbody = GetComponent<Rigidbody>();
+        Rigidbody.isKinematic = true;
+        Rigidbody.useGravity = false;
         // 初始化CombatEntity
         // 挂载各种组件
         combatEntity = CombatContext.Instance.AddChild<CombatEntity>();
         CombatContext.Instance.Object2Entities.Add(gameObject, combatEntity);
         combatEntity.ModelObject = this.gameObject;
-        combatEntity.Position = transform.position;
-        combatEntity.AddComponent<MotionComponent>();
 
         EnemyDeathEntity = combatEntity.AddChild<EnemyDeathEntity>();
 
         EnemyMoveEntity = combatEntity.AddChild<EnemyMoveEntity>();
         EnemyMoveEntity.Init();
-        EnemyMoveEntity.NavMove(new Vector3(10, 0, 0));
 
         // Action监听函数
         combatEntity.ListenActionPoint(ActionPointType.PostReceiveDamage, OnReceiveDamage);
         combatEntity.ListenActionPoint(ActionPointType.PostReceiveCure, OnReceiveCure);
         combatEntity.ListenActionPoint(ActionPointType.PostReceiveStatus, OnReceiveStatus);
         combatEntity.Subscribe<RemoveStatusEvent>(OnRemoveStatus);
+        CanAttack = true;
     }
 
     private void Update()
@@ -95,5 +103,4 @@ public class Enemy : UnitControllerComponent
         EnemyUIController._HP.OnReceiveDamage(combatEntity.UnitPropertyEntity.HP.Percent(), damageAction.DamageValue);
         EnemyDeathEntity.CheckDeath();
     }
-
 }
