@@ -16,7 +16,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
                     float angle;
                     Transform obj;
                     // Call the WithinSight function to determine if this specific object is within sight
-                    if ((obj = WithinSight(transform, positionOffset, fieldOfViewAngle, viewDistance, hitColliders[i].transform, false, out angle)) != null) {
+                    if ((obj = WithinSight(transform, positionOffset, fieldOfViewAngle, viewDistance, hitColliders[i].transform, false, out angle, objectLayerMask)) != null) {
                         // This object is within sight. Set it to the objectFound GameObject if the angle is less than any of the other objects
                         if (angle < minAngle) {
                             minAngle = angle;
@@ -41,7 +41,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
                     float angle;
                     Transform obj;
                     // Call the 2D WithinSight function to determine if this specific object is within sight
-                    if ((obj = WithinSight(transform, positionOffset, fieldOfViewAngle, viewDistance, hitColliders[i].transform, true, out angle)) != null) {
+                    if ((obj = WithinSight(transform, positionOffset, fieldOfViewAngle, viewDistance, hitColliders[i].transform, true, out angle, objectLayerMask)) != null) {
                         // This object is within sight. Set it to the objectFound GameObject if the angle is less than any of the other objects
                         if (angle < minAngle) {
                             minAngle = angle;
@@ -56,22 +56,22 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
 
         // Public helper function that will automatically create an angle variable that is not used. This function is useful if the calling call doesn't
         // care about the angle between transform and targetObject
-        public static Transform WithinSight(Transform transform, Vector3 positionOffset, float fieldOfViewAngle, float viewDistance, Transform targetObject)
+        public static Transform WithinSight(Transform transform, Vector3 positionOffset, float fieldOfViewAngle, float viewDistance, Transform targetObject, LayerMask objectLayerMask)
         {
             float angle;
-            return WithinSight(transform, positionOffset, fieldOfViewAngle, viewDistance, targetObject, false, out angle);
+            return WithinSight(transform, positionOffset, fieldOfViewAngle, viewDistance, targetObject, false, out angle, objectLayerMask);
         }
 
         // Public helper function that will automatically create an angle variable that is not used. This function is useful if the calling call doesn't
         // care about the angle between transform and targetObject
-        public static Transform WithinSight2D(Transform transform, Vector3 positionOffset, float fieldOfViewAngle, float viewDistance, Transform targetObject)
+        public static Transform WithinSight2D(Transform transform, Vector3 positionOffset, float fieldOfViewAngle, float viewDistance, Transform targetObject, LayerMask objectLayerMask)
         {
             float angle;
-            return WithinSight(transform, positionOffset, fieldOfViewAngle, viewDistance, targetObject, true, out angle);
+            return WithinSight(transform, positionOffset, fieldOfViewAngle, viewDistance, targetObject, true, out angle, objectLayerMask);
         }
 
         // Determines if the targetObject is within sight of the transform. It will set the angle regardless of whether or not the object is within sight
-        private static Transform WithinSight(Transform transform, Vector3 positionOffset, float fieldOfViewAngle, float viewDistance, Transform targetObject, bool usePhysics2D, out float angle)
+        private static Transform WithinSight(Transform transform, Vector3 positionOffset, float fieldOfViewAngle, float viewDistance, Transform targetObject, bool usePhysics2D, out float angle, LayerMask layerMask)
         {
             // The target object needs to be within the field of view of the current object
             var direction = targetObject.position - (transform.position + positionOffset);
@@ -82,19 +82,21 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
             }
             if (direction.magnitude < viewDistance && angle < fieldOfViewAngle * 0.5f) {
                 // The hit agent needs to be within view of the current agent
-                if (LineOfSight(transform, positionOffset, targetObject, usePhysics2D) != null) {
+                if (LineOfSight(transform, positionOffset, targetObject, usePhysics2D, layerMask) != null) {
                     return targetObject; // return the target object meaning it is within sight
                 } else if (targetObject.GetComponent<Collider>() == null) {
                     // If the linecast doesn't hit anything then that the target object doesn't have a collider and there is nothing in the way
                     if (targetObject.gameObject.activeSelf)
                         return targetObject;
                 }
+                ////我的更改
+                //return targetObject;
             }
             // return null if the target object is not within sight
             return null;
         }
 
-        public static Transform LineOfSight(Transform transform, Vector3 positionOffset, Transform targetObject, bool usePhysics2D)
+        public static Transform LineOfSight(Transform transform, Vector3 positionOffset, Transform targetObject, bool usePhysics2D, LayerMask layerMask)
         {
 #if !(UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
             if (usePhysics2D) {
@@ -107,7 +109,24 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
             } else {
 #endif
                 RaycastHit hit;
-                if (Physics.Linecast(transform.TransformPoint(positionOffset), targetObject.position, out hit)) {
+                #region 我的更改
+                //我的更改
+                Vector3 transVec = transform.TransformPoint(positionOffset);
+                Vector3 TargetVec = targetObject.position;
+                Collider T_collider = transform.GetComponent<Collider>();
+                Collider TargetCol = targetObject.GetComponent<Collider>();
+                if(T_collider is CapsuleCollider)
+                {
+                    transVec += (T_collider as CapsuleCollider).center;
+                }
+                if(TargetCol is CapsuleCollider)
+                {
+                    TargetVec += (TargetCol as CapsuleCollider).center;
+                }
+                //我的更改
+                #endregion
+
+                if (Physics.Linecast(transVec, TargetVec, out hit)) {
                     if (hit.transform.Equals(targetObject)) {
                         return targetObject; // return the target object meaning it is within sight
                     }

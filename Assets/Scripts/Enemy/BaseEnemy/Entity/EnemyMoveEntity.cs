@@ -28,18 +28,20 @@ public class EnemyMoveEntity : Entity
 
     public string MoveAnim;
 
+    public Transform WayPoints => Enemy.WayPoints;
+
     public void Init()
     {
         ChangeMoveType(MoveType.Walk);
         AddComponent<UpdateComponent>();
-        agent.stoppingDistance = 0.8f;
+        agent.stoppingDistance = 0.5f;
         agent.enabled = true;
         Enemy.CanMove = true;
     }
 
     public override void Update()
     {
-        if (!IsMoving())
+        if (!IsMoving() && Enemy.PlayerAction <= EnemyAction.Move)
         {
             Enemy.currentState = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["EnemyIdle"]);
             Enemy.PlayerAction = EnemyAction.Idle;
@@ -76,12 +78,14 @@ public class EnemyMoveEntity : Entity
 
     public void NavMove(Vector3 targetPos)
     {
+        if (Enemy.PlayerAction > EnemyAction.Move)
+            return;
         agent.enabled = true;
-        Quaternion origin = ModelTransform.rotation;
-        ModelTransform.LookAt(targetPos);
-        Quaternion quaternion = ModelTransform.rotation;
-        ModelTransform.rotation = origin;
-        ModelTransform.DORotateQuaternion(quaternion, 0.15f);
+        //Quaternion origin = ModelTransform.rotation;
+        //ModelTransform.LookAt(targetPos);
+        //Quaternion quaternion = ModelTransform.rotation;
+        //ModelTransform.rotation = origin;
+        //ModelTransform.DORotateQuaternion(quaternion, 0.15f);
 
         Enemy.currentState = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict[MoveAnim]);
         Enemy.PlayerAction = EnemyAction.Move;

@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDeathEntity : Entity
+public class EnemyBeHitEntity : Entity
 {
     private CombatEntity combatEntity => GetParent<CombatEntity>();
 
@@ -15,38 +15,59 @@ public class EnemyDeathEntity : Entity
     private UnitSkillControllerComponent skillControllerComponent => enemy.skillControllerComponent;
     private UnitAnimatorComponent unitAnimatorComponent => enemy.unitAnimatorComponent;
 
+    public bool IsBeHit = false;
+    public Transform Creator;
+
     /// <summary>
-    /// 判断角色是否死亡，若死亡则执行对应事件
+    /// 判断角色是否受伤，若死亡则执行对应事件
     /// </summary>
-    public bool CheckDeath()
+    public bool CheckBehit()
     {
-        if (combatEntity.CheckDead())
+        //如果在攻击，则不会执行
+        if (enemy.PlayerAction > EnemyAction.BeHit)
         {
-            DeathAction();
+            IsBeHit = false;
+        }
+        if (IsBeHit)
+        {
+            BeHitAction();
             return true;
         }
         return false;
     }
 
-    private void DeathAction()
+    /// <summary>
+    /// 设置伤害来源
+    /// </summary>
+    /// <param name="Creator"></param>
+    public void SetCreator(Transform Creator)
     {
-        var state = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["EnemyDeath"]);
+        this.Creator = Creator;
+        IsBeHit = true;
+    }
+
+    private void BeHitAction()
+    {
+        var state = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["EnemyBeHit"]);
         enemy.currentState = state;
-        enemy.AnimState = AnimState.ForcePost;
-        enemy.PlayerAction = EnemyAction.Death;
+        enemy.AnimState = AnimState.None;
+        enemy.PlayerAction = EnemyAction.BeHit;
         state.Events.OnEnd = () =>
         {
+            var state1 = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["EnemyIdle"]);
+            enemy.currentState = state1;
+            enemy.AnimState = AnimState.None;
+            enemy.PlayerAction = EnemyAction.Idle;
+            IsBeHit = false;
             foreach (var action in actions)
             {
                 action.Invoke();
             }
-            combatEntity.Dispose();
-            GameObject.Destroy(combatEntity.ModelObject, 0.5f);
         };
     }
 
     /// <summary>
-    /// 添加死亡后执行事件
+    /// 添加受伤后执行事件
     /// </summary>
     /// <param name="action"></param>
     public void AddAction(Action action)
@@ -54,7 +75,7 @@ public class EnemyDeathEntity : Entity
         actions.Add(action);
     }
     /// <summary>
-    /// 移除死亡后执行的事件
+    /// 移除受伤后执行的事件
     /// </summary>
     /// <param name="action"></param>
     public void Remove(Action action)

@@ -14,6 +14,7 @@ public enum EnemyAction
 {
     Idle,
     Move,
+    BeHit,
     Attack1,
     Death,
     Evade,
@@ -48,12 +49,27 @@ public class Enemy : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInter
     /// </summary>
     public EnemyMoveEntity EnemyMoveEntity;
     /// <summary>
+    /// 敌人受伤实体
+    /// </summary>
+    public EnemyBeHitEntity EnemyBeHitEntity;
+    /// <summary>
     /// 移动禁止
     /// </summary>
     public bool CanMove { get; set; }
     public bool CanAttack { get; set; }
 
     private Rigidbody Rigidbody;
+
+    public Transform WayPoints;
+
+    /// <summary>
+    /// 战斗对象
+    /// </summary>
+    public Transform CombatTarget => GetComponent<BehaviorTree>().GetVariable("SeekTarget").GetValue() as Transform;
+    /// <summary>
+    /// 攻击能力实体
+    /// </summary>
+    public EnemyAttackEntity EnemyAttackEntity;
 
     public void Start()
     {
@@ -67,9 +83,13 @@ public class Enemy : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInter
         combatEntity.ModelObject = this.gameObject;
 
         EnemyDeathEntity = combatEntity.AddChild<EnemyDeathEntity>();
+        EnemyBeHitEntity = combatEntity.AddChild<EnemyBeHitEntity>();
 
         EnemyMoveEntity = combatEntity.AddChild<EnemyMoveEntity>();
         EnemyMoveEntity.Init();
+
+        EnemyAttackEntity = combatEntity.AddChild<EnemyAttackEntity>();
+        EnemyAttackEntity.Init();
 
         // Action监听函数
         combatEntity.ListenActionPoint(ActionPointType.PostReceiveDamage, OnReceiveDamage);
@@ -81,7 +101,7 @@ public class Enemy : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInter
 
     private void Update()
     {
-        this.transform.rotation = Quaternion.identity;
+        //this.transform.rotation = Quaternion.identity;
     }
 
     /// <summary>
@@ -101,6 +121,6 @@ public class Enemy : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInter
     {
         var damageAction = combatAction as DamageAction;
         EnemyUIController._HP.OnReceiveDamage(combatEntity.UnitPropertyEntity.HP.Percent(), damageAction.DamageValue);
-        EnemyDeathEntity.CheckDeath();
+        EnemyBeHitEntity.SetCreator(damageAction.Creator.ModelObject.transform);
     }
 }

@@ -20,7 +20,7 @@ public class PlayerRotateEntity : Entity
     {
         AddComponent<UpdateComponent>();
         rotSpeedX = 400;
-        rotSpeedY = 0.1f;
+        rotSpeedY = 0.05f;
         radius = 1.2f;
         RotEnable = true;
     }

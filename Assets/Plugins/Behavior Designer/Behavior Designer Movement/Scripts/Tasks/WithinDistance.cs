@@ -22,10 +22,14 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
         public SharedVector3 offset;
         [Tooltip("An array of objects to check to see if they are within distance")]
         public SharedTransformList objects;
+        [Tooltip("单个物体")]
+        public SharedTransform m_object;
         [Tooltip("If the object list is null then find the potential objects based off of the tag")]
         public SharedString objectTag;
         [Tooltip("The object variable that will be set when a object is found what the object is")]
         public SharedTransform foundObject;
+        [Tooltip("The LayerMask of the objects that we are searching for")]
+        public LayerMask objectLayerMask;
 
         // distance * distance, optimization so we don't have to take the square root
         private float sqrMagnitude;
@@ -38,6 +42,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
 
         public override void OnStart()
         {
+            objects.Value.Add(m_object.Value);
             // if objects is null then find all of the objects using the objectTag
             if (!string.IsNullOrEmpty(objectTag.Value) && (objects.Value == null || objects.Value.Count == 0)) {
                 var gameObjects = GameObject.FindGameObjectsWithTag(objectTag.Value);
@@ -66,7 +71,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
 #if !(UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
                         is2D = usePhysics2D;
 #endif
-                        if (MovementUtility.LineOfSight(transform, offset.Value, objects.Value[i], is2D)) {
+                        if (MovementUtility.LineOfSight(transform, offset.Value, objects.Value[i], is2D, objectLayerMask)) {
                             // the object has a magnitude less than the specified magnitude and is within sight. Set the object and return success
                             foundObject.Value = objects.Value[i];
                             return TaskStatus.Success;

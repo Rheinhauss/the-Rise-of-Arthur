@@ -35,7 +35,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
                 if (targetObject.Value == null) {
                     objectInSight.Value = MovementUtility.WithinSight2D(transform, offset.Value, fieldOfViewAngle.Value, viewDistance.Value, objectLayerMask);
                 } else { // If the target is not null then determine if that object is within sight
-                    objectInSight.Value = MovementUtility.WithinSight2D(transform, offset.Value, fieldOfViewAngle.Value, viewDistance.Value, targetObject.Value);
+                    objectInSight.Value = MovementUtility.WithinSight2D(transform, offset.Value, fieldOfViewAngle.Value, viewDistance.Value, targetObject.Value, objectLayerMask);
                 }
             } else {
 #endif
@@ -43,7 +43,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
                 if (targetObject.Value == null) {
                     objectInSight.Value = MovementUtility.WithinSight(transform, offset.Value, fieldOfViewAngle.Value, viewDistance.Value, objectLayerMask);
                 } else { // If the target is not null then determine if that object is within sight
-                    objectInSight.Value = MovementUtility.WithinSight(transform, offset.Value, fieldOfViewAngle.Value, viewDistance.Value, targetObject.Value);
+                    objectInSight.Value = MovementUtility.WithinSight(transform, offset.Value, fieldOfViewAngle.Value, viewDistance.Value, targetObject.Value, objectLayerMask);
                 }
 #if !(UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
             }

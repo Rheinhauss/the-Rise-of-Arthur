@@ -17,7 +17,6 @@ public class EnemySeek : Action
     public override void OnAwake()
     {
         // cache for quick lookup
-
     }
 
     public override void OnStart()
@@ -56,6 +55,11 @@ public class EnemySeek : Action
             return targetTransform.Value.position;
         }
         return targetPosition.Value;
+    }
+
+    public override void OnEnd()
+    {
+        moveEntity.agent.enabled = false;
     }
 
     // Reset the public variables
