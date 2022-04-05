@@ -130,7 +130,6 @@ namespace PixelCrushers.DialogueSystem
                 selectionHeadingSize = guiStyle.CalcSize(new GUIContent(heading));
                 selectionUseMessageSize = guiStyle.CalcSize(new GUIContent(useMessage));
             }
-
             // Set text color based on distance:
             bool inUseRange = (distance <= usable.maxUseDistance);
             guiStyle.normal.textColor = inUseRange ? inRangeColor : outOfRangeColor;

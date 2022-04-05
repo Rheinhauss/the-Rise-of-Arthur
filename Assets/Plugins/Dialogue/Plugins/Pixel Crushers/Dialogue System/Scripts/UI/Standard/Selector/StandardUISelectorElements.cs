@@ -40,7 +40,7 @@ namespace PixelCrushers.DialogueSystem
         public UITextField useMessageText = null;
 
         [Tooltip("Set text elements to this color when selector is in range to use selection.")]
-        public Color inRangeColor = Color.yellow;
+        public Color inRangeColor = Color.green;
 
         [Tooltip("Set text elements to this color when selector is out of range.")]
         public Color outOfRangeColor = Color.gray;

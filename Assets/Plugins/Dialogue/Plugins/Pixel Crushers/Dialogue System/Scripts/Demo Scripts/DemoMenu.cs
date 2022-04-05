@@ -53,33 +53,28 @@ namespace PixelCrushers.DialogueSystem.Demo
                 {
                     GUI.skin = guiSkin;
                 }
-                windowRect = GUI.Window(0, windowRect, WindowFunction, "Menu");
+                windowRect = GUI.Window(0, windowRect, WindowFunction, "菜单");
             }
         }
 
         private void WindowFunction(int windowID)
         {
-            if (GUI.Button(new Rect(10, 60, windowRect.width - 20, 48), "Quest Log"))
+            if (GUI.Button(new Rect(23, 70, windowRect.width - 45, 48), "任务列表"))
             {
                 if (closeWhenQuestLogOpen) SetMenuStatus(false);
                 OpenQuestLog();
             }
-            if (GUI.Button(new Rect(10, 110, windowRect.width - 20, 48), "Save Game"))
+            if (GUI.Button(new Rect(23, 120, windowRect.width - 45, 48), "保存游戏"))
             {
                 SetMenuStatus(false);
                 SaveGame();
             }
-            if (GUI.Button(new Rect(10, 160, windowRect.width - 20, 48), "Load Game"))
+            if (GUI.Button(new Rect(23, 170, windowRect.width - 45, 48), "载入游戏"))
             {
                 SetMenuStatus(false);
                 LoadGame();
             }
-            if (GUI.Button(new Rect(10, 210, windowRect.width - 20, 48), "Clear Saved Game"))
-            {
-                SetMenuStatus(false);
-                ClearSavedGame();
-            }
-            if (GUI.Button(new Rect(10, 260, windowRect.width - 20, 48), "Close Menu"))
+            if (GUI.Button(new Rect(23, 220, windowRect.width - 45, 48), "关闭菜单"))
             {
                 SetMenuStatus(false);
             }

@@ -628,11 +628,7 @@ namespace PixelCrushers.DialogueSystem
         public virtual void OnGUI()
         {
             if (!enabled) return;
-            if (!useDefaultGUI) return;
-            if (guiStyle == null && (Event.current.type == EventType.Repaint || usable != null))
-            {
-                SetGuiStyle();
-            }
+            SetGuiStyle();
             if (usable != null)
             {
                 bool inUseRange = (distance <= usable.maxUseDistance);

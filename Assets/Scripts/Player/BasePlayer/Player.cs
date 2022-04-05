@@ -163,4 +163,15 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
         PlayerUIController._HP.OnReceiveDamage(combatEntity.UnitPropertyEntity.HP.Percent(), damageAction.DamageValue);
         PlayerDeathEntity.CheckDeath();
     }
+
+    public void CursorLock()
+    {
+        PlayerCursorEntity.CursorLock();
+        PlayerCursorEntity.isEnabled = true;
+    }
+    public void CursorUnLock()
+    {
+        PlayerCursorEntity.CursorUnLock();
+        PlayerCursorEntity.isEnabled = false;
+    }
 }

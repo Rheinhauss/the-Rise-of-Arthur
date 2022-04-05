@@ -8,6 +8,7 @@ public class PlayerCursorEntity : Entity
     InputComponent input = UnitControllerComponent.inputComponent;
     PlayerRotateEntity PlayerRotateEntity = Player.Instance.PlayerRotateEntity;
 
+    public static bool isEnabled = true;
     public void Init()
     {
         //按住Z键显示鼠标指针
@@ -19,6 +20,10 @@ public class PlayerCursorEntity : Entity
         }, KeyCodeType.UP);
         //鼠标指针显示之后，鼠标左键点击屏幕隐藏指针
         input.BindInputAction(KeyCode.Mouse0, () => {
+            if (!isEnabled)
+            {
+                return;
+            }
             CursorLock();
         }, KeyCodeType.DOWN);
         //默认隐藏鼠标指针
