@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3376658}
   - component: {fileID: 2362236}
   - component: {fileID: 4638586824832194070}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Prop_Plinth_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

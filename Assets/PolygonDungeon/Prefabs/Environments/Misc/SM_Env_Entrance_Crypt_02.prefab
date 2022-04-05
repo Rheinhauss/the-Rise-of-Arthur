@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6279245885127692573}
   - component: {fileID: 2791538670601877705}
   - component: {fileID: 2520742820214936834}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Env_Entrance_Crypt_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}

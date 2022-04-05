@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3328170}
   - component: {fileID: 2372050}
   - component: {fileID: 5638781935335822474}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Env_Stone_Lantern_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

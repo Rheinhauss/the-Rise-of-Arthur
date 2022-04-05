@@ -16,7 +16,7 @@ MonoBehaviour:
   m_box:
     m_Name: box
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 5a76c0277ec2548ec8152f2bb46b5687, type: 3}
+      m_Background: {fileID: 2800000, guid: 403e947800f0e4fd49a1a59b45e4d371, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0.79999995, g: 0.79999995, b: 0.79999995, a: 1}
     m_Hover:

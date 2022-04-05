@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3365474}
   - component: {fileID: 2370724}
   - component: {fileID: 8078309276944386424}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Bld_House_RoomRound_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -272,7 +272,6 @@ namespace PixelCrushers.DialogueSystem
         public virtual void Open()
         {
             QuestLog.trackOneQuestAtATime = trackOneQuestAtATime;
-            PauseGameplay();
             OpenWindow(OnOpenedWindow);
         }
 

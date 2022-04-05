@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3379388}
   - component: {fileID: 2388204}
   - component: {fileID: 9140396720141922892}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Bld_Castle_Iron_Gate_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

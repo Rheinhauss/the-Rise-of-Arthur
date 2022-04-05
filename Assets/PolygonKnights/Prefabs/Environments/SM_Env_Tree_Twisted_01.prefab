@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3301562}
   - component: {fileID: 2347296}
   - component: {fileID: 4944972816397698585}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Env_Tree_Twisted_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

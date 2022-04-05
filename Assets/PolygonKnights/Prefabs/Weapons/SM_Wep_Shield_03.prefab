@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3387576}
   - component: {fileID: 2397784}
   - component: {fileID: 6730008055227178727}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Wep_Shield_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}

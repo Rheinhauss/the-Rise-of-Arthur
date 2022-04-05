@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3388592}
   - component: {fileID: 2363158}
   - component: {fileID: 6261992779565677782}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Prop_Gravestone_01_Snow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

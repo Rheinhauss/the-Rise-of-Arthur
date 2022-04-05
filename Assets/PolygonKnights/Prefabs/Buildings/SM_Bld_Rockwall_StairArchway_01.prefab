@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 64281794978342838}
   - component: {fileID: 64711697813634400}
   - component: {fileID: 64579650209877618}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Bld_Rockwall_StairArchway_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

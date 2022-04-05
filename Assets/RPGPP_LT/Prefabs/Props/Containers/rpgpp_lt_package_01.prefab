@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33470661693730704}
   - component: {fileID: 23635224195777006}
   - component: {fileID: 7079441971766999091}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: rpgpp_lt_package_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

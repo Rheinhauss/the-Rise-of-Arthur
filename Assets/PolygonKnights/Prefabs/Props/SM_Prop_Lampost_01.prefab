@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3353960}
   - component: {fileID: 2355284}
   - component: {fileID: 4724709747002618705}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Prop_Lampost_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

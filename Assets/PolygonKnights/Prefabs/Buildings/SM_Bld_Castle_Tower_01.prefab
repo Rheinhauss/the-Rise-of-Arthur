@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3347006}
   - component: {fileID: 2301326}
   - component: {fileID: 6503090212902606500}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Bld_Castle_Tower_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

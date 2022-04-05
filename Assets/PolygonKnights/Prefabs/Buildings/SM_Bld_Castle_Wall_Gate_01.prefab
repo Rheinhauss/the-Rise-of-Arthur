@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2392664}
   - component: {fileID: 7728217071957988017}
   - component: {fileID: 708294148045615178}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Bld_Castle_Wall_Gate_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

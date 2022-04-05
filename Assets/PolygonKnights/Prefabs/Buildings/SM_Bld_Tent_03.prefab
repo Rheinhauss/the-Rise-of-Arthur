@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 8492175238371534469}
   - component: {fileID: 2815426909434621136}
   - component: {fileID: 5488583968087526385}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Bld_Tent_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}

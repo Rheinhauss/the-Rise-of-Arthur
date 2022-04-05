@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3399700}
   - component: {fileID: 2362814}
   - component: {fileID: 7515721607282742527}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Bld_Village_Well_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

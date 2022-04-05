@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2390746348642485014}
   - component: {fileID: 489014852026972124}
   - component: {fileID: 59578353000980080}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PP_Rock_Pile_Forest_Moss_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}

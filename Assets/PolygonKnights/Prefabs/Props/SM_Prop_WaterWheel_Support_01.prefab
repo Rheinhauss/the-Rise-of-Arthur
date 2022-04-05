@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3345130}
   - component: {fileID: 2338058}
   - component: {fileID: 4003213883567912346}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Prop_WaterWheel_Support_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
