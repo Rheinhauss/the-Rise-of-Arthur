@@ -245,6 +245,7 @@ namespace PixelCrushers.DialogueSystem
         protected GameObject clickedDownOn = null; // Selection when the mouse button was pressed down.
         protected string heading = string.Empty;
         protected string useMessage = string.Empty;
+        protected string s = string.Empty;
         protected float distance = 0;
         protected GUIStyle guiStyle = null;
         protected float guiStyleLineHeight = 16f;
@@ -637,11 +638,11 @@ namespace PixelCrushers.DialogueSystem
                 {
                     heading = usable.GetName();
                     useMessage = DialogueManager.GetLocalizedText(string.IsNullOrEmpty(usable.overrideUseMessage) ? defaultUseMessage : usable.overrideUseMessage);
+                    s = heading + '\n' + useMessage;
                 }
-                UnityGUITools.DrawText(new Rect(0, 0, Screen.width, Screen.height), heading, guiStyle, textStyle, textStyleColor);
-                UnityGUITools.DrawText(new Rect(0, guiStyleLineHeight, Screen.width, Screen.height), useMessage, guiStyle, textStyle, textStyleColor);
+                UnityGUITools.DrawText(new Rect(Screen.width/2-90f, 0, 180f, 90f), s, guiStyle, textStyle, textStyleColor);
                 Texture2D reticleTexture = inUseRange ? reticle.inRange : reticle.outOfRange;
-                if (reticleTexture != null) GUI.Label(new Rect(0.5f * (Screen.width - reticle.width), 0.5f * (Screen.height - reticle.height), reticle.width, reticle.height), reticleTexture);
+                if (reticleTexture != null) GUI.Box(new Rect(0.5f * (Screen.width - reticle.width), 0.5f * (Screen.height - reticle.height), reticle.width, reticle.height), reticleTexture);
             }
         }
 

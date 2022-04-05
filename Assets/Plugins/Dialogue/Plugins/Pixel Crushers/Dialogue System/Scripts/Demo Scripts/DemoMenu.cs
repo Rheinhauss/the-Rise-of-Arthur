@@ -11,9 +11,6 @@ namespace PixelCrushers.DialogueSystem.Demo
     [AddComponentMenu("")] // Use wrapper.
     public class DemoMenu : MonoBehaviour
     {
-
-        [TextArea]
-        public string startMessage = "Press Escape for Menu";
         public KeyCode menuKey = KeyCode.Escape;
         public GUISkin guiSkin;
         public bool closeWhenQuestLogOpen = true;
@@ -24,13 +21,12 @@ namespace PixelCrushers.DialogueSystem.Demo
 
         private QuestLogWindow questLogWindow = null;
         private bool isMenuOpen = false;
-        private Rect windowRect = new Rect(0, 0, 500, 500);
+        private Rect windowRect = new Rect(Screen.width/2-200f, Screen.height/2-200f, 400f, 400f);
         private ScaledRect scaledRect = ScaledRect.FromOrigin(ScaledRectAlignment.MiddleCenter, ScaledValue.FromPixelValue(300), ScaledValue.FromPixelValue(320));
 
         void Start()
         {
             if (questLogWindow == null) questLogWindow = FindObjectOfType<QuestLogWindow>();
-            if (!string.IsNullOrEmpty(startMessage)) DialogueManager.ShowAlert(startMessage);
         }
 
         void Update()
@@ -43,9 +39,13 @@ namespace PixelCrushers.DialogueSystem.Demo
             {
                 CursorControl.SetCursorActive(DialogueManager.isConversationActive || isMenuOpen || IsQuestLogOpen());
             }
+            if (isMenuOpen)
+            {
+                windowRect = new Rect(Screen.width / 2 - 200f, Screen.height / 2 - 200f, 400f, 400f);
+            }
         }
 
-        void OnGUI()
+        public virtual void OnGUI()
         {
             if (isMenuOpen && !IsQuestLogOpen())
             {
@@ -59,22 +59,22 @@ namespace PixelCrushers.DialogueSystem.Demo
 
         private void WindowFunction(int windowID)
         {
-            if (GUI.Button(new Rect(23, 70, windowRect.width - 45, 48), "任务列表"))
+            if (GUI.Button(new Rect(60, 90, windowRect.width - 120, 48), "任务列表"))
             {
                 if (closeWhenQuestLogOpen) SetMenuStatus(false);
                 OpenQuestLog();
             }
-            if (GUI.Button(new Rect(23, 120, windowRect.width - 45, 48), "保存游戏"))
+            if (GUI.Button(new Rect(60, 150, windowRect.width - 120, 48), "保存游戏"))
             {
                 SetMenuStatus(false);
                 SaveGame();
             }
-            if (GUI.Button(new Rect(23, 170, windowRect.width - 45, 48), "载入游戏"))
+            if (GUI.Button(new Rect(60, 210, windowRect.width - 120, 48), "载入游戏"))
             {
                 SetMenuStatus(false);
                 LoadGame();
             }
-            if (GUI.Button(new Rect(23, 220, windowRect.width - 45, 48), "关闭菜单"))
+            if (GUI.Button(new Rect(60, 270, windowRect.width - 120, 48), "关闭菜单"))
             {
                 SetMenuStatus(false);
             }
@@ -89,12 +89,14 @@ namespace PixelCrushers.DialogueSystem.Demo
         {
             SetMenuStatus(false);
         }
-
+        public void CloseCursor()
+        {
+            isMenuOpen = false;
+        }
         private void SetMenuStatus(bool open)
         {
             isMenuOpen = open;
             if (open) windowRect = scaledRect.GetPixelRect();
-            Time.timeScale = open ? 0 : 1;
             if (open) onOpen.Invoke(); else onClose.Invoke();
         }
 
@@ -166,25 +168,6 @@ namespace PixelCrushers.DialogueSystem.Demo
                     DialogueManager.ShowAlert("Save a game first.");
                 }
             }
-        }
-
-
-        private void ClearSavedGame()
-        {
-            var saveSystem = FindObjectOfType<SaveSystem>();
-            if (saveSystem != null)
-            {
-                if (SaveSystem.HasSavedGameInSlot(1))
-                {
-                    SaveSystem.DeleteSavedGameInSlot(1);
-                }
-            }
-            else if (PlayerPrefs.HasKey("SavedGame"))
-            {
-                PlayerPrefs.DeleteKey("SavedGame");
-                Debug.Log("Cleared saved game data");
-            }
-            DialogueManager.ShowAlert("Saved Game Cleared");
         }
 
     }
