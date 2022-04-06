@@ -20,9 +20,23 @@ public class PlayerRotateEntity : Entity
     {
         AddComponent<UpdateComponent>();
         rotSpeedX = 400;
-        rotSpeedY = 0.05f;
+        rotSpeedY = 100.0f;
         radius = 1.2f;
         RotEnable = true;
+    }
+
+    public override void Start()
+    {
+        //Q往上
+        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.Q, () =>
+        {
+            CameraTransform.RotateAround(CameraCenterPoint.position, CameraTransform.right, rotSpeedY * Time.deltaTime);
+        }, KeyCodeType.ING);
+        //E往下
+        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.E, () =>
+        {
+            CameraTransform.RotateAround(CameraCenterPoint.position, CameraTransform.right, -rotSpeedY * Time.deltaTime);
+        }, KeyCodeType.ING);
     }
 
     public override void Update()
@@ -37,15 +51,6 @@ public class PlayerRotateEntity : Entity
 
         // 鼠标在X轴上的移动转为主角左右的移动，同时带动其子物体摄像机的左右移动
         CameraTransform.RotateAround(CameraCenterPoint.position, new Vector3(0, 1, 0), mouseX);
-        //Q往上
-        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.Q, () =>
-         {
-             CameraTransform.RotateAround(CameraCenterPoint.position, CameraTransform.right, rotSpeedY*Time.deltaTime);
-         }, KeyCodeType.ING);
-        //E往下
-        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.E, () =>
-        {
-            CameraTransform.RotateAround(CameraCenterPoint.position, CameraTransform.right, -rotSpeedY*Time.deltaTime);
-        }, KeyCodeType.ING);
+
     }
 }

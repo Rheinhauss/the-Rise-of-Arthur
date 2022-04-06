@@ -17,8 +17,12 @@ public sealed class CountDownTimer
     private float lastTime;                                         // 上一次更新的时间
     private int lastUpdateFrame;                                    // 上一次更新倒计时的帧数（避免一帧多次更新计时）
     private float currentTime;                                      // 当前计时器剩余时间
-
+    /// <summary>
+    /// 倒计时运行事件，参数为剩余时间
+    /// </summary>
+    public List<Action<float>> UpdateAction = new List<Action<float>>();
     public List<Action> EndActions = new List<Action>();
+    private bool IsEnd = false;
 
     /// <summary>
     /// 构造倒计时器
@@ -47,17 +51,27 @@ public sealed class CountDownTimer
     {
         if (IsStoped || lastUpdateFrame == Time.frameCount)         // 暂停了或已经这一帧更新过了，直接返回
             return currentTime;
+        //结束
         if (currentTime <= 0)                                       // 小于等于0直接返回，如果循环那就重置时间
         {
             if (IsAutoCycle)
                 Reset(Duration, false);
+            if (IsEnd)
+                return currentTime;
+            IsEnd = true;
             foreach(var action in EndActions)
             {
                 action.Invoke();
             }
             return currentTime;
         }
-        currentTime -= Time.time - lastTime;
+        //倒计时
+        float countTime = Time.fixedDeltaTime;
+        currentTime -= countTime;
+        foreach (var action in UpdateAction)
+        {
+            action?.Invoke(currentTime);
+        }
         UpdateLastTimeInfo();
         return currentTime;
     }
@@ -86,6 +100,7 @@ public sealed class CountDownTimer
     /// <param name="isStoped">是否暂停</param>
     public void Reset(float duration, bool isStoped = false)
     {
+        IsEnd = false;
         UpdateLastTimeInfo();
         Duration = Mathf.Max(0f, duration);
         currentTime = Duration;

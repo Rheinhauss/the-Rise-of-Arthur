@@ -12,7 +12,7 @@ public class CounterDownTimerMgr : MonoBehaviour
         Instance = this;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         foreach(CountDownTimer countDownTimer in countDownTimers)
         {

@@ -74,8 +74,8 @@ public class Enemy : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInter
     public void Start()
     {
         Rigidbody = GetComponent<Rigidbody>();
-        Rigidbody.isKinematic = true;
-        Rigidbody.useGravity = false;
+        Rigidbody.isKinematic = false;
+        Rigidbody.useGravity = true;
         // 初始化CombatEntity
         // 挂载各种组件
         combatEntity = CombatContext.Instance.AddChild<CombatEntity>();
@@ -99,10 +99,10 @@ public class Enemy : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInter
         CanAttack = true;
     }
 
-    private void Update()
-    {
-        //this.transform.rotation = Quaternion.identity;
-    }
+    //private void Update()
+    //{
+    //    //this.transform.rotation = Quaternion.identity;
+    //}
 
     /// <summary>
     /// 接受治愈Action，进行跳字UI
@@ -123,4 +123,25 @@ public class Enemy : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInter
         EnemyUIController._HP.OnReceiveDamage(combatEntity.UnitPropertyEntity.HP.Percent(), damageAction.DamageValue);
         EnemyBeHitEntity.SetCreator(damageAction.Creator.ModelObject.transform);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.tag == "Player")
+        {
+            Rigidbody.isKinematic = true;
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        Rigidbody.useGravity = false;
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.tag == "Player")
+        {
+            Rigidbody.isKinematic = false;
+        }
+    }
+
 }

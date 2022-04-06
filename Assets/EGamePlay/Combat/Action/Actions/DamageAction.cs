@@ -113,6 +113,8 @@ namespace EGamePlay.Combat
         /// </summary>
         public void ApplyDamage()
         {
+            if (Target.IsInvincibel)
+                return;
             PreProcess();
 
             Target.ReceiveDamage(this);

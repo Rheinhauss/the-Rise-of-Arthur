@@ -106,7 +106,6 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
     private void Awake()
     {
         Instance = this;
-
     }
 
     private void Start()
