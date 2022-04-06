@@ -218,6 +218,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 14445417}
   m_Mesh: {fileID: 0}
+--- !u!114 &30202981 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1022197355885917557, guid: 9c8206147fca1dc4ba828b53047312bd, type: 3}
+  m_PrefabInstance: {fileID: 1628029356}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 624654ff0a68ee844994f728ddf3d991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &30202988 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 307534716, guid: 9c8206147fca1dc4ba828b53047312bd, type: 3}
+  m_PrefabInstance: {fileID: 1628029356}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce7d2e9c3a335294197b6b2d1172317b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &41760877
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5566,7 +5588,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4038265503420150208, guid: 1aad01ae01d836647b215e40f1f4c1a7, type: 3}
+    - {fileID: 9010557886675688970, guid: 1aad01ae01d836647b215e40f1f4c1a7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1aad01ae01d836647b215e40f1f4c1a7, type: 3}
 --- !u!4 &714433508 stripped
 Transform:
@@ -9477,7 +9501,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4038265503420150208, guid: 1aad01ae01d836647b215e40f1f4c1a7, type: 3}
+    - {fileID: 9010557886675688970, guid: 1aad01ae01d836647b215e40f1f4c1a7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1aad01ae01d836647b215e40f1f4c1a7, type: 3}
 --- !u!4 &1317203362 stripped
 Transform:
@@ -9592,7 +9618,7 @@ MonoBehaviour:
   onOpen:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 30202988}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: set_CanAttack
         m_Mode: 6
@@ -9604,7 +9630,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 30202988}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: set_CanCameraRot
         m_Mode: 6
@@ -9616,7 +9642,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 30202988}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: set_CanMove
         m_Mode: 6
@@ -9628,7 +9654,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 30202988}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: CursorUnLock
         m_Mode: 1
@@ -9640,7 +9666,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 30202981}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -9655,7 +9681,7 @@ MonoBehaviour:
   onClose:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 30202988}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: set_CanAttack
         m_Mode: 6
@@ -9667,7 +9693,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 30202988}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: set_CanCameraRot
         m_Mode: 6
@@ -9679,7 +9705,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 30202988}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: set_CanMove
         m_Mode: 6
@@ -9691,7 +9717,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 30202988}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: CursorLock
         m_Mode: 1
@@ -9715,7 +9741,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 30202981}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -12059,7 +12085,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4038265503420150208, guid: 1aad01ae01d836647b215e40f1f4c1a7, type: 3}
+    - {fileID: 9010557886675688970, guid: 1aad01ae01d836647b215e40f1f4c1a7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1aad01ae01d836647b215e40f1f4c1a7, type: 3}
 --- !u!4 &1584695452 stripped
 Transform:
@@ -12656,7 +12684,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4038265503420150208, guid: 1aad01ae01d836647b215e40f1f4c1a7, type: 3}
+    - {fileID: 9010557886675688970, guid: 1aad01ae01d836647b215e40f1f4c1a7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1aad01ae01d836647b215e40f1f4c1a7, type: 3}
 --- !u!4 &1669586300 stripped
 Transform:
@@ -14997,6 +15027,10 @@ PrefabInstance:
     - target: {fileID: 4835789832631930, guid: bdf8e7438a7816543998181bd3067573, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -240.51399
+      objectReference: {fileID: 0}
+    - target: {fileID: 5928820595838423824, guid: bdf8e7438a7816543998181bd3067573, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdf8e7438a7816543998181bd3067573, type: 3}
