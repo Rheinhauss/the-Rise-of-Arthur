@@ -68,9 +68,10 @@ public sealed class CountDownTimer
         //µ¹¼ÆÊ±
         float countTime = Time.fixedDeltaTime;
         currentTime -= countTime;
+        countTime = Mathf.Max(currentTime, 0);
         foreach (var action in UpdateAction)
         {
-            action?.Invoke(currentTime);
+            action?.Invoke(countTime);
         }
         UpdateLastTimeInfo();
         return currentTime;

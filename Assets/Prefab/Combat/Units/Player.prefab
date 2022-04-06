@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &753055823
 Transform:
   m_ObjectHideFlags: 0
@@ -3099,7 +3099,8 @@ MonoBehaviour:
   _Animator: {fileID: 434829271640088084}
   _ActionOnDisable: 0
   _PlayAutomatically: 1
-  _Animations: []
+  _Animations:
+  - {fileID: 7400000, guid: d21c4bef4dfa4e443bab5e766f818e96, type: 2}
 --- !u!1001 &434829272194729547
 PrefabInstance:
   m_ObjectHideFlags: 0

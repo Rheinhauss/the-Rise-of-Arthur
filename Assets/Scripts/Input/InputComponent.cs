@@ -10,7 +10,9 @@ public enum KeyCodeType
 {
     UP,
     DOWN,
-    ING
+    ING,
+    //每帧自动调用，不管输入
+    None
 }
 /// <summary>
 /// 按键类
@@ -64,6 +66,12 @@ public class InputComponent : MonoBehaviour
                         {
                             action.Invoke();
                         }
+                    }
+                    break;
+                case KeyCodeType.None:
+                    foreach (Action action in item.Value)
+                    {
+                        action.Invoke();
                     }
                     break;
             }

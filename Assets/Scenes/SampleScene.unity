@@ -504,26 +504,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 99586565, guid: b69ed15661085f941bb6c9c69d8b75ba, type: 3}
-      propertyPath: _PlayAutomatically
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 99586565, guid: b69ed15661085f941bb6c9c69d8b75ba, type: 3}
-      propertyPath: _Animations.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 99586565, guid: b69ed15661085f941bb6c9c69d8b75ba, type: 3}
-      propertyPath: _Animations.Array.data[0]
-      value: 
-      objectReference: {fileID: 7400000, guid: d21c4bef4dfa4e443bab5e766f818e96, type: 2}
-    - target: {fileID: 307534715, guid: b69ed15661085f941bb6c9c69d8b75ba, type: 3}
-      propertyPath: animationClipsStruct.Array.data[11].animationClip
-      value: 
-      objectReference: {fileID: 7400000, guid: 3c6fec6bb66265242ad62728db8e96cb, type: 2}
-    - target: {fileID: 753055822, guid: b69ed15661085f941bb6c9c69d8b75ba, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 434829270808580962, guid: b69ed15661085f941bb6c9c69d8b75ba, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1114,18 +1094,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 594516364}
-    - target: {fileID: 1252997043, guid: 5aff1e796ee539744ba2d741c5518dd3, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1522720232, guid: 5aff1e796ee539744ba2d741c5518dd3, type: 3}
       propertyPath: WayPoints
       value: 
       objectReference: {fileID: 1357719665}
-    - target: {fileID: 5669985126180557725, guid: 5aff1e796ee539744ba2d741c5518dd3, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5669985126180557725, guid: 5aff1e796ee539744ba2d741c5518dd3, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[0]
       value: 
