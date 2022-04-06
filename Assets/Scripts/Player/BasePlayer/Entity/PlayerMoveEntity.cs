@@ -181,7 +181,7 @@ public class PlayerMoveEntity : Entity
         {
             Move();
         }
-        else
+        else if(Player.PlayerAction != PlayerAction.Evade)
         {
             rigidbody.velocity = Vector3.zero;
         }

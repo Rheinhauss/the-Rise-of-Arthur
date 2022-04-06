@@ -48,7 +48,6 @@ public class Skill_2_Attack1_Entity : Entity
             if (Player.PlayerAction == PlayerAction.Evade)
             {
                 Skill_2_Attack1[3].action.Invoke();
-                //PlayerEvadeEntity.AddPostAction(Skill_2_Attack1[3].action);
             }
             if (Player.AnimState == AnimState.ForcePost || (Player.PlayerAction == PlayerAction.Attack1 && Player.AnimState == AnimState.Pre))
             {
@@ -83,10 +82,9 @@ public class Skill_2_Attack1_Entity : Entity
             SpellComponent.SpellWithDirect(Skill_2_Attack1[0].SkillAbility, PlayerMoveEntity.ModelTransform.rotation.eulerAngles,PlayerMoveEntity.ModelTransform.position);
             PlayerMoveEntity.ModelTransform.rotation = rot;
             var state = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["SwordsmanAttack1"]);
-
+            Player.AnimState = AnimState.Pre;
             Player.PlayerAction = PlayerAction.Attack1;
             Player.currentState = state;
-            Player.AnimState = AnimState.Pre;
 
             state.Events.OnEnd = () =>
             {
@@ -94,7 +92,6 @@ public class Skill_2_Attack1_Entity : Entity
 
                 Player.currentState = state1;
                 Player.AnimState = AnimState.Post;
-
                 state1.Events.OnEnd = () =>
                 {
                     Player.currentState = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["SwordsmanIdle"]);
@@ -119,10 +116,9 @@ public class Skill_2_Attack1_Entity : Entity
             PlayerMoveEntity.ModelTransform.rotation = rot;
 
             var state = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["SwordsmanAttack2"]);
-
+            Player.AnimState = AnimState.Pre;
             Player.PlayerAction = PlayerAction.Attack1;
             Player.currentState = state;
-            Player.AnimState = AnimState.Pre;
 
             state.Events.OnEnd = () =>
             {
@@ -152,10 +148,9 @@ public class Skill_2_Attack1_Entity : Entity
             PlayerMoveEntity.ModelTransform.rotation = rot;
 
             var state = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["SwordsmanAttack3"]);
-
+            Player.AnimState = AnimState.Pre;
             Player.PlayerAction = PlayerAction.Attack1;
             Player.currentState = state;
-            Player.AnimState = AnimState.Pre;
 
             state.Events.OnEnd = () =>
             {
@@ -183,16 +178,16 @@ public class Skill_2_Attack1_Entity : Entity
     {
         Skill_2_Attack1[3].InitSkillObject("Skills/SkillConfigs/Skill_7_AttackEvade", combatEntity, () => {
             PlayerEvadeEntity.EndEvade();
+
             Quaternion rot = PlayerMoveEntity.ModelTransform.rotation;
             PlayerMoveEntity.ModelTransform.Rotate(new Vector3(-90, 180, 0));
             SpellComponent.SpellWithDirect(Skill_2_Attack1[3].SkillAbility, PlayerMoveEntity.ModelTransform.rotation.eulerAngles, PlayerMoveEntity.ModelTransform.position);
             PlayerMoveEntity.ModelTransform.rotation = rot;
 
             var state = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["SwordsmanAttackEvade"]);
-
+            Player.AnimState = AnimState.Pre;
             Player.PlayerAction = PlayerAction.Attack1;
             Player.currentState = state;
-            Player.AnimState = AnimState.Pre;
 
             state.Events.OnEnd = () =>
             {

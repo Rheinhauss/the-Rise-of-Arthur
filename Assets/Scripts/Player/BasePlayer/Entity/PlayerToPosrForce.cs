@@ -6,6 +6,7 @@ public class PlayerToPosrForce : MonoBehaviour
 {
     private void Awake()
     {
-        Player.Instance.AnimState = AnimState.ForcePost;
+        if(Player.Instance.AnimState == AnimState.Pre)
+            Player.Instance.AnimState = AnimState.ForcePost;
     }
 }

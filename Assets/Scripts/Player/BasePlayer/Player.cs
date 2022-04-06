@@ -15,9 +15,9 @@ public enum PlayerAction
 {
     Idle,
     Move,
+    Evade,
     Attack1,
     Death,
-    Evade,
     AttackHeavy,
 }
 /// <summary>
@@ -106,7 +106,6 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
     private void Awake()
     {
         Instance = this;
-
     }
 
     private void Start()
@@ -150,6 +149,10 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
         CanAttack = true;
     }
 
+    //private void Update()
+    //{
+    //    Debug.Log(PlayerAction + " " + AnimState);
+    //}
 
     public override void OnReceiveCure(ActionExecution combatAction)
     {

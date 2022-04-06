@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9185650250442852820}
   - component: {fileID: 3301897040086478839}
   - component: {fileID: 3453179269125215615}
-  - component: {fileID: 3486946945040119762}
+  - component: {fileID: 1910195864139173181}
   m_Layer: 8
   m_Name: Evade
   m_TagString: Untagged
@@ -72,7 +72,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &3486946945040119762
+--- !u!114 &1910195864139173181
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

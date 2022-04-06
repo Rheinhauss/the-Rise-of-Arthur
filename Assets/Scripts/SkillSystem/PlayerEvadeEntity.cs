@@ -21,26 +21,33 @@ public class PlayerEvadeEntity : Entity
 
     private List<Action> actions = new List<Action>();
 
-    private DG.Tweening.Core.TweenerCore<Vector3, Vector3, VectorOptions> tweenerCore;
-
     private Collider PlayerCol => Player.GetComponent<Collider>();
-    private PlayerTerrainCol PlayerTerrainCol => Player.transform.GetComponentInChildren<PlayerTerrainCol>();
+    //private PlayerTerrainCol PlayerTerrainCol => Player.transform.GetComponentInChildren<PlayerTerrainCol>();
+
+    CountDownTimer timer = new CountDownTimer(0.3f, false, false);
+
+    private Rigidbody Rigidbody => Player.GetComponent<Rigidbody>();
+
     public void Init()
     {
         Skill_5_Evade = new SkillObject();
         Skill_Evade();
         UnitControllerComponent.inputComponent.BindInputAction(KeyCode.Space, () =>
         {
-            if (Player.AnimState == AnimState.ForcePost || Player.CanMove == false)
+            if (Player.AnimState == AnimState.ForcePost || Player.CanMove == false || Player.PlayerAction > PlayerAction.Evade)
             {
                 return;
             }
             Skill_5_Evade.action.Invoke();
         }, KeyCodeType.DOWN);
-        PlayerTerrainCol.actions.Add(() =>
-        {
-            EndEvade();
-        });
+        //PlayerTerrainCol.actions.Add(() =>
+        //{
+        //    EndEvade();
+        //});
+
+        timer.UpdateAction.Add(OnUpdate);
+
+        timer.EndActions.Add(OnEnd);
     }
     private void Skill_Evade()
     {
@@ -48,29 +55,36 @@ public class PlayerEvadeEntity : Entity
         {
             //SpellComponent.SpellWithDirect(Skill_5_Evade.SkillAbility, PlayerMoveEntity.ModelTransform.rotation.eulerAngles, PlayerMoveEntity.ModelTransform.position);
             var state = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["SwordsmanEvade"]);
-            //wudi
-            PlayerCol.enabled = false;
+            //нч╣п
+            combatEntity.IsInvincibel = true;
             Player.PlayerAction = PlayerAction.Evade;
             Player.currentState = state;
-            Player.AnimState = AnimState.ForcePost;
-            tweenerCore = Player.transform.DOMove(PlayerMoveEntity.ModelTransform.forward * 3.26f + PlayerMoveEntity.ModelTransform.position, 0.3f);
-            tweenerCore.OnComplete(() =>
-            {
-                PlayerCol.enabled = true;
-                Player.AnimState = AnimState.Post;
-                foreach(Action action in actions)
-                {
-                    action?.Invoke();
-                }
-            });
+            Player.AnimState = AnimState.Pre;
+            timer.Start();
+            PlayerRotateEntity.RotEnable = false;
             state.Events.OnEnd = () =>
             {
                 Player.currentState = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["SwordsmanIdle"]);
-
+                PlayerRotateEntity.RotEnable = true;
                 Player.PlayerAction = PlayerAction.Idle;
                 Player.AnimState = AnimState.None;
             };
         });
+    }
+    private void OnUpdate(float currentTime)
+    {
+        Player.AnimState = AnimState.ForcePost;
+        Rigidbody.velocity = PlayerMoveEntity.ModelTransform.forward * currentTime * 45;
+    }
+
+    public void OnEnd()
+    {
+        combatEntity.IsInvincibel = false;
+        Player.AnimState = AnimState.Post;
+        foreach (Action action in actions)
+        {
+            action?.Invoke();
+        }
     }
 
     public void AddPostAction(Action action)
@@ -84,8 +98,8 @@ public class PlayerEvadeEntity : Entity
 
     public void EndEvade()
     {
-        tweenerCore.Pause();
-        PlayerCol.enabled = true;
+        timer.End();
+        PlayerRotateEntity.RotEnable = true;
     }
 
 }

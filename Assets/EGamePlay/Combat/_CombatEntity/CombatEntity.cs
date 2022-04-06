@@ -199,6 +199,9 @@ namespace EGamePlay.Combat
         }
         #endregion
 
+
+        public bool IsInvincibel = false;
+
         /// <summary>
         /// 受到伤害事件->减少血量
         /// </summary>
