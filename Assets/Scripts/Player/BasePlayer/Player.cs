@@ -42,6 +42,7 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
     /// 初始化Player
     /// </summary>
     public static Player Instance;
+    #region 状态
     /// <summary>
     /// Player当前Action类型
     /// </summary>
@@ -54,6 +55,9 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
     /// Player当前播放的Action动画的阶段
     /// </summary>
     public Animancer.AnimancerState currentState;
+    #endregion
+
+    #region 能力
     /// <summary>
     /// 技能调用组件
     /// </summary>
@@ -91,6 +95,13 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
     /// </summary>
     public Skill_6_AttackHeavy Skill_6_AttackHeavy;
     /// <summary>
+    /// 背包
+    /// </summary>
+    public PlayerInventoryEntity PlayerInventoryEntity;
+    #endregion
+
+    #region 控制
+    /// <summary>
     /// 移动禁制
     /// </summary>
     public bool CanMove { get; set; }
@@ -102,6 +113,7 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
     /// 摄像机旋转禁止
     /// </summary>
     public bool CanCameraRot { get { return PlayerRotateEntity.RotEnable; } set { PlayerRotateEntity.RotEnable = value; } }
+    #endregion
 
     private void Awake()
     {
@@ -143,6 +155,10 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
         PlayerEvadeEntity = combatEntity.AddChild<PlayerEvadeEntity>();
         PlayerEvadeEntity.Init();
 
+        //背包实体
+        PlayerInventoryEntity = combatEntity.AddChild<PlayerInventoryEntity>();
+        PlayerInventoryEntity.Init();
+
         //事件监听
         combatEntity.ListenActionPoint(ActionPointType.PostReceiveDamage, OnReceiveDamage);
         combatEntity.ListenActionPoint(ActionPointType.PostReceiveCure, OnReceiveCure);
@@ -177,4 +193,10 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
         PlayerCursorEntity.CursorUnLock();
         PlayerCursorEntity.isEnabled = false;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        PlayerInventoryEntity.OperateItem(other);
+    }
+
 }

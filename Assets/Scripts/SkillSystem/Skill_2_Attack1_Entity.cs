@@ -29,7 +29,6 @@ public class Skill_2_Attack1_Entity : Entity
 
     public void Init()
     {
-        AddComponent<UpdateComponent>();
         Skill_2_Attack1 = new SkillObject[4];
         Skill_2_Attack1[0] = new SkillObject();
         Skill_2_Attack1[1] = new SkillObject();
@@ -41,6 +40,10 @@ public class Skill_2_Attack1_Entity : Entity
         Skill_2_Attack1_2();
         Skill_2_Attack1_3();
         Skill_2_Attack1_4();
+        countDownTimer.EndActions.Add(() =>
+        {
+            curAttackState = 0;
+        });
 
         UnitControllerComponent.inputComponent.BindInputAction(KeyCode.Mouse0, () => {
             if (Player.CanAttack == false)
@@ -67,13 +70,6 @@ public class Skill_2_Attack1_Entity : Entity
         }, KeyCodeType.DOWN);
     }
 
-    public override void Update()
-    {
-        if (countDownTimer.IsTimeUp)
-        {
-            curAttackState = 0;
-        }
-    }
     private void Skill_2_Attack1_1()
     {
         Skill_2_Attack1[0].InitSkillObject("Skills/SkillConfigs/Skill_2_Attack1_1", combatEntity, () => {
