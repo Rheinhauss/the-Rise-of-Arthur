@@ -17,14 +17,13 @@ public class Skill_6_AttackHeavy : Entity
     private CountDownTimer countDownTimer;
 
 
-
     public void Init()
     {
         skill_6_AttackHeavy = new SkillObject();
         Skill_AttackHeavy();
         UnitControllerComponent.inputComponent.BindInputAction(KeyCode.Mouse1, () =>
         {
-            if (Player.AnimState == AnimState.ForcePost || Player.CanAttack == false)
+            if (Player.AnimState == AnimState.ForcePost || Player.CanAttack == false || Player.PlayerAction == PlayerAction.AttackHeavy)
             {
                 return;
             }
@@ -36,7 +35,6 @@ public class Skill_6_AttackHeavy : Entity
         skill_6_AttackHeavy.InitSkillObject("Skills/SkillConfigs/Skill_6_AttackHeavy", combatEntity, () => {
             SpellComponent.SpellWithDirect(skill_6_AttackHeavy.SkillAbility, PlayerMoveEntity.ModelTransform.rotation.eulerAngles, PlayerMoveEntity.ModelTransform.position);
             var state = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["SwordsmanAttackHeavyCast"]);
-
             Player.PlayerAction = PlayerAction.AttackHeavy;
             Player.currentState = state;
             Player.AnimState = AnimState.Pre;
@@ -44,10 +42,8 @@ public class Skill_6_AttackHeavy : Entity
             state.Events.OnEnd = () =>
             {
                 var state1 = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["SwordsmanAttackHeavyEnd"]);
-
                 Player.currentState = state1;
                 Player.AnimState = AnimState.Post;
-
                 state1.Events.OnEnd = () =>
                 {
                     var state2 = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["SwordsmanIdle"]);

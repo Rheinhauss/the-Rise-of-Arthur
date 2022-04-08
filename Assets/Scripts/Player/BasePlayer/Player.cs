@@ -175,7 +175,6 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
         CanAttack = true;
     }
 
-
     public override void OnReceiveCure(ActionExecution combatAction)
     {
         var cureAction = combatAction as CureAction;
