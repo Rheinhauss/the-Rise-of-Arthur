@@ -98,6 +98,10 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
     /// 背包
     /// </summary>
     public PlayerInventoryEntity PlayerInventoryEntity;
+    /// <summary>
+    /// 装备实体
+    /// </summary>
+    public PlayerEquipEntity PlayerEquipEntity;
     #endregion
 
     #region 控制
@@ -155,9 +159,15 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
         PlayerEvadeEntity = combatEntity.AddChild<PlayerEvadeEntity>();
         PlayerEvadeEntity.Init();
 
+        //挂载装备实体
+        PlayerEquipEntity = combatEntity.AddChild<PlayerEquipEntity>();
+        PlayerEquipEntity.Init();
+
         //背包实体
         PlayerInventoryEntity = combatEntity.AddChild<PlayerInventoryEntity>();
         PlayerInventoryEntity.Init();
+
+
 
         //事件监听
         combatEntity.ListenActionPoint(ActionPointType.PostReceiveDamage, OnReceiveDamage);
@@ -165,10 +175,6 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
         CanAttack = true;
     }
 
-    //private void Update()
-    //{
-    //    Debug.Log(PlayerAction + " " + AnimState);
-    //}
 
     public override void OnReceiveCure(ActionExecution combatAction)
     {
@@ -194,9 +200,33 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
         PlayerCursorEntity.isEnabled = false;
     }
 
-    private void OnTriggerEnter(Collider other)
+
+    private void OnTriggerStay(Collider other)
     {
         PlayerInventoryEntity.OperateItem(other);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        PlayerInventoryEntity.OperateItemExit(other);
+    }
+
+    public static void StopController()
+    {
+        PlayerCursorEntity.CursorUnLock();
+        PlayerCursorEntity.isEnabled = false;
+        Player.Instance.CanAttack = false;
+        Player.Instance.CanMove = false;
+        Player.Instance.CanCameraRot = false;
+    }
+
+    public static void StartController()
+    {
+        PlayerCursorEntity.CursorLock();
+        PlayerCursorEntity.isEnabled = true;
+        Player.Instance.CanAttack = true;
+        Player.Instance.CanMove = true;
+        Player.Instance.CanCameraRot = true;
     }
 
 }

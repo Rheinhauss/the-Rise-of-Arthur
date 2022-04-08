@@ -28,16 +28,28 @@ namespace EGamePlay.Combat
 
         }
         /// <summary>
+        /// 作用效果于自己
+        /// </summary>
+        /// <param name="skillAbility"></param>
+        public AbilityEffect SpellStatusToTarget(StatusObject status, CombatEntity Target)
+        {
+            Target.AddStatusEntity.RemoveAllChild();
+            AbilityEffect ability = Target.AddStatusEntity.AddChild<AbilityEffect>(status.effect);
+            ability.ApplyEffectTo(Target);
+            return ability;
+        }
+
+        /// <summary>
         /// 向目标释放技能,如果正在释放技能,则无法释放当前技能,即无法打断
         /// 可在释放前调用SkillExecution.EndExecution结束释放,即打断之前施法
         /// 调用方法:CombatEntity.CurrentSkillExecution.EndExecute()
         /// </summary>
         /// <param name="spellSkill">需要释放的技能</param>
         /// <param name="targetEntity">目标战斗实体</param>
-        public void SpellWithTarget(SkillAbility spellSkill, CombatEntity targetEntity)
+        public bool SpellWithTarget(SkillAbility spellSkill, CombatEntity targetEntity)
         {
             if (CombatEntity.CurrentSkillExecution != null)
-                return;
+                return false;
 
             //Log.Debug($"OnInputTarget {combatEntity}");
             if (CombatEntity.SpellAbility.TryMakeAction(out var action))
@@ -48,6 +60,7 @@ namespace EGamePlay.Combat
                 action.SkillExecution.InputTarget = targetEntity;
                 action.SpellSkill();
             }
+            return true;
         }
         /// <summary>
         /// 向目标点释放技能,如果正在释放技能,则无法释放当前技能,即无法打断        
@@ -56,10 +69,10 @@ namespace EGamePlay.Combat
         /// </summary>
         /// <param name="spellSkill">需要释放的技能</param>
         /// <param name="point">目标点</param>
-        public void SpellWithPoint(SkillAbility spellSkill, Vector3 point)
+        public bool SpellWithPoint(SkillAbility spellSkill, Vector3 point)
         {
             if (CombatEntity.CurrentSkillExecution != null)
-                return;
+                return false;
 
             //Log.Debug($"OnInputPoint {point}");
             if (CombatEntity.SpellAbility.TryMakeAction(out var action))
@@ -69,6 +82,7 @@ namespace EGamePlay.Combat
                 action.SkillExecution.InputPoint = point;
                 action.SpellSkill();
             }
+            return true;
         }
         /// <summary>
         /// 向目标方向释放技能,如果正在释放技能,则无法释放当前技能,即无法打断        
@@ -78,10 +92,10 @@ namespace EGamePlay.Combat
         /// <param name="spellSkill">需要释放的技能</param>
         /// <param name="direction">方向</param>
         /// <param name="point">目标点</param>
-        public void SpellWithDirect(SkillAbility spellSkill, Vector3 direction, Vector3 point)
+        public bool SpellWithDirect(SkillAbility spellSkill, Vector3 direction, Vector3 point)
         {
             if (CombatEntity.CurrentSkillExecution != null)
-                return;
+                return false;
             //Log.Debug($"OnInputDirect {direction}");
             if (CombatEntity.SpellAbility.TryMakeAction(out var action))
             {
@@ -91,6 +105,7 @@ namespace EGamePlay.Combat
                 action.SkillExecution.InputDirection = direction;
                 action.SpellSkill();
             }
+            return true;
         }
     }
 }

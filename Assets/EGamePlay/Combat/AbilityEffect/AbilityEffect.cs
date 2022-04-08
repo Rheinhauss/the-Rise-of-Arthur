@@ -139,7 +139,7 @@ namespace EGamePlay.Combat
         /// 应用效果到目标战斗实体
         /// </summary>
         /// <param name="targetEntity">目标战斗实体</param>
-        private void ApplyEffectTo(CombatEntity targetEntity)
+        public void ApplyEffectTo(CombatEntity targetEntity)
         {
             if (OwnerEntity.EffectAssignAbility.TryMakeAction(out var action))
             {

@@ -40,9 +40,9 @@ namespace EGamePlay.Combat
         private int ParseValue()
         {
             var expression = ExpressionHelper.ExpressionParser.EvaluateExpression(CureValueProperty);
-            if (expression.Parameters.ContainsKey("生命值上限"))
+            if (expression.Parameters.ContainsKey("MaxHP"))
             {
-                expression.Parameters["生命值上限"].Value = GetEntity<AbilityEffect>().OwnerEntity.GetComponent<AttributeComponent>().HealthPoint.Value;
+                expression.Parameters["MaxHP"].Value = GetEntity<AbilityEffect>().OwnerEntity.GetChild<UnitPropertyEntity>().HP.MaxValue;
             }
             return Mathf.CeilToInt((float)expression.Value);
         }

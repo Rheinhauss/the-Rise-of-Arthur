@@ -11,8 +11,8 @@ namespace EGamePlay.Combat
     /// </summary>
     public abstract class StatusExecution : AbilityExecution
     {
+        public StatusAbility StatusAbility { get { return AbilityEntity as StatusAbility; } }
+        public CombatEntity InputTarget { get; set; }
         public CombatEntity InputCombatEntity { get; set; }
-        public Vector3 InputPoint { get; set; }
-        public float InputDirection { get; set; }
     }
 }
