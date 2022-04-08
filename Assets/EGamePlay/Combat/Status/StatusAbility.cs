@@ -160,7 +160,15 @@ namespace EGamePlay.Combat
                     {
                         ParentEntity.GetChild<UnitPropertyEntity>().GetPropertyDictNum(PropertyType).AddAddModifier(NumericModifier);
                     }
-                    if (StatusConfig.ModifyType == ModifyType.PercentAdd)
+                    else if (StatusConfig.ModifyType == ModifyType.PercentAdd)
+                    {
+                        ParentEntity.GetChild<UnitPropertyEntity>().GetPropertyDictNum(PropertyType).AddPctAddModifier(NumericModifier);
+                    }
+                    else if (StatusConfig.ModifyType == ModifyType.FinalAdd)
+                    {
+                        ParentEntity.GetChild<UnitPropertyEntity>().GetPropertyDictNum(PropertyType).AddFinalAddModifier(NumericModifier);
+                    }
+                    else if (StatusConfig.ModifyType == ModifyType.FinalPercentAdd)
                     {
                         ParentEntity.GetChild<UnitPropertyEntity>().GetPropertyDictNum(PropertyType).AddFinalPctAddModifier(NumericModifier);
                     }
@@ -207,9 +215,17 @@ namespace EGamePlay.Combat
                     var PropertyType = StatusConfig.PropertyType.ToString();
                     if (StatusConfig.ModifyType == ModifyType.Add)
                     {
+                        ParentEntity.GetChild<UnitPropertyEntity>().GetPropertyDictNum(PropertyType).RemoveAddModifier(NumericModifier);
+                    }
+                    else if (StatusConfig.ModifyType == ModifyType.PercentAdd)
+                    {
+                        ParentEntity.GetChild<UnitPropertyEntity>().GetPropertyDictNum(PropertyType).RemovePctAddModifier(NumericModifier);
+                    }
+                    else if (StatusConfig.ModifyType == ModifyType.FinalAdd)
+                    {
                         ParentEntity.GetChild<UnitPropertyEntity>().GetPropertyDictNum(PropertyType).RemoveFinalAddModifier(NumericModifier);
                     }
-                    if (StatusConfig.ModifyType == ModifyType.PercentAdd)
+                    else if (StatusConfig.ModifyType == ModifyType.FinalPercentAdd)
                     {
                         ParentEntity.GetChild<UnitPropertyEntity>().GetPropertyDictNum(PropertyType).RemoveFinalPctAddModifier(NumericModifier);
                     }
@@ -225,7 +241,12 @@ namespace EGamePlay.Combat
             ParentEntity.OnStatusRemove(this);
             base.EndAbility();
         }
-
+        //public override AbilityExecution CreateExecution()
+        //{
+        //    var execution = OwnerEntity.AddChild<StatusExecution>(this);
+        //    execution.AddComponent<UpdateComponent>();
+        //    return execution;
+        //}
         public int GetDuration()
         {
             return Duration;

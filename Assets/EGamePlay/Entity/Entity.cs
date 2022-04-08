@@ -401,6 +401,15 @@ namespace EGamePlay
             //Fire("OnRemoveChildEvent", child);
         }
 
+        public void RemoveAllChild()
+        {
+            foreach(Entity child in Children)
+            {
+                if (Type2Children.ContainsKey(child.GetType())) Type2Children[child.GetType()].Remove(child);
+            }
+            Children.Clear();
+        }
+
         public Entity AddChild(Type entityType)
         {
             return CreateWithParent(entityType, this);

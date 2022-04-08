@@ -98,6 +98,14 @@ namespace EGamePlay.Combat
         /// 行为控制
         /// </summary>
         public ActionControlType ActionControlType { get; set; }
+        /// <summary>
+        /// 应用状态到自身
+        /// </summary>
+        public UnitSpellStatusToSelfComponent unitSpellStatusToSelfComponent;
+        /// <summary>
+        /// 状态能力实体
+        /// </summary>
+        public SkillAbility AddStatusEntity;
 
 
         public override void Awake()
@@ -130,6 +138,9 @@ namespace EGamePlay.Combat
             AttackAbility = AttachAbility<AttackAbility>(null);
             UnitPropertyEntity = AddChild<UnitPropertyEntity>();//new UnitPropertyEntity();
             UnitStatusComponent = AddChild<UnitStatusComponent>();//new UnitStatusComponent();
+            //应用状态到自身组件
+            unitSpellStatusToSelfComponent = this.AddComponent<UnitSpellStatusToSelfComponent>();
+            AddStatusEntity = AttachSkill<SkillAbility>(new SkillConfigObject());
             InitProperty(Application.dataPath + "/test.json");
         }
 
@@ -218,7 +229,7 @@ namespace EGamePlay.Combat
         public void ReceiveCure(ActionExecution combatAction)
         {
             var cureAction = combatAction as CureAction;
-            UnitPropertyEntity.HP.Minus(cureAction.CureValue);
+            UnitPropertyEntity.HP.Add(cureAction.CureValue);
 
         }
         /// <summary>

@@ -10,15 +10,38 @@ public class PlayerUIController : MonoBehaviour
     public UnitUI_HP _HP;
     public UnitUI_MP _MP;
     public UI_Inventory UI_Inventory;
+    public UnitUI_Equip UI_Equip;
 
     private void Start()
     {
         _HP.Init();
+
         UI_Inventory.gameObject.SetActive(false);
+        UI_Inventory.SetPlayer(Player.Instance.transform);
         UnitControllerComponent.inputComponent.BindInputAction(KeyCode.P, () =>
         {
             UI_Inventory.gameObject.SetActive(!UI_Inventory.gameObject.activeSelf);
+            if (UI_Inventory.gameObject.activeSelf)
+            {
+                Player.StopController();
+            }
+            else
+            {
+                Player.StartController();
+            }
         }, KeyCodeType.DOWN);
+    }
+
+    public void UpdateUI()
+    {
+        _HP.UpdateHPCount(null);
+        foreach (Item item in UI_Inventory.GetInventory().GetItemList())
+        {
+            if (item.GetItemType() == ItemType.HealthPotion)
+            {
+                _HP.UpdateHPCount(item);
+            }
+        }
     }
 
 }

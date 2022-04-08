@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,11 +9,22 @@ public class UnitUI_HP : BaseSliderCtrl
 {
     //[SerializeField] private BaseJumpNumCtrl DamageText;
     //[SerializeField] private BaseJumpNumCtrl CureText;
-
+    [SerializeField] private Image HPCount_Image;
+    [SerializeField] private TextMeshProUGUI HPCount_Text;
     public void Init()
     {
-        //DamageText.Init();
-        //CureText.Init();
+    }
+
+    public void UpdateHPCount(Item item)
+    {
+        if(item == null)
+        {
+            HPCount_Text.text = "0";
+            HPCount_Image.sprite = ItemAssets.Instance.ItemSpriteDict[ItemType.HealthPotion_Little];
+            return;
+        }
+        HPCount_Image.sprite = item.GetSprite();
+        HPCount_Text.text = item.amount.ToString();
     }
 
 

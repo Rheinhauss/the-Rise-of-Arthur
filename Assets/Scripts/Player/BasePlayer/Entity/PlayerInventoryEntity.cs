@@ -15,16 +15,52 @@ public class PlayerInventoryEntity : Entity
     {
         inventory = new Inventory();
         UI_Inventory.SetInventory(inventory);
-    }
 
-    public void OperateItem(Collider collider)
-    {
-        ItemWorld itemWorld = collider.GetComponentInParent<ItemWorld>();
-        if(itemWorld != null)
+        //部分特殊的拾取，比如HP,MP,COIN
+        inventory.OnItemListChanged += (sender,e) =>
+        {
+            Player.PlayerUIController.UpdateUI();
+            Player.PlayerEquipEntity.UpdateEquip();
+        };
+        Player.PlayerUIController.UpdateUI();
+
+
+        //拾取事件
+        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.X, () =>
         {
             //touching item
-            inventory.AddItem(itemWorld.GetItem());
+            if (itemWorld == null)
+                return;
+            //默认拾取进背包
+            List<Item> items = inventory.AddItem(itemWorld.GetItem());
             itemWorld.DestroySelf();
+        }, KeyCodeType.DOWN);
+
+    }
+    private ItemWorld itemWorld = null;
+    public void OperateItem(Collider collider)
+    {
+        if (itemWorld != null)
+            return;
+        itemWorld = collider.GetComponentInParent<ItemWorld>();
+        if(itemWorld != null)
+        {
+            //显示text
+            itemWorld.textMeshPro.gameObject.SetActive(true);
         }
     }
+
+    public void OperateItemExit(Collider collider)
+    {
+        if (itemWorld == null)
+            return;
+        ItemWorld itemWorld1 = collider.GetComponentInParent<ItemWorld>();
+        if (itemWorld == itemWorld1)
+        {
+            //隐藏text
+            itemWorld.textMeshPro.gameObject.SetActive(false);
+            itemWorld = null;
+        }
+    }
+
 }

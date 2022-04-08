@@ -163,6 +163,8 @@
     {
         Add = 0,
         PercentAdd = 1,
+        FinalAdd = 2,
+        FinalPercentAdd = 3,
     }
 
     [LabelText("技能碰撞体参数列表")]
