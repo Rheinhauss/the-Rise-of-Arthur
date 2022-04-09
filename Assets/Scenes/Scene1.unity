@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: edc48c623f9e1e743bd07b579eb7a041, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -2174,7 +2174,7 @@ MonoBehaviour:
   allowBarksDuringConversations: 0
   skipBarkIfNoValidEntries: 0
   cacheBarkLines: 0
-  conversation: opening
+  conversation: opening-2
   conversationConversant: {fileID: 0}
   conversationActor: {fileID: 0}
   startConversationEntryID: -1
@@ -3423,6 +3423,40 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4586821900076392, guid: ae9772ea62bbc724eb9b8ef81109f733, type: 3}
   m_PrefabInstance: {fileID: 376241381}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &377437977 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 149428, guid: 0ce8d79c0cd21d640acf39e223c5fd26, type: 3}
+  m_PrefabInstance: {fileID: 155649619}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &377437978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377437977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b871c74662c23945bf35b97caee462a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  incrementOn: 0
+  variable: scene2
+  increment: 1
+  min: 0
+  max: 2
+  alertMessage: 
+  alertDuration: 0
+  condition:
+    luaConditions: []
+    questConditions: []
+    acceptedTags: []
+    acceptedGameObjects: []
+    luaWizardIndex: -1
+    lastEvaluationValue: 0
+  onIncrement:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &386815216
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5460,6 +5494,172 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4835789832631930, guid: bdf8e7438a7816543998181bd3067573, type: 3}
   m_PrefabInstance: {fileID: 697942858}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &700770293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 700770298}
+  - component: {fileID: 700770297}
+  - component: {fileID: 700770296}
+  - component: {fileID: 700770295}
+  - component: {fileID: 700770294}
+  m_Layer: 0
+  m_Name: Scene2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &700770294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700770293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c593457cd8105e148906690e1707c592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trigger: 8
+  condition:
+    luaConditions:
+    - Variable["scene2"] == 0
+    questConditions: []
+    acceptedTags:
+    - Player
+    acceptedGameObjects: []
+    luaWizardIndex: -1
+    lastEvaluationValue: 0
+  setQuestState: 1
+  questName: 
+  questState: 0
+  setQuestEntryState: 0
+  questEntryNumber: 1
+  questEntryState: 0
+  luaCode: 
+  sequence: Scene()
+  sequenceSpeaker: {fileID: 0}
+  sequenceListener: {fileID: 0}
+  waitOneFrameOnStartOrEnable: 1
+  alertMessage: 
+  textTable: {fileID: 0}
+  alertDuration: 0
+  sendMessages: []
+  barkSource: 0
+  barkConversation: 
+  barkText: 
+  barkTextSequence: 
+  barker: {fileID: 0}
+  barkTarget: {fileID: 0}
+  barkOrder: 0
+  allowBarksDuringConversations: 0
+  skipBarkIfNoValidEntries: 0
+  cacheBarkLines: 0
+  conversation: 
+  conversationConversant: {fileID: 0}
+  conversationActor: {fileID: 0}
+  startConversationEntryID: -1
+  exclusive: 0
+  replace: 0
+  skipIfNoValidEntries: 0
+  stopConversationOnTriggerExit: 0
+  stopConversationIfTooFar: 0
+  maxConversationDistance: 5
+  monitorConversationDistanceFrequency: 1
+  showCursorDuringConversation: 0
+  pauseGameDuringConversation: 0
+  setActiveActions: []
+  setEnabledActions: []
+  setAnimatorStateActions: []
+  onExecute:
+    m_PersistentCalls:
+      m_Calls: []
+  useConversationTitlePicker: 1
+  useBarkTitlePicker: 1
+  useQuestNamePicker: 1
+  selectedDatabase: {fileID: 11400000, guid: 28b8114e8530a024c8bdf67cfcbabb30, type: 2}
+--- !u!65 &700770295
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700770293}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.69957185, y: 1, z: 1.7519404}
+  m_Center: {x: -0.04416934, y: 0, z: -0.57209814}
+--- !u!23 &700770296
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700770293}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &700770297
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700770293}
+  m_Mesh: {fileID: 0}
+--- !u!4 &700770298
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700770293}
+  m_LocalRotation: {x: -0, y: -0.33962822, z: -0, w: 0.9405598}
+  m_LocalPosition: {x: 77.62, y: 22.86, z: 29.98}
+  m_LocalScale: {x: 7.227057, y: 7.14, z: 6.2262225}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: -39.708, z: 0}
 --- !u!1001 &700815303
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12214,6 +12414,40 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 489674, guid: 33869a01d3f526a40817cb7dc480cfe0, type: 3}
   m_PrefabInstance: {fileID: 1438560887}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1443856248 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 157842, guid: ef3c7a6cdd822654c9ff74c4222fa2b9, type: 3}
+  m_PrefabInstance: {fileID: 876216706}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1443856249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443856248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b871c74662c23945bf35b97caee462a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  incrementOn: 0
+  variable: scene2
+  increment: 1
+  min: 0
+  max: 2
+  alertMessage: 
+  alertDuration: 0
+  condition:
+    luaConditions: []
+    questConditions: []
+    acceptedTags: []
+    acceptedGameObjects: []
+    luaWizardIndex: -1
+    lastEvaluationValue: 0
+  onIncrement:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1455642390
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13679,9 +13913,29 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 307534715, guid: 9c8206147fca1dc4ba828b53047312bd, type: 3}
-      propertyPath: animationClipsStruct.Array.data[6].animationClip
+      propertyPath: animationClipsStruct.Array.data[1].animationClip
+      value: 
+      objectReference: {fileID: 7400000, guid: 5053a08a84a933c4e8ed85dc52633727, type: 2}
+    - target: {fileID: 307534715, guid: 9c8206147fca1dc4ba828b53047312bd, type: 3}
+      propertyPath: animationClipsStruct.Array.data[2].animationClip
+      value: 
+      objectReference: {fileID: 7400000, guid: 5bbfcbc67346d6343918bb31b1af5679, type: 2}
+    - target: {fileID: 307534715, guid: 9c8206147fca1dc4ba828b53047312bd, type: 3}
+      propertyPath: animationClipsStruct.Array.data[3].animationClip
+      value: 
+      objectReference: {fileID: 7400000, guid: 8f34c6dd3aac3fb43ae0a45976edbaf4, type: 2}
+    - target: {fileID: 307534715, guid: 9c8206147fca1dc4ba828b53047312bd, type: 3}
+      propertyPath: animationClipsStruct.Array.data[4].animationClip
       value: 
       objectReference: {fileID: 7400000, guid: 3356c2310f5bf64418c19422f9f1a4ae, type: 2}
+    - target: {fileID: 307534715, guid: 9c8206147fca1dc4ba828b53047312bd, type: 3}
+      propertyPath: animationClipsStruct.Array.data[5].animationClip
+      value: 
+      objectReference: {fileID: 7400000, guid: 87875e6ec75825748bd4f3aa37b13d22, type: 2}
+    - target: {fileID: 307534715, guid: 9c8206147fca1dc4ba828b53047312bd, type: 3}
+      propertyPath: animationClipsStruct.Array.data[6].animationClip
+      value: 
+      objectReference: {fileID: 7400000, guid: 80d9978f00c9dcd4d87b9f7930f09148, type: 2}
     - target: {fileID: 307534715, guid: 9c8206147fca1dc4ba828b53047312bd, type: 3}
       propertyPath: animationClipsStruct.Array.data[7].animationClip
       value: 
@@ -13689,7 +13943,7 @@ PrefabInstance:
     - target: {fileID: 307534715, guid: 9c8206147fca1dc4ba828b53047312bd, type: 3}
       propertyPath: animationClipsStruct.Array.data[8].animationClip
       value: 
-      objectReference: {fileID: 7400000, guid: 3356c2310f5bf64418c19422f9f1a4ae, type: 2}
+      objectReference: {fileID: 7400000, guid: afc187598243c744f864c5c82e3d3758, type: 2}
     - target: {fileID: 307534715, guid: 9c8206147fca1dc4ba828b53047312bd, type: 3}
       propertyPath: animationClipsStruct.Array.data[9].animationClip
       value: 
@@ -13720,15 +13974,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 434829270808580965, guid: 9c8206147fca1dc4ba828b53047312bd, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.1253331
       objectReference: {fileID: 0}
     - target: {fileID: 434829270808580965, guid: 9c8206147fca1dc4ba828b53047312bd, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 434829270808580965, guid: 9c8206147fca1dc4ba828b53047312bd, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.9921147
       objectReference: {fileID: 0}
     - target: {fileID: 434829270808580965, guid: 9c8206147fca1dc4ba828b53047312bd, type: 3}
       propertyPath: m_LocalRotation.z
@@ -13740,7 +13994,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 434829270808580965, guid: 9c8206147fca1dc4ba828b53047312bd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -194.4
       objectReference: {fileID: 0}
     - target: {fileID: 434829270808580965, guid: 9c8206147fca1dc4ba828b53047312bd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -13780,6 +14034,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6374078452604891212, guid: 9c8206147fca1dc4ba828b53047312bd, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481269977767484094, guid: 9c8206147fca1dc4ba828b53047312bd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481269977767484094, guid: 9c8206147fca1dc4ba828b53047312bd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481269977767484094, guid: 9c8206147fca1dc4ba828b53047312bd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481269977767484094, guid: 9c8206147fca1dc4ba828b53047312bd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481269977767484094, guid: 9c8206147fca1dc4ba828b53047312bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

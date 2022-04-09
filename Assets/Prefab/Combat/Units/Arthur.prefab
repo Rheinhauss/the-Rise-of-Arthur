@@ -82,9 +82,9 @@ MonoBehaviour:
   - Name: SwordsmanAttack2End
     animationClip: {fileID: 7400000, guid: 5bbfcbc67346d6343918bb31b1af5679, type: 2}
   - Name: SwordsmanAttack3
-    animationClip: {fileID: 7400000, guid: 6c22f93ab0e8b7e4ab991ed3fda16025, type: 2}
+    animationClip: {fileID: 0}
   - Name: SwordsmanAttack3End
-    animationClip: {fileID: 7400000, guid: 6c22f93ab0e8b7e4ab991ed3fda16025, type: 2}
+    animationClip: {fileID: 0}
   - Name: SwordsmanAttackHeavyCast
     animationClip: {fileID: 7400000, guid: 3356c2310f5bf64418c19422f9f1a4ae, type: 2}
   - Name: SwordsmanAttackHeavyCharge
@@ -465,13 +465,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2205580429058371922}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.28, y: 1.31, z: -2.4}
+  m_LocalRotation: {x: 0.053120244, y: 0, z: 0, w: 0.99858814}
+  m_LocalPosition: {x: -0.17, y: 1.6, z: -2.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 434829270808580965}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 6.09, y: 0, z: 0}
 --- !u!20 &6521922036676814570
 Camera:
   m_ObjectHideFlags: 0
@@ -1368,19 +1368,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4745975992479540, guid: 757a35894f2fe494dbce37fef717ec21, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.12621184
+      value: 0.99930257
       objectReference: {fileID: 0}
     - target: {fileID: 4745975992479540, guid: 757a35894f2fe494dbce37fef717ec21, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4745975992479540, guid: 757a35894f2fe494dbce37fef717ec21, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.9920033
+      value: 0.037341367
       objectReference: {fileID: 0}
     - target: {fileID: 4745975992479540, guid: 757a35894f2fe494dbce37fef717ec21, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4745975992479540, guid: 757a35894f2fe494dbce37fef717ec21, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1388,7 +1388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4745975992479540, guid: 757a35894f2fe494dbce37fef717ec21, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -165.498
+      value: 4.28
       objectReference: {fileID: 0}
     - target: {fileID: 4745975992479540, guid: 757a35894f2fe494dbce37fef717ec21, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
