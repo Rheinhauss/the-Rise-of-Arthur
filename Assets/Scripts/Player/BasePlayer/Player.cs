@@ -172,7 +172,8 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
         //ÊÂ¼þ¼àÌý
         combatEntity.ListenActionPoint(ActionPointType.PostReceiveDamage, OnReceiveDamage);
         combatEntity.ListenActionPoint(ActionPointType.PostReceiveCure, OnReceiveCure);
-        CanAttack = true;
+
+        StartController();
     }
 
 

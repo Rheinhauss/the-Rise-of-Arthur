@@ -13,6 +13,8 @@ public enum ItemType
     Head_Armor,
     [LabelText("Í·¿øA")]
     Head_Armor_A,
+    [LabelText("Í·¿øB")]
+    Head_Armor_B,
     [HideInInspector]
     Head_Armor_End,
 
@@ -21,6 +23,8 @@ public enum ItemType
     Torso_Armor,
     [LabelText("Çû¸É¿ø¼×A")]
     Torso_Armor_A,
+    [LabelText("Çû¸É¿ø¼×B")]
+    Torso_Armor_B,
     [HideInInspector]
     Torso_Armor_End,
 
@@ -29,6 +33,8 @@ public enum ItemType
     Leg_Armor,
     [LabelText("ÍÈ²¿¿ø¼×A")]
     Leg_Armor_A,
+    [LabelText("ÍÈ²¿¿ø¼×B")]
+    Leg_Armor_B,
     [HideInInspector]
     Leg_Armor_End,
 
@@ -37,6 +43,8 @@ public enum ItemType
     Foot_Armor,
     [LabelText("Ð¬×ÓA")]
     Foot_Armor_A,
+    [LabelText("Ð¬×ÓB")]
+    Foot_Armor_B,
     [HideInInspector]
     Foot_Armor_End,
 

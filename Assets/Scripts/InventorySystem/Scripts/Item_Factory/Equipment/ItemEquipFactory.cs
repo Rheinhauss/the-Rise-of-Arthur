@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ItemWeaponFactory : ItemFactoryInterface
+public class ItemEquipFactory : ItemFactoryInterface
 {
     protected StatusObject StatusObject;
     public ItemType itemType { get; set; }
@@ -29,9 +29,10 @@ public class ItemWeaponFactory : ItemFactoryInterface
         {
             PlayerEquipEntity playerEquip = combatEntity.GetChild<PlayerEquipEntity>();
             //不为空则清除之前的装备以及效果，执行一下即可
-            if (playerEquip.Weapon != null)
+            Item equip = playerEquip.GetEquip(self.GetItemType());
+            if (equip != null)
             {
-                playerEquip.Weapon.Execute(Creator, Target);
+                equip.Execute(Creator, Target);
             }
             combatEntity.unitSpellStatusToSelfComponent.SpellToSelf(StatusObject);
             combatEntity.GetChild<PlayerEquipEntity>().SetEquip(self);

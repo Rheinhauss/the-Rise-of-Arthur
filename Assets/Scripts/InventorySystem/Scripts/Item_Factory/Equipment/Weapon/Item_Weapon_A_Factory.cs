@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Item_Weapon_A_Factory : ItemWeaponFactory
+public class Item_Weapon_A_Factory : ItemEquipFactory
 {
     public Item_Weapon_A_Factory()
     {
