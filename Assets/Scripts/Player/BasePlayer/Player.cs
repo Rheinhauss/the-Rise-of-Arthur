@@ -17,8 +17,10 @@ public enum PlayerAction
     Move,
     Evade,
     Attack1,
-    Death,
     AttackHeavy,
+    ReceiveCure,
+    ReceiveDamage,
+    Death,
 }
 /// <summary>
 /// 枚举：Action类型的阶段
@@ -106,6 +108,14 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
     /// 货币实体
     /// </summary>
     public PlayerMoneyEntity PlayerMoneyEntity;
+    /// <summary>
+    /// Player接收治疗实体
+    /// </summary>
+    public PlayerCureEntity PlayerCureEntity;
+    /// <summary>
+    /// Player受到伤害实体
+    /// </summary>
+    public PlayerDamageEntity PlayerDamageEntity;
     #endregion
 
     #region 控制
@@ -175,24 +185,15 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
         PlayerMoneyEntity = combatEntity.AddChild<PlayerMoneyEntity>();
         PlayerMoneyEntity.Init();
 
-        //事件监听
-        combatEntity.ListenActionPoint(ActionPointType.PostReceiveDamage, OnReceiveDamage);
-        combatEntity.ListenActionPoint(ActionPointType.PostReceiveCure, OnReceiveCure);
+        //接收治疗实体
+        PlayerCureEntity = combatEntity.AddChild<PlayerCureEntity>();
+        PlayerCureEntity.Init();
+
+        //受到伤害实体
+        PlayerDamageEntity = combatEntity.AddChild<PlayerDamageEntity>();
+        PlayerDamageEntity.Init();
 
         StartController();
-    }
-
-    public override void OnReceiveCure(ActionExecution combatAction)
-    {
-        var cureAction = combatAction as CureAction;
-        PlayerUIController._HP.OnReceiveCure(combatEntity.UnitPropertyEntity.HP.Percent(), cureAction.CureValue);
-    }
-
-    public override void OnReceiveDamage(ActionExecution combatAction)
-    {
-        var damageAction = combatAction as DamageAction;
-        PlayerUIController._HP.OnReceiveDamage(combatEntity.UnitPropertyEntity.HP.Percent(), damageAction.DamageValue);
-        PlayerDeathEntity.CheckDeath();
     }
 
     public void CursorLock()

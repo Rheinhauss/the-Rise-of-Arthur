@@ -18,8 +18,8 @@ MonoBehaviour:
   m_Asset: {fileID: 11400000, guid: 273191c792514424a8b2db59e73941d3, type: 2}
   ExecutionEventType: 1
   ColliderName: Attack1_2
-  ColliderType: 0
-  ExistTime: 0.1
+  ColliderType: 1
+  ExistTime: 0.017
   EffectApplyType: 0
 --- !u!114 &-3641723388723790029
 MonoBehaviour:

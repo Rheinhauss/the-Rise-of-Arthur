@@ -19,7 +19,7 @@ MonoBehaviour:
   ExecutionEventType: 1
   ColliderName: Attack1_3
   ColliderType: 1
-  ExistTime: 0.1
+  ExistTime: 0.017
   EffectApplyType: 0
 --- !u!114 &11400000
 MonoBehaviour:

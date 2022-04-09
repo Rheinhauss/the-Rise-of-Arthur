@@ -11,15 +11,16 @@ namespace EGamePlay.Combat
     public class OnTriggerEnterCallback : MonoBehaviour
     {
         public Action<Collider> OnTriggerEnterCallbackAction;
+        public bool EmitOnce = true;
+        private List<Collider> colliders = new List<Collider>();
 
-        //private void Awake()
-        //{
-        //    Player.Instance.AnimState = AnimState.ForcePost;
-        //}
         private void OnTriggerEnter(Collider other)
         {
+            if (EmitOnce && colliders.Contains(other))
+                return;
             //Debug.Log($"OnTriggerEnterCallback OnTriggerEnter {other.name}");
             OnTriggerEnterCallbackAction?.Invoke(other);
+            colliders.Add(other);
         }
     }
 }
