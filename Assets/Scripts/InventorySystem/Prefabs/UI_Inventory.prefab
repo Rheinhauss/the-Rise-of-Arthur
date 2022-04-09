@@ -304,7 +304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1721757184
 RectTransform:
   m_ObjectHideFlags: 0
@@ -668,7 +668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.735849, g: 0.14855818, b: 0.14855818, a: 0.78431374}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1083,16 +1083,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pf_ItemWorld: {fileID: 1274780086038524997, guid: 5282a7c0d9d9d41429fe81b92368472d, type: 3}
   itemSpriteDictStructs:
-  - ItemType: 0
-    Sprite: {fileID: 21300000, guid: b8578a788b7be4467a1534e386bede56, type: 3}
   - ItemType: 1
-    Sprite: {fileID: 21300000, guid: 67217614ed1134ea88e5f5dbba737e2d, type: 3}
-  - ItemType: 2
-    Sprite: {fileID: 21300000, guid: 48fe6c94537e849508eddeec5fc59eac, type: 3}
-  - ItemType: 3
-    Sprite: {fileID: 21300000, guid: 22849bbeddf6c4c0ea05734d6a2ce06f, type: 3}
+    Sprite: {fileID: 21300000, guid: a40981489990940f7942012315b93f69, type: 3}
   - ItemType: 4
-    Sprite: {fileID: 21300000, guid: 1c0f43a2fd5a248218b1d998892f0a31, type: 3}
+    Sprite: {fileID: 21300000, guid: 65ec0a20ee3664080987a02e414f2e38, type: 3}
+  - ItemType: 7
+    Sprite: {fileID: 21300000, guid: 7d96c87a1440846849d9c34b6d5cc4c1, type: 3}
+  - ItemType: 10
+    Sprite: {fileID: 21300000, guid: c3263e29ee61e41f5bb4849dd22050d0, type: 3}
+  - ItemType: 13
+    Sprite: {fileID: 21300000, guid: 882093b90e2d84e8680cd7027026b38b, type: 3}
+  - ItemType: 17
+    Sprite: {fileID: 21300000, guid: ebb419241445e48f3a706e51bc08efe0, type: 3}
+  - ItemType: 20
+    Sprite: {fileID: 21300000, guid: 0e3de6ba89fe6a242bfa146ef8ed525f, type: 3}
+  - ItemType: 23
+    Sprite: {fileID: 21300000, guid: ade56b7149c6940ecbc3fe38cd065543, type: 3}
+  - ItemType: 14
+    Sprite: {fileID: 21300000, guid: 3d3b4b1d32565c944b0452176b513899, type: 3}
 --- !u!114 &6632032730471341507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1123,7 +1131,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5100359016600403205
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1143,10 +1151,10 @@ RectTransform:
   m_Father: {fileID: 6632032730445483483}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 30, y: -30}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &46873349
 CanvasRenderer:
