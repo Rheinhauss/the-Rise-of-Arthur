@@ -71,24 +71,32 @@ public class PlayerEquipEntity : Entity
     {
         if (item.GetItemType() != ItemType.Head_Armor)
             return false;
+        Head_Armor = item;
+        PlayerUI.UI_Equip.HeadArmor.sprite = item.GetSprite();
         return true;
     }
     public bool SetTorsoArmor(Item item)
     {
         if (item.GetItemType() != ItemType.Torso_Armor)
             return false;
+        Torso_Armor = item;
+        PlayerUI.UI_Equip.TorsoArmor.sprite = item.GetSprite();
         return true;
     }
     public bool SetLegArmor(Item item)
     {
         if (item.GetItemType() != ItemType.Leg_Armor)
             return false;
+        Leg_Armor = item;
+        PlayerUI.UI_Equip.LegArmor.sprite = item.GetSprite();
         return true;
     }
     public bool SetFootArmor(Item item)
     {
         if (item.GetItemType() != ItemType.Foot_Armor)
             return false;
+        Foot_Armor = item;
+        PlayerUI.UI_Equip.FootArmor.sprite = item.GetSprite();
         return true;
     }
     public bool SetWeapon(Item item)
@@ -116,6 +124,25 @@ public class PlayerEquipEntity : Entity
                 return SetWeapon(item);
             default:
                 return false;
+        }
+    }
+
+    public Item GetEquip(ItemType itemType)
+    {
+        switch (itemType)
+        {
+            case ItemType.Head_Armor:
+                return Head_Armor;
+            case ItemType.Torso_Armor:
+                return Torso_Armor;
+            case ItemType.Leg_Armor:
+                return Leg_Armor;
+            case ItemType.Foot_Armor:
+                return Foot_Armor;
+            case ItemType.Weapon:
+                return Weapon;
+            default:
+                return null;
         }
     }
 }
