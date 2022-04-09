@@ -8,6 +8,7 @@ public class PlayerInventoryEntity : Entity
     public Player Player = Player.Instance;
 
     public Inventory inventory;
+    private PlayerMoneyEntity playerMoneyEntity => Player.PlayerMoneyEntity;
 
     public UI_Inventory UI_Inventory => Player.PlayerUIController.UI_Inventory;
 
@@ -24,15 +25,13 @@ public class PlayerInventoryEntity : Entity
         };
         Player.PlayerUIController.UpdateUI();
 
-
-        //拾取事件
+        //itemWorld拾取事件
         UnitControllerComponent.inputComponent.BindInputAction(KeyCode.X, () =>
         {
             //touching item
             if (itemWorld == null)
                 return;
-            //默认拾取进背包
-            List<Item> items = inventory.AddItem(itemWorld.GetItem());
+            HarvestItem(itemWorld.GetItem());
             itemWorld.DestroySelf();
         }, KeyCodeType.DOWN);
 
@@ -60,6 +59,24 @@ public class PlayerInventoryEntity : Entity
             //隐藏text
             itemWorld.textMeshPro.gameObject.SetActive(false);
             itemWorld = null;
+        }
+    }
+
+    /// <summary>
+    /// 所有Item的获取调用函数
+    /// </summary>
+    /// <param name="item"></param>
+    public void HarvestItem(Item item)
+    {
+        //如果是货币，不进去背包，直接加入货币
+        if (item.GetItemType() == ItemType.Coin)
+        {
+            playerMoneyEntity.AddMoney(item.amount);
+        }
+        //默认拾取进背包
+        else
+        {
+            inventory.AddItem(item);
         }
     }
 

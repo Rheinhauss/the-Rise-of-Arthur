@@ -26,6 +26,7 @@ public class Item_Factory
         FactoryDict.Add(ItemType.Leg_Armor_B, new Item_LegArmor_B_Factory());
         FactoryDict.Add(ItemType.Foot_Armor_A, new Item_FootArmor_A_Factory());
         FactoryDict.Add(ItemType.Foot_Armor_B, new Item_FootArmor_B_Factory());
+        FactoryDict.Add(ItemType.Coin_A, new ItemCoin_Factory(ItemType.Coin_A));
     }
     private static Item_Factory _instance;
     public static Item_Factory Instance

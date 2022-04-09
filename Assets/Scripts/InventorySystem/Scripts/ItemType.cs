@@ -77,7 +77,7 @@ public enum ItemType
     //Coin
     [HideInInspector]
     Coin,
-    [LabelText("»õ±ÒA")]
+    [LabelText("½ð±Ò")]
     Coin_A,
     [HideInInspector]
     Coin_End,
