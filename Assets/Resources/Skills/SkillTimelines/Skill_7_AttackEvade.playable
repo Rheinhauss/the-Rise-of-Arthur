@@ -200,7 +200,7 @@ MonoBehaviour:
   ExecutionEventType: 1
   ColliderName: AttackEvade
   ColliderType: 1
-  ExistTime: 0.1
+  ExistTime: 0.017
   EffectApplyType: 0
 --- !u!114 &7786250129802045509
 MonoBehaviour:

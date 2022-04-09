@@ -38,7 +38,6 @@ public class Skill_6_AttackHeavy : Entity
             Player.PlayerAction = PlayerAction.AttackHeavy;
             Player.currentState = state;
             Player.AnimState = AnimState.Pre;
-
             state.Events.OnEnd = () =>
             {
                 var state1 = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["SwordsmanAttackHeavyEnd"]);

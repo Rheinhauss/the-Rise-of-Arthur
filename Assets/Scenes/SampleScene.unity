@@ -248,6 +248,11 @@ Transform:
   m_Father: {fileID: 1357719665}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &428095892 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 312582720322365337, guid: b69ed15661085f941bb6c9c69d8b75ba, type: 3}
+  m_PrefabInstance: {fileID: 509754296}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &460559840
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,19 +1136,11 @@ PrefabInstance:
     - target: {fileID: 594510654, guid: 5aff1e796ee539744ba2d741c5518dd3, type: 3}
       propertyPath: m_Sources.Array.data[0].sourceTransform
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 594510657, guid: 5aff1e796ee539744ba2d741c5518dd3, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 428095892}
     - target: {fileID: 1522720232, guid: 5aff1e796ee539744ba2d741c5518dd3, type: 3}
       propertyPath: WayPoints
       value: 
       objectReference: {fileID: 1357719665}
-    - target: {fileID: 5669985126180557725, guid: 5aff1e796ee539744ba2d741c5518dd3, type: 3}
-      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6331122335536619819, guid: 5aff1e796ee539744ba2d741c5518dd3, type: 3}
       propertyPath: m_RootOrder
       value: 8

@@ -174,7 +174,7 @@ MonoBehaviour:
   ExecutionEventType: 1
   ColliderName: EnemyAttack
   ColliderType: 1
-  ExistTime: 0.1
+  ExistTime: 0.017
   EffectApplyType: 0
 --- !u!114 &5807773676201658704
 MonoBehaviour:

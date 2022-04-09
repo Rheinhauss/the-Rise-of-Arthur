@@ -18,12 +18,14 @@ public class PlayerDeathEntity : Entity
     /// <summary>
     /// 判断角色是否死亡，若死亡则执行对应事件
     /// </summary>
-    public void CheckDeath()
+    public bool CheckDeath()
     {
         if (combatEntity.CheckDead())
         {
             DeathAction();
+            return true;
         }
+        return false;
     }
 
     private void DeathAction()
