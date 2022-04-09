@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &735433055063539029
+--- !u!1 &2975001476161633788
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,36 +8,36 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 735433055063539031}
-  - component: {fileID: 735433055063539028}
+  - component: {fileID: 2975001476161633790}
+  - component: {fileID: 2975001476161633789}
   m_Layer: 0
-  m_Name: ItemWorldSpawner_HP_Little
+  m_Name: ItemWorldSpawner_Money
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &735433055063539031
+--- !u!4 &2975001476161633790
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 735433055063539029}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.802, y: 0.9310532, z: 0.056694567}
+  m_GameObject: {fileID: 2975001476161633788}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -124.87201, y: -30.003963, z: 0.056694567}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &735433055063539028
+--- !u!114 &2975001476161633789
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 735433055063539029}
+  m_GameObject: {fileID: 2975001476161633788}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc2ee670c9c56c7419d87ee65fc6ed21, type: 3}
@@ -48,5 +48,5 @@ MonoBehaviour:
     itemType: 1
     amount: 1
     useEvents: []
-  ItemType: 21
+  ItemType: 27
   amount: 1

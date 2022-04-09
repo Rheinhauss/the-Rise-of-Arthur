@@ -11,6 +11,7 @@ public class PlayerUIController : MonoBehaviour
     public UnitUI_MP _MP;
     public UI_Inventory UI_Inventory;
     public UnitUI_Equip UI_Equip;
+    public UnitUI_Money UI_Money;
 
     private void Start()
     {
@@ -30,6 +31,7 @@ public class PlayerUIController : MonoBehaviour
                 Player.StartController();
             }
         }, KeyCodeType.DOWN);
+        UI_Money.Init(ItemAssets.Instance.ItemSpriteDict[ItemType.Coin_A], 0, Money.MoneyType.GoldCoin);
     }
 
     public void UpdateUI()
