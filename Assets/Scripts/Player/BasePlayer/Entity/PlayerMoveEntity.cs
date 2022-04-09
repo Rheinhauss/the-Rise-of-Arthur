@@ -156,15 +156,9 @@ public class PlayerMoveEntity : Entity
         }
         if (Skill_1_Move.CurrentPosition == CurrentPosition.Cross)
         {
-            var state = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["SwordsmanMoveToStand"]);
-            Player.currentState = state;
+            unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["SwordsmanIdle"]);
+            Player.PlayerAction = PlayerAction.Idle;
             Player.AnimState = AnimState.None;
-            state.Events.OnEnd = () =>
-            {
-                unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["SwordsmanIdle"]);
-                Player.PlayerAction = PlayerAction.Idle;
-                Player.AnimState = AnimState.None;
-            };
         }
     }
 
