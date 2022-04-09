@@ -102,6 +102,10 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
     /// 装备实体
     /// </summary>
     public PlayerEquipEntity PlayerEquipEntity;
+    /// <summary>
+    /// 货币实体
+    /// </summary>
+    public PlayerMoneyEntity PlayerMoneyEntity;
     #endregion
 
     #region 控制
@@ -167,7 +171,9 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
         PlayerInventoryEntity = combatEntity.AddChild<PlayerInventoryEntity>();
         PlayerInventoryEntity.Init();
 
-
+        //货币实体
+        PlayerMoneyEntity = combatEntity.AddChild<PlayerMoneyEntity>();
+        PlayerMoneyEntity.Init();
 
         //事件监听
         combatEntity.ListenActionPoint(ActionPointType.PostReceiveDamage, OnReceiveDamage);
@@ -175,7 +181,6 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
 
         StartController();
     }
-
 
     public override void OnReceiveCure(ActionExecution combatAction)
     {
