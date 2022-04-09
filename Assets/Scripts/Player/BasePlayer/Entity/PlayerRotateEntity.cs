@@ -45,8 +45,9 @@ public class PlayerRotateEntity : Entity
             }
             // 获得鼠标当前位置的X和Y
             float mouseX = Input.GetAxis("Mouse X") * rotSpeedX * Time.deltaTime;
-            //float mouseY = Input.GetAxis("Mouse Y") * rotSpeedY * Time.deltaTime;
 
+            //float mouseY = Input.GetAxis("Mouse Y") * rotSpeedY * Time.deltaTime;
+            //Debug.Log(mouseX + " " + Time.deltaTime + " " + Input.GetAxis("Mouse X"));
             // 鼠标在X轴上的移动转为主角左右的移动，同时带动其子物体摄像机的左右移动
             CameraTransform.RotateAround(CameraCenterPoint.position, new Vector3(0, 1, 0), mouseX);
         }, KeyCodeType.None);

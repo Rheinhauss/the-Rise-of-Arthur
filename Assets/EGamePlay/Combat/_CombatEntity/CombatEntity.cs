@@ -141,7 +141,7 @@ namespace EGamePlay.Combat
             //应用状态到自身组件
             unitSpellStatusToSelfComponent = this.AddComponent<UnitSpellStatusToSelfComponent>();
             AddStatusEntity = AttachSkill<SkillAbility>(new SkillConfigObject());
-            InitProperty(Application.dataPath + "/test.json");
+            InitProperty(Application.streamingAssetsPath + "/test.json");
         }
 
         public void InitProperty(string config)

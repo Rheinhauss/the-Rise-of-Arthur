@@ -18,6 +18,14 @@ public class Item_Factory
         FactoryDict.Add(ItemType.HealthPotion_Little, new ItemHP_Little_Factory());
         FactoryDict.Add(ItemType.Weapon_A, new Item_Weapon_A_Factory());
         FactoryDict.Add(ItemType.Weapon_B, new Item_Weapon_B_Factory());
+        FactoryDict.Add(ItemType.Head_Armor_A, new Item_HeadArmor_A_Factory());
+        FactoryDict.Add(ItemType.Head_Armor_B, new Item_HeadArmor_B_Factory());
+        FactoryDict.Add(ItemType.Torso_Armor_A, new Item_TorsoArmor_A_Factory());
+        FactoryDict.Add(ItemType.Torso_Armor_B, new Item_TorsoArmor_B_Factory());
+        FactoryDict.Add(ItemType.Leg_Armor_A, new Item_LegArmor_A_Factory());
+        FactoryDict.Add(ItemType.Leg_Armor_B, new Item_LegArmor_B_Factory());
+        FactoryDict.Add(ItemType.Foot_Armor_A, new Item_FootArmor_A_Factory());
+        FactoryDict.Add(ItemType.Foot_Armor_B, new Item_FootArmor_B_Factory());
     }
     private static Item_Factory _instance;
     public static Item_Factory Instance

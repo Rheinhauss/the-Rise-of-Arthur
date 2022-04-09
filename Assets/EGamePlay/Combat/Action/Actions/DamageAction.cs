@@ -61,8 +61,8 @@ namespace EGamePlay.Combat
         {
             if (DamageSource == DamageSource.Attack)
             {
-                IsCritical = (RandomHelper.RandomRate() / 100f) < Creator.GetComponent<AttributeComponent>().CriticalProbability.Value;
-                DamageValue = Mathf.CeilToInt(Mathf.Max(1, Creator.GetComponent<AttributeComponent>().Attack.Value - Target.GetComponent<AttributeComponent>().Defense.Value));
+                IsCritical = (RandomHelper.RandomRate() / 100f) < Creator.GetChild<UnitPropertyEntity>().CriticalChance.Value;
+                DamageValue = Mathf.CeilToInt(Mathf.Max(1, Creator.GetChild<UnitPropertyEntity>().AttackPower.Value - Target.GetChild<UnitPropertyEntity>().Shield.Value));
                 if (IsCritical)
                 {
                     DamageValue = Mathf.CeilToInt(DamageValue * 1.5f);
@@ -73,9 +73,9 @@ namespace EGamePlay.Combat
             {
                 if (DamageEffect.CanCrit)
                 {
-                    IsCritical = (RandomHelper.RandomRate() / 100f) < Creator.GetComponent<AttributeComponent>().CriticalProbability.Value;
+                    IsCritical = (RandomHelper.RandomRate() / 100f) < Creator.GetChild<UnitPropertyEntity>().CriticalChance.Value;
                 }
-                DamageValue = AbilityEffect.GetComponent<EffectDamageComponent>().GetDamageValue();
+                DamageValue = Mathf.CeilToInt(Mathf.Max(1, AbilityEffect.GetComponent<EffectDamageComponent>().GetDamageValue()- Target.GetChild<UnitPropertyEntity>().Shield.Value));
                 if (IsCritical)
                 {
                     DamageValue = Mathf.CeilToInt(DamageValue * 1.5f);
@@ -86,9 +86,9 @@ namespace EGamePlay.Combat
             {
                 if (DamageEffect.CanCrit)
                 {
-                    IsCritical = (RandomHelper.RandomRate() / 100f) < Creator.GetComponent<AttributeComponent>().CriticalProbability.Value;
+                    IsCritical = (RandomHelper.RandomRate() / 100f) < Creator.GetChild<UnitPropertyEntity>().CriticalChance.Value;
                 }
-                DamageValue = AbilityEffect.GetComponent<EffectDamageComponent>().GetDamageValue();
+                DamageValue = Mathf.CeilToInt(Mathf.Max(1, AbilityEffect.GetComponent<EffectDamageComponent>().GetDamageValue() - Target.GetChild<UnitPropertyEntity>().Shield.Value));
             }
 
             if (ExecutionEffect != null)

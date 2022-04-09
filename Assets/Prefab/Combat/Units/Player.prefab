@@ -4106,7 +4106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: itemSpriteDictStructs.Array.size
-      value: 8
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: itemSpriteDictStructs.Array.data[0].Sprite
@@ -4141,36 +4141,76 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: ade56b7149c6940ecbc3fe38cd065543, type: 3}
     - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
+      propertyPath: itemSpriteDictStructs.Array.data[8].Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3d3b4b1d32565c944b0452176b513899, type: 3}
+    - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
+      propertyPath: itemSpriteDictStructs.Array.data[9].Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b8578a788b7be4467a1534e386bede56, type: 3}
+    - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
+      propertyPath: itemSpriteDictStructs.Array.data[10].Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 63e0077339b364e6aaf8733be4815e3d, type: 3}
+    - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
+      propertyPath: itemSpriteDictStructs.Array.data[11].Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 62e8653778e13431a8c384de9044c20b, type: 3}
+    - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
+      propertyPath: itemSpriteDictStructs.Array.data[12].Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 48fe6c94537e849508eddeec5fc59eac, type: 3}
+    - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: itemSpriteDictStructs.Array.data[0].ItemType
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: itemSpriteDictStructs.Array.data[1].ItemType
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: itemSpriteDictStructs.Array.data[2].ItemType
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: itemSpriteDictStructs.Array.data[3].ItemType
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
-      propertyPath: itemSpriteDictStructs.Array.data[4].ItemType
       value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
+      propertyPath: itemSpriteDictStructs.Array.data[4].ItemType
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: itemSpriteDictStructs.Array.data[5].ItemType
-      value: 16
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: itemSpriteDictStructs.Array.data[6].ItemType
-      value: 19
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: itemSpriteDictStructs.Array.data[7].ItemType
-      value: 22
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
+      propertyPath: itemSpriteDictStructs.Array.data[8].ItemType
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
+      propertyPath: itemSpriteDictStructs.Array.data[9].ItemType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
+      propertyPath: itemSpriteDictStructs.Array.data[10].ItemType
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
+      propertyPath: itemSpriteDictStructs.Array.data[11].ItemType
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
+      propertyPath: itemSpriteDictStructs.Array.data[12].ItemType
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6632032730471341506, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: m_Pivot.x
@@ -4262,6 +4302,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6632032730471341517, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725399735306836760, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725399735306836760, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725399735306836760, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725399735306836760, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
+      propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7030463428005553428, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
