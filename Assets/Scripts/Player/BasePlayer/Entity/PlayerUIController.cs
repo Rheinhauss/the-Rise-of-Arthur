@@ -21,13 +21,17 @@ public class PlayerUIController : MonoBehaviour
         UI_Inventory.SetPlayer(Player.Instance.transform);
         UnitControllerComponent.inputComponent.BindInputAction(KeyCode.P, () =>
         {
+            if (Player.Instance.IsShopping)
+                return;
             UI_Inventory.gameObject.SetActive(!UI_Inventory.gameObject.activeSelf);
             if (UI_Inventory.gameObject.activeSelf)
             {
+                Player.Instance.IsOpenInventory = true;
                 Player.StopController();
             }
             else
             {
+                Player.Instance.IsOpenInventory = false;
                 Player.StartController();
             }
         }, KeyCodeType.DOWN);
@@ -46,4 +50,8 @@ public class PlayerUIController : MonoBehaviour
         }
     }
 
+    public void UpdateMoneyUI(int amount, Money.MoneyType moneyType)
+    {
+        UI_Money.UpdateNum(amount, moneyType);
+    }
 }

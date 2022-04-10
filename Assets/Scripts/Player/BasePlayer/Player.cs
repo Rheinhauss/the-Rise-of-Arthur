@@ -131,6 +131,18 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
     /// 摄像机旋转禁止
     /// </summary>
     public bool CanCameraRot { get { return PlayerRotateEntity.RotEnable; } set { PlayerRotateEntity.RotEnable = value; } }
+    /// <summary>
+    /// 使用道具禁止
+    /// </summary>
+    public bool CanUseItem = true;
+    /// <summary>
+    /// 是否正在购物
+    /// </summary>
+    public bool IsShopping = false;
+    /// <summary>
+    /// 是否打开背包
+    /// </summary>
+    public bool IsOpenInventory = false;
     #endregion
 
     private void Awake()
@@ -225,6 +237,7 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
         Player.Instance.CanAttack = false;
         Player.Instance.CanMove = false;
         Player.Instance.CanCameraRot = false;
+        Player.Instance.CanUseItem = false;
     }
 
     public static void StartController()
@@ -234,6 +247,7 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
         Player.Instance.CanAttack = true;
         Player.Instance.CanMove = true;
         Player.Instance.CanCameraRot = true;
+        Player.Instance.CanUseItem = true;
     }
 
 }
