@@ -35,7 +35,7 @@ public class Money
     public void SetMoneyType(MoneyType type)
     {
         moneyType = type;
-        OnMoneyChanged?.Invoke(amount, moneyType);
+        OnMoneyChanged?.Invoke(this.amount, moneyType);
     }
 
     /// <summary>
@@ -54,7 +54,7 @@ public class Money
     public void AddMoney(int amount)
     {
         this.amount += amount;
-        OnMoneyChanged?.Invoke(amount, moneyType);
+        OnMoneyChanged?.Invoke(this.amount, moneyType);
     }
 
     /// <summary>
@@ -63,8 +63,9 @@ public class Money
     /// <param name="amount"></param>
     public void MinusMoney(int amount)
     {
-        this.amount = Mathf.Max(0, this.amount - amount);
-        OnMoneyChanged?.Invoke(amount, moneyType);
+        this.amount -= amount;
+        this.amount = Mathf.Max(0, this.amount);
+        OnMoneyChanged?.Invoke(this.amount, moneyType);
     }
 
     /// <summary>
@@ -83,7 +84,7 @@ public class Money
     public void Reset(int amount)
     {
         this.amount = Mathf.Max(0, amount);
-        OnMoneyChanged?.Invoke(amount, moneyType);
+        OnMoneyChanged?.Invoke(this.amount, moneyType);
     }
 
     /// <summary>
@@ -92,7 +93,7 @@ public class Money
     public void Reset0()
     {
         amount = 0;
-        OnMoneyChanged?.Invoke(amount, moneyType);
+        OnMoneyChanged?.Invoke(this.amount, moneyType);
     }
 
 }

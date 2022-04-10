@@ -9,10 +9,14 @@ public class Inventory
 
     public event EventHandler OnItemListChanged;
 
+    private Money money;
 
     public Inventory()
     {
         itemList = new List<Item>();
+        money = new Money();
+        money.SetMoneyType(Money.MoneyType.GoldCoin);
+        money.Reset0();
     }
 
     public List<Item> AddItem(Item item)
@@ -97,4 +101,25 @@ public class Inventory
         item.Execute(Creator, Target);
         return true;
     }
+
+    public void AddMoney(int amount)
+    {
+        money.AddMoney(amount);
+    }
+
+    public void MinusMoney(int amount)
+    {
+        money.MinusMoney(amount);
+    }
+
+    public int GetMoneyAmout()
+    {
+        return money.GetMoneyAmount();
+    }
+
+    public Money GetMoney()
+    {
+        return money;
+    }
+
 }

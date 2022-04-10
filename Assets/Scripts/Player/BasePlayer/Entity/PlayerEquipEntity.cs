@@ -42,6 +42,8 @@ public class PlayerEquipEntity : Entity
         hp_Item = Head_Armor = Torso_Armor = Leg_Armor = Foot_Armor = Weapon = null;
         UnitControllerComponent.inputComponent.BindInputAction(KeyCode.Alpha1, () =>
         {
+            if (!Player.Instance.CanUseItem)
+                return;
             PlayerInventoryEntity.inventory.UseItem(hp_Item, Owner, Owner);
             //if (PlayerInventoryEntity.inventory.UseItem(hp_Item, Owner, Owner))
             //{
