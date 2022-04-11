@@ -14,7 +14,7 @@ public class ItemBuyList : MonoBehaviour
     private Button CancelBtn;
     private Button ComfirmBtn;
     private Item item;
-    private TextMeshProUGUI messageTip;
+    private Text messageTip;
 
     private UI_Shop UI_Shop;
 
@@ -25,6 +25,7 @@ public class ItemBuyList : MonoBehaviour
         itemShopImage_Image = itemShop.Find("ItemShopImage").Find("Image").GetComponent<Image>();
         BuyAmountInput = itemShop.Find("BuyAmountInput").GetComponent<TMP_InputField>();
         CancelBtn = itemShop.Find("CancelBtn").GetComponent<Button>();
+        BuyAmountInput.text = "1";
         CancelBtn.onClick.AddListener(() =>
         {
             this.gameObject.SetActive(false);
@@ -34,11 +35,11 @@ public class ItemBuyList : MonoBehaviour
         {
             if (UI_Shop.GetShop().BuyItem(Customer, item, int.Parse(BuyAmountInput.text)))
             {
-                messageTip.text = "Buy " + item.itemType.ToString() + "*" + BuyAmountInput.text;
+                messageTip.text = "ÒÑ¹ºÂò " + item.itemType.ToString() + "*" + BuyAmountInput.text;
             }
             else
             {
-                messageTip.text = "Failed to buy, insufficient gold coins or insufficient stock";
+                messageTip.text = "¹ºÂòÊ§°Ü£¬½ð±Ò²»¹»»ò»õ´æ²»×ã";
             }
             messageTip.gameObject.SetActive(true);
             messageTip.DOFade(1, 1).onComplete += () =>
@@ -67,7 +68,7 @@ public class ItemBuyList : MonoBehaviour
         this.item = item;
         itemShopImage_Image.sprite = item.GetSprite();
     }
-    public void SetMessageTip(TextMeshProUGUI text)
+    public void SetMessageTip(Text text)
     {
         this.messageTip = text;
     }
