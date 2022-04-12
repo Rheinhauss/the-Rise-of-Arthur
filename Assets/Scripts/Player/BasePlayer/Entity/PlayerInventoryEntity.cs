@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInventoryEntity : Entity
+public class PlayerInventoryEntity : Entity, HarvestInterface
 {
     public Player Player = Player.Instance;
 

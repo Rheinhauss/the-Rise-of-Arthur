@@ -51,10 +51,12 @@ public enum ItemType
     //武器
     [HideInInspector]
     Weapon,
-    [LabelText("武器A")]
+    [LabelText("锈迹斑斑的剑")]
     Weapon_A,
-    [LabelText("武器B")]
+    [LabelText("军用品剑")]
     Weapon_B,
+    [LabelText("精制品剑")]
+    Weapon_C,
     [HideInInspector]
     Weapon_End,
 
