@@ -26,6 +26,7 @@ public class BaseShopEntity : MonoBehaviour
 
 
     private Inventory customer;
+    private GameObject player;
 
     private void Awake()
     {
@@ -34,6 +35,7 @@ public class BaseShopEntity : MonoBehaviour
         UI_Shop.OnOpenShop += UI_Shop_OnOpenShop;
         shop = new Shop();
         UI_Shop.SetShop(shop);
+        player = GameObject.Find("Player");
     }
 
     private void Start()
@@ -88,7 +90,7 @@ public class BaseShopEntity : MonoBehaviour
     /// <summary>
     ///  €ø’
     /// </summary>
-    /// <param name="itemShop"></param>
+    /// <param name="itemShop"></param>we
     public void RemoveItemShop(ItemShop itemShop)
     {
         foreach (ItemShop value in itemShops)
@@ -123,16 +125,17 @@ public class BaseShopEntity : MonoBehaviour
     {
         if (other.tag.Equals("Player"))
         {
-            UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.I, OpenShop, KeyCodeType.DOWN);
+            UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.Escape, OpenShop, KeyCodeType.DOWN);
             messageTip.gameObject.SetActive(false);
             customer = null;
         }
     }
 
-    private void OpenShop()
+    public void OpenShop()
     {
         if (Player.Instance.IsOpenInventory)
             return;
+        customer = player.GetComponent<Player>().PlayerInventoryEntity.inventory;
         UI_Shop.OpenShop(customer);
     }
 

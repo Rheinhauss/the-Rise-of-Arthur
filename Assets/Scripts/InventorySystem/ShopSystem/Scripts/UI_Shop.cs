@@ -12,7 +12,7 @@ public class UI_Shop : MonoBehaviour
     private Transform itemShopSlotTemplate;
     private ItemBuyList itemBuyList;
     private Button CloseBtn;
-    private TextMeshProUGUI messageTip;
+    private Text messageTip;
 
     public event EventHandler OnOpenShop;
     public event EventHandler OnCloseShop;
@@ -32,7 +32,7 @@ public class UI_Shop : MonoBehaviour
         {
             CloseShop();
         });
-        messageTip = transform.Find("MessageTip").GetComponent<TextMeshProUGUI>();
+        messageTip = transform.Find("MessageTip").GetComponent<Text>();
         itemBuyList.SetMessageTip(messageTip);
         this.gameObject.SetActive(false);
     }
@@ -48,7 +48,7 @@ public class UI_Shop : MonoBehaviour
     public void CloseShop()
     {
         this.gameObject.SetActive(false);
-        Player.StartController();
+        //Player.StartController();
         SetCustomer(null);
         OnCloseShop?.Invoke(this, EventArgs.Empty);
         itemBuyList.gameObject.SetActive(false);
@@ -117,8 +117,8 @@ public class UI_Shop : MonoBehaviour
             {
                 AmountText.SetText("");
             }
-            TextMeshProUGUI PriceText = itemSlotRectTransform.Find("Price").GetComponent<TextMeshProUGUI>();
-            PriceText.text = "price:" + itemShops[item];
+            Text PriceText = itemSlotRectTransform.Find("Price").GetComponent<Text>();
+            PriceText.text = "¼Û¸ñ£º" + itemShops[item];
         }
 
     }
