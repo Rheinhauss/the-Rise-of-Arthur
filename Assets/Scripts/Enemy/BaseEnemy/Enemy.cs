@@ -143,5 +143,13 @@ public class Enemy : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInter
             Rigidbody.isKinematic = false;
         }
     }
-
+    public void CanBeAttacked()
+    {
+        combatEntity.IsInvincibel = false;
+    }
+    
+    public void CantBeAttacked()
+    {
+        combatEntity.IsInvincibel = true;
+    }
 }

@@ -23,6 +23,7 @@ public class Item_Factory
         FactoryDict.Add(ItemType.Head_Armor_B, new Item_HeadArmor_B_Factory());
         FactoryDict.Add(ItemType.Torso_Armor_A, new Item_TorsoArmor_A_Factory());
         FactoryDict.Add(ItemType.Torso_Armor_B, new Item_TorsoArmor_B_Factory());
+        FactoryDict.Add(ItemType.Torso_Armor_C, new Item_TorsoArmor_C_Factory());
         FactoryDict.Add(ItemType.Leg_Armor_A, new Item_LegArmor_A_Factory());
         FactoryDict.Add(ItemType.Leg_Armor_B, new Item_LegArmor_B_Factory());
         FactoryDict.Add(ItemType.Foot_Armor_A, new Item_FootArmor_A_Factory());
