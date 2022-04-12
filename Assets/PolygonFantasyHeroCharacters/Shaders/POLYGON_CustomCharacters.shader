@@ -37,7 +37,7 @@ Shader "SyntyStudios/CustomCharacter"
 
 	SubShader
 	{
-		Tags{ "RenderType" = "Opaque"  "Queue" = "Geometry+0" }
+		Tags{ "RenderType" = "Opaque"  "Queue" = "Geometry+0" "RenderPipeline" = "UniversalPipeline" }
 		Cull Back
 		CGPROGRAM
 		#pragma target 3.0
