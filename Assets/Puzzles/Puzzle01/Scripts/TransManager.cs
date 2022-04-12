@@ -6,7 +6,7 @@ public class TransManager : MonoBehaviour
 {
     private TransObject[] transObjects;
 
-    private void Awake()
+    private void Start()
     {
         Init();
     }

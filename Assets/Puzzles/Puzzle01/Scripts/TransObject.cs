@@ -84,5 +84,10 @@ public class TransObject : ReiceiveRayHit, TagEnumInterface
                 SendRayEnd.ColorIsChanged = false;
             }
         }
+
+        
     }
+
+
+
 }

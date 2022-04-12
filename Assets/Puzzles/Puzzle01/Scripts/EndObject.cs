@@ -63,5 +63,11 @@ public class EndObject : ReiceiveRayHit, TagEnumInterface
         return ToPoint;
     }
 
-
+    public void OnDestroy()
+    {
+        if (laser != null)
+        {
+            Destroy(laser.gameObject);
+        }
+    }
 }
