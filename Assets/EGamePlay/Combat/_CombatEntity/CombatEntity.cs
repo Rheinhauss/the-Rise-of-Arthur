@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 namespace EGamePlay.Combat
@@ -141,11 +142,16 @@ namespace EGamePlay.Combat
             //应用状态到自身组件
             unitSpellStatusToSelfComponent = this.AddComponent<UnitSpellStatusToSelfComponent>();
             AddStatusEntity = AttachSkill<SkillAbility>(new SkillConfigObject());
-            InitProperty(Application.streamingAssetsPath + "/test.json");
+            //Debug.Log(UnitPropertyEntity.UnitPropertyComponent.Save(Application.persistentDataPath, "test.json"));
+            //InitProperty(Application.persistentDataPath + "/test.json");
         }
 
         public void InitProperty(string config)
         {
+            if (!File.Exists(config))
+            {
+                UnitPropertyEntity.UnitPropertyComponent.Save(Path.GetFullPath(config), Path.GetFileName(config));
+            }
             UnitPropertyEntity.InitData(config);
         }
 
