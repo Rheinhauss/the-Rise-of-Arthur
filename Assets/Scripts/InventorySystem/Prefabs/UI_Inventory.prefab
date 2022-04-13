@@ -1085,21 +1085,23 @@ MonoBehaviour:
   itemSpriteDictStructs:
   - ItemType: 1
     Sprite: {fileID: 21300000, guid: a40981489990940f7942012315b93f69, type: 3}
-  - ItemType: 4
+  - ItemType: 2
     Sprite: {fileID: 21300000, guid: 65ec0a20ee3664080987a02e414f2e38, type: 3}
-  - ItemType: 7
+  - ItemType: 5
     Sprite: {fileID: 21300000, guid: 7d96c87a1440846849d9c34b6d5cc4c1, type: 3}
-  - ItemType: 10
+  - ItemType: 6
     Sprite: {fileID: 21300000, guid: c3263e29ee61e41f5bb4849dd22050d0, type: 3}
-  - ItemType: 13
+  - ItemType: 7
     Sprite: {fileID: 21300000, guid: 882093b90e2d84e8680cd7027026b38b, type: 3}
-  - ItemType: 17
+  - ItemType: 18
     Sprite: {fileID: 21300000, guid: ebb419241445e48f3a706e51bc08efe0, type: 3}
-  - ItemType: 20
+  - ItemType: 19
     Sprite: {fileID: 21300000, guid: 0e3de6ba89fe6a242bfa146ef8ed525f, type: 3}
-  - ItemType: 23
+  - ItemType: 20
+    Sprite: {fileID: 0}
+  - ItemType: 29
     Sprite: {fileID: 21300000, guid: ade56b7149c6940ecbc3fe38cd065543, type: 3}
-  - ItemType: 14
+  - ItemType: 23
     Sprite: {fileID: 21300000, guid: 3d3b4b1d32565c944b0452176b513899, type: 3}
 --- !u!114 &6632032730471341507
 MonoBehaviour:

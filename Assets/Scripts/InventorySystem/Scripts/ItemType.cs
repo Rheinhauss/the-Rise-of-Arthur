@@ -21,10 +21,12 @@ public enum ItemType
     //Çû¸É
     [HideInInspector]
     Torso_Armor,
-    [LabelText("Çû¸É¿ø¼×A")]
+    [LabelText("Æ¤¸ï¼×")]
     Torso_Armor_A,
-    [LabelText("Çû¸É¿ø¼×B")]
+    [LabelText("Ëø×Ó¼×")]
     Torso_Armor_B,
+    [LabelText("°å¼×")]
+    Torso_Armor_C,
     [HideInInspector]
     Torso_Armor_End,
 
@@ -51,10 +53,12 @@ public enum ItemType
     //ÎäÆ÷
     [HideInInspector]
     Weapon,
-    [LabelText("ÎäÆ÷A")]
+    [LabelText("Ðâ¼£°ß°ßµÄ½£")]
     Weapon_A,
-    [LabelText("ÎäÆ÷B")]
+    [LabelText("¾üÓÃÆ·½£")]
     Weapon_B,
+    [LabelText("¾«ÖÆÆ·½£")]
+    Weapon_C,
     [HideInInspector]
     Weapon_End,
 
