@@ -64,6 +64,10 @@ public class Inventory
 
     public Item RemoveItem(Item item, int amount)
     {
+        if (!item.CanDrop)
+        {
+            return null;
+        }
         if (item.IsStackable())
         {
             Item itemInInventory = null;
@@ -93,7 +97,7 @@ public class Inventory
 
     public bool UseItem(Item item, Transform Creator, Transform Target)
     {
-        if(item == null || item.amount <= 0)
+        if(item == null || item.amount <= 0 || !item.CanUse)
         {
             return false;
         }

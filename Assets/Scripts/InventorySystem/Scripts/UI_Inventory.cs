@@ -66,16 +66,36 @@ public class UI_Inventory : MonoBehaviour
                 Menu.gameObject.SetActive(false);
             });
             //Use Item
-            Menu.GetChild(0).GetComponent<Button_UI>().leftClick.AddListener(() =>
+            Button_UI useBtn = Menu.GetChild(0).GetComponent<Button_UI>();
+            if (item.CanUse)
             {
-                //使用者->自己，作用者->自己
-                inventory.UseItem(item, Player, Player);
-            });
+                useBtn.leftClick.AddListener(() =>
+                {
+                    //使用者->自己，作用者->自己
+                    inventory.UseItem(item, Player, Player);
+                });
+            }
+            else
+            {
+                useBtn.enabled = false;
+                useBtn.GetComponent<Image>().color = Color.gray;
+            }
+
             //Drop Item
-            Menu.GetChild(1).GetComponent<Button_UI>().leftClick.AddListener(() =>
+            Button_UI dropBtn = Menu.GetChild(1).GetComponent<Button_UI>();
+            if (item.CanDrop)
             {
-                ItemWorld.DropItem(this.Player.position, inventory.RemoveItem(item, item.amount));
-            });
+                dropBtn.leftClick.AddListener(() =>
+                {
+                    ItemWorld.DropItem(this.Player.position, inventory.RemoveItem(item, item.amount));
+                });
+            }
+            else
+            {
+                dropBtn.enabled = false;
+                dropBtn.GetComponent<Image>().color = Color.gray;
+            }
+
 
             Image image = itemSlotRectTransform.Find("Image").GetComponent<Image>();
             image.sprite = item.GetSprite();

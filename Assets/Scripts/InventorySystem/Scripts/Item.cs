@@ -12,6 +12,14 @@ using UnityEngine.Events;
 public class Item
 {
     public ItemType itemType;
+    /// <summary>
+    /// 是否能使用
+    /// </summary>
+    public bool CanUse = true;
+    /// <summary>
+    /// 是否能丢弃
+    /// </summary>
+    public bool CanDrop = false;
     public int amount;
     [SerializeField]
     public List<UnityEvent<Transform,Transform, Item>> useEvents;
