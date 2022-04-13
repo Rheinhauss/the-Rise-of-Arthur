@@ -88,6 +88,16 @@ public enum ItemType
     [HideInInspector]
     Coin_End = 400,
 
+    //Mission
+    [HideInInspector]
+    Mission = 401,
+    [LabelText("ºì»¨")]
+    RedFlower,
+    [HideInInspector]
+    Mission_End = 450,
+
+
+
     None,
 }
 

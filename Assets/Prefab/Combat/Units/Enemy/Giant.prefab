@@ -87,7 +87,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 640384643984791787}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 1.09
   m_Height: 5.7516584
@@ -101,11 +101,11 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 640384643984791787}
   serializedVersion: 2
-  m_Mass: 1000
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -142,6 +142,7 @@ MonoBehaviour:
   AnimState: 0
   EnemyUIController: {fileID: 3435116176121794033}
   WayPoints: {fileID: 0}
+  dataPath: GiantProperty.json
 --- !u!195 &6863398184407098400
 NavMeshAgent:
   m_ObjectHideFlags: 0

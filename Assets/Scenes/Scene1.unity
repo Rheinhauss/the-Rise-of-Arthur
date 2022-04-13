@@ -12469,24 +12469,6 @@ MonoBehaviour:
       lastEvaluationValue: 0
     target: {fileID: 2052436790}
     state: 0
-  - condition:
-      luaConditions: []
-      questConditions: []
-      acceptedTags: []
-      acceptedGameObjects: []
-      luaWizardIndex: 0
-      lastEvaluationValue: 0
-    target: {fileID: 1585857953}
-    state: 0
-  - condition:
-      luaConditions: []
-      questConditions: []
-      acceptedTags: []
-      acceptedGameObjects: []
-      luaWizardIndex: 0
-      lastEvaluationValue: 0
-    target: {fileID: 1125864168}
-    state: 0
   setEnabledActions: []
   setAnimatorStateActions: []
   onExecute:

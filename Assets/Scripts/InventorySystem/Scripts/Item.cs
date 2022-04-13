@@ -70,6 +70,7 @@ public class Item
             case ItemType.Leg_Armor:
             case ItemType.Foot_Armor:
             case ItemType.Weapon:
+            case ItemType.Mission:
                 return false;
         }
     }
@@ -127,6 +128,11 @@ public class Item
         else if (BetweenItemType(itemType, ItemType.Coin, ItemType.Coin_A))
         {
             return ItemType.Coin;
+        }
+        //任务道具
+        else if (BetweenItemType(itemType, ItemType.Mission, ItemType.Mission_End))
+        {
+            return ItemType.Mission;
         }
         return ItemType.None;
     }

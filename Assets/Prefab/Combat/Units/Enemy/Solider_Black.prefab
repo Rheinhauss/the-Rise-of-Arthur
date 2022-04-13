@@ -101,11 +101,11 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3144985174929429427}
   serializedVersion: 2
-  m_Mass: 1000
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -142,6 +142,7 @@ MonoBehaviour:
   AnimState: 0
   EnemyUIController: {fileID: 931641336768874153}
   WayPoints: {fileID: 0}
+  dataPath: EnemyProperty.json
 --- !u!195 &8969359986106347384
 NavMeshAgent:
   m_ObjectHideFlags: 0

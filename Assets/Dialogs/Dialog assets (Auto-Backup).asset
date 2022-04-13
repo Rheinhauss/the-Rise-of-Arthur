@@ -1154,6 +1154,20 @@ MonoBehaviour:
       value: "# \u5546\u5E97"
       type: 0
       typeString: CustomFieldType_Text
+  - id: 24
+    fields:
+    - title: Name
+      value: issmile
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Initial Value
+      value: False
+      type: 2
+      typeString: CustomFieldType_Boolean
+    - title: Description
+      value: "# \u4E0D\u8981\u54ED\u6CE3\u5973\u4EBA\u94B1"
+      type: 0
+      typeString: CustomFieldType_Text
   conversations:
   - id: 1
     fields:
@@ -3215,7 +3229,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 517.4304
+        x: 515.7911
         y: 248.54431
         width: 160
         height: 30
@@ -3345,15 +3359,14 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: "SetQuestState(\"\u5BFB\u627E\u836F\u8349\", \"success\");\nSetQuestState(\"\u96D5\u5851\u8C1C\u9898\",
-        \"unassigned\")"
+      userScript: "SetQuestState(\"\u5BFB\u627E\u836F\u8349\", \"success\")"
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 748.7342
-        y: 312
+        x: 747.4683
+        y: 310.36066
         width: 160
         height: 30
     - id: 15
@@ -3434,8 +3447,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 0.46000046
+    canvasScrollPosition: {x: 169.11542, y: 88.37277}
+    canvasZoom: 0.6100004
   - id: 4
     fields:
     - title: Title
@@ -13402,7 +13415,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 290
-        y: 166
+        y: 167.63934
         width: 160
         height: 30
     - id: 4
@@ -14976,8 +14989,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 8.644863}
-    canvasZoom: 0.5500004
+    canvasScrollPosition: {x: 50.074387, y: 23.30951}
+    canvasZoom: 0.6100004
   - id: 23
     fields:
     - title: Title
@@ -16388,6 +16401,77 @@ MonoBehaviour:
       delaySimStatus: 0
       falseConditionAction: Block
       conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 25
+        originDialogueID: 5
+        destinationConversationID: 25
+        destinationDialogueID: 6
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 25
+        y: 196
+        width: 160
+        height: 30
+    - id: 6
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Pictures
+        value: '[]'
+        type: 3
+        typeString: CustomFieldType_Files
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 9
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 8
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: "\u7A9D\u6041\u7239"
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Parenthetical
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Audio Files
+        value: '[]'
+        type: 3
+        typeString: CustomFieldType_Files
+      - title: Video File
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      conversationID: 25
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
       userScript: Variable["isteach"] = true
@@ -16397,7 +16481,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 25
-        y: 196
+        y: 246
         width: 160
         height: 30
     entryGroups: []

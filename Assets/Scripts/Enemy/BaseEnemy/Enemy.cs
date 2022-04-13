@@ -85,7 +85,7 @@ public class Enemy : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInter
         }
         IsExeStart = true;
         Rigidbody = GetComponent<Rigidbody>();
-        Rigidbody.isKinematic = false;
+        //Rigidbody.isKinematic = false;
         Rigidbody.useGravity = true;
         // 初始化CombatEntity
         // 挂载各种组件
@@ -142,25 +142,25 @@ public class Enemy : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInter
         EnemyBeHitEntity.SetCreator(damageAction.Creator.ModelObject.transform);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.collider.tag == "Player")
-        {
-            Rigidbody.isKinematic = true;
-        }
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if(collision.collider.tag == "Player")
+    //    {
+    //        Rigidbody.isKinematic = true;
+    //    }
+    //}
 
     //private void OnCollisionStay(Collision collision)
     //{
     //    Rigidbody.useGravity = false;
     //}
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.collider.tag == "Player")
-        {
-            Rigidbody.isKinematic = false;
-        }
-    }
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    if (collision.collider.tag == "Player")
+    //    {
+    //        Rigidbody.isKinematic = false;
+    //    }
+    //}
     public void CanBeAttacked()
     {
         combatEntity.IsInvincibel = false;
