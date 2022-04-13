@@ -167,7 +167,7 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
         CombatContext.Instance.Object2Entities.Add(gameObject, combatEntity);
         combatEntity.ModelObject = this.gameObject;
         currentState = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["SwordsmanIdle"]);
-        combatEntity.InitProperty(Application.persistentDataPath + "/PlayerProperty.json");
+        combatEntity.InitProperty(Application.streamingAssetsPath + "/PlayerProperty.json");
 
         // π“‘ÿ“∆∂ØSkill µÃÂ
         PlayerMoveEntity = combatEntity.AddChild<PlayerMoveEntity>();
