@@ -35,6 +35,7 @@ public class EnemyMoveEntity : Entity
         ChangeMoveType(MoveType.Walk);
         AddComponent<UpdateComponent>();
         agent.stoppingDistance = 0.5f;
+        agent.angularSpeed = 400;
         agent.enabled = true;
         Enemy.CanMove = true;
     }

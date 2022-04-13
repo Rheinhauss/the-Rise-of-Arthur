@@ -5,6 +5,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Animations;
+using EGamePlay;
 
 /// <summary>
 /// 枚举：人物会执行的技能类型
@@ -71,8 +73,17 @@ public class Enemy : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInter
     /// </summary>
     public EnemyAttackEntity EnemyAttackEntity;
 
+    public string dataPath = "EnemyProperty.json";
+
+    private bool IsExeStart = false;
+
     public void Start()
     {
+        if (IsExeStart)
+        {
+            return;
+        }
+        IsExeStart = true;
         Rigidbody = GetComponent<Rigidbody>();
         Rigidbody.isKinematic = false;
         Rigidbody.useGravity = true;
@@ -98,6 +109,12 @@ public class Enemy : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInter
         combatEntity.ListenActionPoint(ActionPointType.PostReceiveStatus, OnReceiveStatus);
         combatEntity.Subscribe<RemoveStatusEvent>(OnRemoveStatus);
         CanAttack = true;
+
+        //GetComponentInChildren<Canvas>().worldCamera = Camera.main;
+        //var tmp = GetComponentInChildren<RotationConstraint>();
+        //var t = tmp.GetSource(0);
+        //t.sourceTransform = Camera.main.transform;
+        //Debug.Log(t.sourceTransform.name);
     }
 
     //private void Update()
@@ -133,10 +150,10 @@ public class Enemy : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInter
         }
     }
 
-    private void OnCollisionStay(Collision collision)
-    {
-        Rigidbody.useGravity = false;
-    }
+    //private void OnCollisionStay(Collision collision)
+    //{
+    //    Rigidbody.useGravity = false;
+    //}
     private void OnCollisionExit(Collision collision)
     {
         if (collision.collider.tag == "Player")
@@ -151,11 +168,16 @@ public class Enemy : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInter
     
     public void CantBeAttacked()
     {
+        Start();
         combatEntity.IsInvincibel = true;
     }
 
     public virtual void LoadPropertyData()
     {
-        combatEntity.InitProperty(Application.streamingAssetsPath + "/EnemyProperty.json");
+        combatEntity.InitProperty(Application.streamingAssetsPath + "/" + dataPath);
+    }
+    private void OnDestroy()
+    {
+        Entity.Destroy(combatEntity);
     }
 }

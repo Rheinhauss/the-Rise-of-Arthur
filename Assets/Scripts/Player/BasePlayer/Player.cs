@@ -2,6 +2,7 @@ using DG.Tweening;
 using DG.Tweening.Plugins.Options;
 using EGamePlay;
 using EGamePlay.Combat;
+using PixelCrushers.DialogueSystem.Wrappers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -143,6 +144,10 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
     /// 是否打开背包
     /// </summary>
     public bool IsOpenInventory = false;
+    /// <summary>
+    /// 是否能够打开背包
+    /// </summary>
+    public bool CanOpenInventory { get; set; }
     #endregion
 
     private void Awake()
@@ -151,7 +156,7 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
         {
             Instance.transform.position = this.transform.position;
             Instance.transform.rotation = this.transform.rotation;
-            DestroyImmediate(this.gameObject);
+            Destroy(this.gameObject);
         }
         else
         {
@@ -217,6 +222,7 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
         PlayerDamageEntity.Init();
 
         StartController();
+        CanOpenInventory = true;
     }
 
     public void CursorLock()
@@ -259,6 +265,25 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
         Player.Instance.CanMove = true;
         Player.Instance.CanCameraRot = true;
         Player.Instance.CanUseItem = true;
+    }
+
+    public void SwitchScene()
+    {
+        if(currentState != null)
+        {
+            currentState.Stop();
+        }
+        currentState = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["SwordsmanIdle"]);
+        AnimState = AnimState.None;
+        Skill_1_Move.CurrentPosition = CurrentPosition.None;
+        Skill_1_Move.movePosition = Vector3.zero;
+        PlayerAction = PlayerAction.Idle;
+    }
+
+    private void OnDestroy()
+    {
+        if(combatEntity != null)
+            Entity.Destroy(combatEntity);
     }
 
 }

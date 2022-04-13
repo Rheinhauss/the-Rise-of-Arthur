@@ -45,29 +45,32 @@ public class Skill_2_Attack1_Entity : Entity
             curAttackState = 0;
         });
 
-        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.Mouse0, () => {
-            if (Player.CanAttack == false)
-                return;
-            if (Player.PlayerAction == PlayerAction.Evade)
-            {
-                Skill_2_Attack1[3].action.Invoke();
-            }
-            if (Player.AnimState == AnimState.ForcePost || (Player.PlayerAction == PlayerAction.Attack1 && Player.AnimState == AnimState.Pre))
-            {
-                return;
-            }
-            Skill_2_Attack1[curAttackState].action.Invoke();
-            ++curAttackState;
-            if(curAttackState == 3)
-            {
-                countDownTimer.Reset(1,true);
-                curAttackState = 0;
-            }
-            else
-            {
-                countDownTimer.Start();
-            }
-        }, KeyCodeType.DOWN);
+        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.Mouse0, Execute, KeyCodeType.DOWN);
+    }
+
+    private void Execute()
+    {
+        if (Player.CanAttack == false)
+            return;
+        if (Player.PlayerAction == PlayerAction.Evade)
+        {
+            Skill_2_Attack1[3].action.Invoke();
+        }
+        if (Player.AnimState == AnimState.ForcePost || (Player.PlayerAction == PlayerAction.Attack1 && Player.AnimState == AnimState.Pre))
+        {
+            return;
+        }
+        Skill_2_Attack1[curAttackState].action.Invoke();
+        ++curAttackState;
+        if (curAttackState == 3)
+        {
+            countDownTimer.Reset(1, true);
+            curAttackState = 0;
+        }
+        else
+        {
+            countDownTimer.Start();
+        }
     }
 
     private void Skill_2_Attack1_1()
@@ -207,5 +210,9 @@ public class Skill_2_Attack1_Entity : Entity
         skillControllerComponent.AddSkillObject(Skill_2_Attack1[3]);
     }
 
-
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.Mouse0, Execute, KeyCodeType.DOWN);
+    }
 }

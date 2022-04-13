@@ -292,9 +292,13 @@ namespace EGamePlay
             }
             Components.Clear();
             InstanceId = 0;
-            if (Master.Entities.ContainsKey(GetType()))
+            if(Master != null)
             {
-                Master.Entities[GetType()].Remove(this);
+                if (Master.Entities.ContainsKey(GetType()))
+                {
+                    if (Master.Entities[GetType()] != null)
+                        Master.Entities[GetType()].Remove(this);
+                }
             }
         }
 
@@ -327,6 +331,10 @@ namespace EGamePlay
             var component = Activator.CreateInstance<T>();
             component.Entity = this;
             component.IsDisposed = false;
+            if (Components.ContainsKey(typeof(T)))
+            {
+                return null;
+            }
             Components.Add(typeof(T), component);
             Master.AllComponents.Add(component);
             if (EnableLog) Log.Debug($"{GetType().Name}->AddComponent, {typeof(T).Name} initData={initData}");

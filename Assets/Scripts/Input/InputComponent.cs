@@ -34,6 +34,22 @@ public class InputComponent : MonoBehaviour
     /// </summary>
     public Dictionary<InputKeyCode, List<Action>> InputActionDict = new Dictionary<InputKeyCode, List<Action>>();
 
+    private InputComponent Instance;
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            DestroyImmediate(this.gameObject);
+        }
+        else
+        {
+            Instance = this;
+            UnitControllerComponent.inputComponent = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+    }
+
     private void Update()
     {
         // 每一帧都检查是否有按键触发

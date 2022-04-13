@@ -21,15 +21,18 @@ public class Skill_6_AttackHeavy : Entity
     {
         skill_6_AttackHeavy = new SkillObject();
         Skill_AttackHeavy();
-        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.Mouse1, () =>
-        {
-            if (Player.AnimState == AnimState.ForcePost || Player.CanAttack == false || Player.PlayerAction == PlayerAction.AttackHeavy)
-            {
-                return;
-            }
-            skill_6_AttackHeavy.action.Invoke();
-        }, KeyCodeType.DOWN);
+        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.Mouse1, Execute, KeyCodeType.DOWN);
     }
+
+    private void Execute()
+    {
+        if (Player.AnimState == AnimState.ForcePost || Player.CanAttack == false || Player.PlayerAction == PlayerAction.AttackHeavy)
+        {
+            return;
+        }
+        skill_6_AttackHeavy.action.Invoke();
+    }
+
     private void Skill_AttackHeavy()
     {
         skill_6_AttackHeavy.InitSkillObject("Skills/SkillConfigs/Skill_6_AttackHeavy", combatEntity, () => {
@@ -55,5 +58,11 @@ public class Skill_6_AttackHeavy : Entity
         });
 
 
+    }
+
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.Mouse1, Execute, KeyCodeType.DOWN);
     }
 }

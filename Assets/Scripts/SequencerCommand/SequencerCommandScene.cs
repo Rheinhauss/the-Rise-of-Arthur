@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using PixelCrushers.DialogueSystem;
+using System;
 
 namespace PixelCrushers.DialogueSystem.SequencerCommands
 {
@@ -11,7 +12,22 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
     {
         public void Start()
         {
+            if(Player.Instance != null)
+            {
+                Player.Instance.SwitchScene();
+            }
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            //SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+            //StartCoroutine(waitForLevelToLoad(SceneManager.GetActiveScene().buildIndex + 1));
+        }
+
+        private IEnumerator waitForLevelToLoad(int index)
+        {
+            while (SceneManager.GetActiveScene().buildIndex != index)
+            {
+                //Debug.Log("loading scene:" + SceneManager.GetActiveScene().name);
+                yield return null;
+            }
         }
 
     }

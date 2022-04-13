@@ -37,7 +37,15 @@ public class Item
 
     public Sprite GetSprite()
     {
-        return ItemAssets.Instance.ItemSpriteDict[itemType];
+        try
+        {
+            return ItemAssets.Instance.ItemSpriteDict[itemType];
+        }
+        catch
+        {
+            Debug.LogError(itemType);
+            return null;
+        }
     }
 
     public bool IsStackable()

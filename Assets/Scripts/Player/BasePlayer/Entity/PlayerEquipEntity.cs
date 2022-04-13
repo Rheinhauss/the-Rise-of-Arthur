@@ -40,20 +40,20 @@ public class PlayerEquipEntity : Entity
     public void Init()
     {
         hp_Item = Head_Armor = Torso_Armor = Leg_Armor = Foot_Armor = Weapon = null;
-        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.Alpha1, () =>
-        {
-            if (!Player.Instance.CanUseItem)
-                return;
-            PlayerInventoryEntity.inventory.UseItem(hp_Item, Owner, Owner);
-            //if (PlayerInventoryEntity.inventory.UseItem(hp_Item, Owner, Owner))
-            //{
-            //    Debug.Log("使用HP成功");
-            //}
-            //else
-            //{
-            //    Debug.Log("使用HP失败");
-            //}
-        }, KeyCodeType.DOWN);
+        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.Alpha1, Execute, KeyCodeType.DOWN);
+    }
+
+    private void Execute()
+    {
+        if (!Player.Instance.CanUseItem)
+            return;
+        PlayerInventoryEntity.inventory.UseItem(hp_Item, Owner, Owner);
+    }
+
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.Alpha1, Execute, KeyCodeType.DOWN);
     }
 
     public void UpdateEquip()

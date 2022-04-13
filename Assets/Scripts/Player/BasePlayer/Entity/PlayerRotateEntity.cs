@@ -40,23 +40,31 @@ public class PlayerRotateEntity : Entity
         //    CameraTransform.RotateAround(CameraCenterPoint.position, CameraTransform.right, -rotSpeedY * Time.deltaTime);
         //}, KeyCodeType.ING);
 
-        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.Mouse0, () =>
+        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.Mouse0, Execute, KeyCodeType.None);
+    }
+
+    private void Execute()
+    {
+        if (!RotEnable)
         {
-            if (!RotEnable)
-            {
-                return;
-            }
-            // 获得鼠标当前位置的X和Y
-            float mouseX = Input.GetAxis("Mouse X") * rotSpeedX * Time.deltaTime;
-            CameraTransform.RotateAround(CameraCenterPoint.position, new Vector3(0, 1, 0), mouseX);
+            return;
+        }
+        // 获得鼠标当前位置的X和Y
+        float mouseX = Input.GetAxis("Mouse X") * rotSpeedX * Time.deltaTime;
+        CameraTransform.RotateAround(CameraCenterPoint.position, new Vector3(0, 1, 0), mouseX);
 
-            float mouseY = -Input.GetAxis("Mouse Y") * rotSpeedY * Time.deltaTime;
-            float rotX = angleX + mouseY;
-            rotX = Mathf.Clamp(rotX, -30, 60) - rotX;
-            mouseY += rotX;
-            CameraTransform.RotateAround(CameraCenterPoint.position, CameraTransform.right, mouseY);
-            angleX += mouseY;
+        float mouseY = -Input.GetAxis("Mouse Y") * rotSpeedY * Time.deltaTime;
+        float rotX = angleX + mouseY;
+        rotX = Mathf.Clamp(rotX, -30, 60) - rotX;
+        mouseY += rotX;
+        CameraTransform.RotateAround(CameraCenterPoint.position, CameraTransform.right, mouseY);
+        angleX += mouseY;
 
-        }, KeyCodeType.None);
+    }
+
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.Mouse0, Execute, KeyCodeType.None);
     }
 }

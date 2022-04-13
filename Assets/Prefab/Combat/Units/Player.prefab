@@ -684,6 +684,30 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 312582719865409937}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: set_CanOpenInventory
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 312582719865409937}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: StopController
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     onConversationEnd:
       m_PersistentCalls:
         m_Calls:
@@ -739,6 +763,30 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
           m_MethodName: set_enabled
           m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 312582719865409937}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: set_CanOpenInventory
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 312582719865409937}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: StartController
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1831,7 +1879,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: itemSpriteDictStructs.Array.size
-      value: 9
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: itemSpriteDictStructs.Array.data[0].Sprite
@@ -1872,31 +1920,31 @@ PrefabInstance:
     - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: itemSpriteDictStructs.Array.data[9].Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f834413531a709c4f9a4714b418dc7fc, type: 3}
+      objectReference: {fileID: 21300000, guid: 5ae9c5919f4594e4f8e889a6a62b6b24, type: 3}
     - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: itemSpriteDictStructs.Array.data[10].Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a550b21819b5b564291269f3ba072ef5, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: itemSpriteDictStructs.Array.data[11].Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 0e3de6ba89fe6a242bfa146ef8ed525f, type: 3}
+      objectReference: {fileID: 21300000, guid: fccbb27a2ee178143a178095bd56df8c, type: 3}
     - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: itemSpriteDictStructs.Array.data[12].Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: ebb419241445e48f3a706e51bc08efe0, type: 3}
+      objectReference: {fileID: 21300000, guid: 59b0d14c30554ec45a32cc6bb54c5aa8, type: 3}
     - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: itemSpriteDictStructs.Array.data[13].Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c58f7917dc04a46caa1de49c44e3c4dc, type: 3}
+      objectReference: {fileID: 21300000, guid: 4b8b37e25e5e70643a2562dd932c75f4, type: 3}
     - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: itemSpriteDictStructs.Array.data[14].Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 08d6aee5c33c945f5ab9e0822ad3a2ae, type: 3}
+      objectReference: {fileID: 21300000, guid: c63ec72e732e57d43b7606a4181d6270, type: 3}
     - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: itemSpriteDictStructs.Array.data[15].Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: aa04871d55ad4478a99ba540017e88c0, type: 3}
+      objectReference: {fileID: 21300000, guid: 6860d876e506217468103acf540e7d3b, type: 3}
     - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: itemSpriteDictStructs.Array.data[0].ItemType
       value: 352
@@ -1935,31 +1983,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: itemSpriteDictStructs.Array.data[9].ItemType
-      value: 18
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: itemSpriteDictStructs.Array.data[10].ItemType
-      value: 19
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: itemSpriteDictStructs.Array.data[11].ItemType
-      value: 20
+      value: 102
       objectReference: {fileID: 0}
     - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: itemSpriteDictStructs.Array.data[12].ItemType
-      value: 23
+      value: 103
       objectReference: {fileID: 0}
     - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: itemSpriteDictStructs.Array.data[13].ItemType
-      value: 24
+      value: 152
       objectReference: {fileID: 0}
     - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: itemSpriteDictStructs.Array.data[14].ItemType
-      value: 27
+      value: 153
       objectReference: {fileID: 0}
     - target: {fileID: 6632032730471341504, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: itemSpriteDictStructs.Array.data[15].ItemType
-      value: 30
+      value: 302
       objectReference: {fileID: 0}
     - target: {fileID: 6632032730471341506, guid: 8b76b925cb3529b49b096ba6d60f0072, type: 3}
       propertyPath: m_Pivot.x

@@ -30,22 +30,7 @@ public class PlayerUIController : MonoBehaviour
 
         UI_Inventory.gameObject.SetActive(false);
         UI_Inventory.SetPlayer(Player.Instance.transform);
-        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.P, () =>
-        {
-            if (Player.Instance.IsShopping)
-                return;
-            UI_Inventory.gameObject.SetActive(!UI_Inventory.gameObject.activeSelf);
-            if (UI_Inventory.gameObject.activeSelf)
-            {
-                Player.Instance.IsOpenInventory = true;
-                Player.StopController();
-            }
-            else
-            {
-                Player.Instance.IsOpenInventory = false;
-                Player.StartController();
-            }
-        }, KeyCodeType.DOWN);
+        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.P, OpenInventory, KeyCodeType.DOWN);
         UI_Money.Init(ItemAssets.Instance.ItemSpriteDict[ItemType.Coin_A], 0, Money.MoneyType.GoldCoin);
         CloseBtn.onClick.AddListener(() =>
         {
@@ -53,6 +38,30 @@ public class PlayerUIController : MonoBehaviour
             Player.Instance.IsOpenInventory = false;
             Player.StartController();
         });
+    }
+
+    private void OpenInventory()
+    {
+        if (Player.Instance.IsShopping || !Player.Instance.CanOpenInventory)
+            return;
+        UI_Inventory.gameObject.SetActive(!UI_Inventory.gameObject.activeSelf);
+        if (UI_Inventory.gameObject.activeSelf)
+        {
+            Player.Instance.IsOpenInventory = true;
+        }
+        else
+        {
+            Player.Instance.IsOpenInventory = false;
+            Player.StartController();
+        }
+    }
+
+    private void Update()
+    {
+        if (Player.Instance.IsOpenInventory)
+        {
+            Player.StopController();
+        }
     }
 
     public void UpdateUI()
@@ -70,5 +79,10 @@ public class PlayerUIController : MonoBehaviour
     public void UpdateMoneyUI(int amount, Money.MoneyType moneyType)
     {
         UI_Money.UpdateNum(amount, moneyType);
+    }
+
+    private void OnDestroy()
+    {
+        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.P, OpenInventory, KeyCodeType.DOWN);
     }
 }

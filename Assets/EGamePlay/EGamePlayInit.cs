@@ -14,8 +14,15 @@ public class EGamePlayInit : SerializedMonoBehaviour
 
     private void Awake()
     {
-        UnitControllerComponent.inputComponent = this.GetComponent<InputComponent>();
-        Instance = this;
+        if (Instance != null)
+        {
+            DestroyImmediate(this.gameObject);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
         SynchronizationContext.SetSynchronizationContext(ThreadSynchronizationContext.Instance);
         Entity.EnableLog = EntityLog;
         MasterEntity.Create();

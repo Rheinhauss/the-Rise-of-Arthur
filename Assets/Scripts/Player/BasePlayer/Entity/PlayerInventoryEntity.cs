@@ -26,16 +26,19 @@ public class PlayerInventoryEntity : Entity, HarvestInterface
         Player.PlayerUIController.UpdateUI();
 
         //itemWorldÊ°È¡ÊÂ¼þ
-        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.X, () =>
-        {
-            //touching item
-            if (itemWorld == null)
-                return;
-            HarvestItem(itemWorld.GetItem());
-            itemWorld.DestroySelf();
-        }, KeyCodeType.DOWN);
+        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.X, TouchItem, KeyCodeType.DOWN);
 
     }
+
+    private void TouchItem()
+    {
+        //touching item
+        if (itemWorld == null)
+            return;
+        HarvestItem(itemWorld.GetItem());
+        itemWorld.DestroySelf();
+    }
+
     private ItemWorld itemWorld = null;
     public void OperateItem(Collider collider)
     {
@@ -78,6 +81,12 @@ public class PlayerInventoryEntity : Entity, HarvestInterface
         {
             inventory.AddItem(item);
         }
+    }
+
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.X, TouchItem, KeyCodeType.DOWN);
     }
 
 }

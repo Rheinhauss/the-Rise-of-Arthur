@@ -38,12 +38,13 @@ public class PlayerMoveEntity : Entity
     {
         PlayerTransform = playerTrans;
         ModelTransform = modelTrans;
+
+
         AddComponent<UpdateComponent>();
         Player.CanMove = true;
         #region °´¼üÌ§Æð
         //moveEnd_left
         moveEnd_left = new SkillObject();
-
         
         moveEnd_left.SetAction(() =>
         {
@@ -136,6 +137,7 @@ public class PlayerMoveEntity : Entity
         UnitControllerComponent.inputComponent.BindInputAction(KeyCode.W, skill_1_move_forward.action, KeyCodeType.ING);
         #endregion
     }
+
     public void Move()
     {
         if (Player.CanMove == false)
@@ -175,12 +177,29 @@ public class PlayerMoveEntity : Entity
         {
             Move();
         }
+        else if(Player.PlayerAction == PlayerAction.Evade)
+        {
+            Skill_1_Move.movePosition.Normalize();
+            rigidbody.velocity = (Skill_1_Move.movePosition * combatEntity.UnitPropertyEntity.MoveSpeed.Value + new Vector3(0, rigidbody.velocity.y, 0));
+        }
         else if(Player.PlayerAction != PlayerAction.Evade)
         {
             rigidbody.velocity = Vector3.zero;
         }
         ClearMoveData();
         //rigidbody.AddForce(new Vector3(0, -9.81f, 0));
+    }
+
+    public override void OnDestroy()
+    {
+        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.W, moveEnd_forward.action, KeyCodeType.UP);
+        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.A, moveEnd_left.action, KeyCodeType.UP);
+        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.S, moveEnd_backward.action, KeyCodeType.UP);
+        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.D, moveEnd_right.action, KeyCodeType.UP);
+        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.W, skill_1_move_forward.action, KeyCodeType.ING);
+        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.D, skill_1_move_right.action, KeyCodeType.ING);
+        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.S, skill_1_move_backward.action, KeyCodeType.ING);
+        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.A, skill_1_move_left.action, KeyCodeType.ING);
     }
 
 }
