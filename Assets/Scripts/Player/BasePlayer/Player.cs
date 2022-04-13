@@ -147,7 +147,17 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
 
     private void Awake()
     {
-        Instance = this;
+        if(Instance != null)
+        {
+            Instance.transform.position = this.transform.position;
+            Instance.transform.rotation = this.transform.rotation;
+            DestroyImmediate(this.gameObject);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
     }
 
     private void Start()
@@ -157,7 +167,8 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
         CombatContext.Instance.Object2Entities.Add(gameObject, combatEntity);
         combatEntity.ModelObject = this.gameObject;
         currentState = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["SwordsmanIdle"]);
-        
+        combatEntity.InitProperty(Application.persistentDataPath + "/PlayerProperty.json");
+
         // π“‘ÿ“∆∂ØSkill µÃÂ
         PlayerMoveEntity = combatEntity.AddChild<PlayerMoveEntity>();
         PlayerMoveEntity.Init(this.transform, this.transform.GetChild(0));

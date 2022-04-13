@@ -122,4 +122,9 @@ public class Inventory
         return money;
     }
 
+    public void SetMoney(Money money)
+    {
+        this.money = money;
+    }
+
 }

@@ -81,6 +81,7 @@ public class Enemy : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInter
         combatEntity = CombatContext.Instance.AddChild<CombatEntity>();
         CombatContext.Instance.Object2Entities.Add(gameObject, combatEntity);
         combatEntity.ModelObject = this.gameObject;
+        LoadPropertyData();
 
         EnemyDeathEntity = combatEntity.AddChild<EnemyDeathEntity>();
         EnemyBeHitEntity = combatEntity.AddChild<EnemyBeHitEntity>();
@@ -151,5 +152,10 @@ public class Enemy : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInter
     public void CantBeAttacked()
     {
         combatEntity.IsInvincibel = true;
+    }
+
+    public virtual void LoadPropertyData()
+    {
+        combatEntity.InitProperty(Application.streamingAssetsPath + "/EnemyProperty.json");
     }
 }

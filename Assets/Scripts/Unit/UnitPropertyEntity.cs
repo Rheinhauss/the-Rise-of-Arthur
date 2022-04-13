@@ -189,6 +189,7 @@ public class UnitPropertyEntity : Entity
     /// <param name="configpath"></param>
     public void InitData(string configpath)
     {
+        #region  Ù–‘
         HealthPoint tmp;
         UnitPropertyComponent.ReadToSelf(configpath);
         tmp = AddChild<HealthPoint>();
@@ -292,6 +293,7 @@ public class UnitPropertyEntity : Entity
         tmp.SetBaseMaxValue(1);
         tmp.SetBaseValue(UnitPropertyComponent.RigidResistance);
         propertyNameNumericsDict.Add(PropertyType.RigidResistance.ToString(), tmp);
+        #endregion
 
     }
     private void UpdateData()
