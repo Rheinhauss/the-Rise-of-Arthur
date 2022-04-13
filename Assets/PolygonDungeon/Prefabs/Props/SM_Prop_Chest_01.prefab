@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 400406}
   - component: {fileID: 3373012}
   - component: {fileID: 2351152}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: SM_Prop_Chest_01_Lid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,8 @@ GameObject:
   - component: {fileID: 3888146333060057640}
   - component: {fileID: 2318449448749299876}
   - component: {fileID: 2468252839369149717}
-  m_Layer: 10
+  - component: {fileID: 7064844123632515847}
+  m_Layer: 0
   m_Name: SM_Prop_Chest_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,7 +272,19 @@ MonoBehaviour:
   setAnimatorStateActions: []
   onExecute:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7064844123632515847}
+        m_TargetAssemblyTypeName: ItemChest, Assembly-CSharp
+        m_MethodName: GetItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   useConversationTitlePicker: 1
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
@@ -288,7 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 274b80ab5b659c646ba9338870d14625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overrideName: 
+  overrideName: "\u5B9D\u7BB1"
   overrideUseMessage: "F\uFF09\u6253\u5F00"
   maxUseDistance: 3
   events:
@@ -314,6 +327,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.9573091, y: 1.4237337, z: 0.67750823}
   m_Center: {x: -0.011846261, y: 0.71186686, z: 0.045667294}
+--- !u!114 &7064844123632515847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19e30934adc6beb4abd9461c1f3ccdca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsUseItemTypeCreate: 1
+  item:
+    itemType: 6
+    amount: 1
+    useEvents: []
+  ItemObjs:
+  - ItemType: 5
+    amount: 1
+  amount: 1
+  Player: {fileID: 0}
 --- !u!1 &6612701197761029496
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +360,7 @@ GameObject:
   - component: {fileID: 8828758927281993549}
   - component: {fileID: 5134255134546368290}
   - component: {fileID: 7096506412844159014}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: SM_Prop_Chest_01_Lid (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

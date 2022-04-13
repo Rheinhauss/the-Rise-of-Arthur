@@ -16,6 +16,7 @@ public class Item_Factory
     {
         FactoryDict = new Dictionary<ItemType, ItemFactoryInterface>();
         FactoryDict.Add(ItemType.HealthPotion_Little, new ItemHP_Little_Factory());
+        FactoryDict.Add(ItemType.HealthPotion_Big, new ItemHP_Big_Factory());
         FactoryDict.Add(ItemType.Weapon_A, new Item_Weapon_A_Factory());
         FactoryDict.Add(ItemType.Weapon_B, new Item_Weapon_B_Factory());
         FactoryDict.Add(ItemType.Weapon_C, new Item_Weapon_C_Factory());

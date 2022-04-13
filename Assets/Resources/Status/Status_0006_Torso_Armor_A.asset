@@ -17,7 +17,6 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 11400000, guid: 53556c6664dcfb04db40ed415a09e132, type: 2}
-    - {fileID: 11400000, guid: 563438f9028d8b04bb6ed613aefe477b, type: 2}
     - {fileID: 11400000, guid: e7669e5cdeb127449831383b3ed3e3f3, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -33,7 +32,7 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 2
     - Name: 
       Entry: 7
       Data: 1|EGamePlay.Combat.ChildStatus, Assembly-CSharp
@@ -96,47 +95,10 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: AttackMod_AddValue
-    - Name: $v
-      Entry: 1
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 6|EGamePlay.Combat.ChildStatus, Assembly-CSharp
-    - Name: StatusConfigObject
-      Entry: 10
-      Data: 2
-    - Name: Params
-      Entry: 7
-      Data: 7|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.String,
-        mscorlib]], mscorlib
-    - Name: comparer
-      Entry: 9
-      Data: 3
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
       Data: MoveSpeedMod_AddValue
     - Name: $v
       Entry: 1
-      Data: 1
+      Data: 0.5
     - Name: 
       Entry: 8
       Data: 
@@ -157,7 +119,7 @@ MonoBehaviour:
       Data: 
     - Name: Effects
       Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[EGamePlay.Combat.Effect, Assembly-CSharp]],
+      Data: 6|System.Collections.Generic.List`1[[EGamePlay.Combat.Effect, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
