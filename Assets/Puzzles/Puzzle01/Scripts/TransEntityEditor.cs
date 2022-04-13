@@ -34,15 +34,25 @@ public class TransEntityEditor
 
     public GameObject Init(Vector3 pos, Transform parent = null)
     {
-        LoadResource();
+        LoadResource(); 
+        GameObject gameObject;
         switch (transEntityType)
         {
             case TransEntityType._1:
-                return Object.Instantiate(TransObjectEntity_1, pos, Quaternion.Euler(0, (int)transRotAngle,0), parent);
+                gameObject = Object.Instantiate(TransObjectEntity_1, parent);
+                gameObject.transform.localPosition = pos;
+                gameObject.transform.localRotation = Quaternion.Euler(0, (int)transRotAngle, 0);
+                return gameObject;
             case TransEntityType._2:
-                return Object.Instantiate(TransObjectEntity_2, pos, Quaternion.Euler(0, (int)transRotAngle, 0), parent);
+                gameObject = Object.Instantiate(TransObjectEntity_2, parent);
+                gameObject.transform.localPosition = pos;
+                gameObject.transform.localRotation = Quaternion.Euler(0, (int)transRotAngle, 0);
+                return gameObject;
             case TransEntityType._3:
-                return Object.Instantiate(TransObjectEntity_3, pos, Quaternion.Euler(0, (int)transRotAngle, 0), parent);
+                gameObject = Object.Instantiate(TransObjectEntity_3, parent);
+                gameObject.transform.localPosition = pos;
+                gameObject.transform.localRotation = Quaternion.Euler(0, (int)transRotAngle, 0);
+                return gameObject;
             default:
                 return null;
         }

@@ -17,20 +17,19 @@ public class TransInit : MonoBehaviour
     [ContextMenu("≥ı ºªØ")]
     private void Init()
     {
-        while(TransParent.childCount != 0)
+        while (TransParent.childCount != 0)
         {
             DestroyImmediate(TransParent.GetChild(0).gameObject);
         }
         int delta = 2;
-        Vector3 originPos = TransParent.transform.position;
         int x = 0;
         int z = 0;
-        foreach(CustomArrays<TransEntityEditor> arrays in TransObjectEntitys)
+        foreach (CustomArrays<TransEntityEditor> arrays in TransObjectEntitys)
         {
             z = 0;
-            foreach(TransEntityEditor value in arrays.Array)
+            foreach (TransEntityEditor value in arrays.Array)
             {
-                value.Init(originPos + new Vector3(x * delta, 0, z * delta), TransParent);
+                value.Init(new Vector3(x * delta, 0, z * delta), TransParent);
                 ++z;
             }
             ++x;
