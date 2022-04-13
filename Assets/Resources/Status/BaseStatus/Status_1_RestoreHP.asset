@@ -76,7 +76,7 @@ MonoBehaviour:
       Data: 100%
     - Name: CureValueFormula
       Entry: 1
-      Data: MaxHp*0.1
+      Data: MaxHP*0.1
     - Name: 
       Entry: 8
       Data: 
