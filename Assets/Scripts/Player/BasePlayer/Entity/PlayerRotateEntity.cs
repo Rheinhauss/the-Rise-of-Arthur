@@ -16,26 +16,29 @@ public class PlayerRotateEntity : Entity
 
     public float radius { get; set; }
 
+    private float angleX;
+
     public void Init()
     {
         rotSpeedX = 200;
         rotSpeedY = 100.0f;
         radius = 1.2f;
         RotEnable = true;
+        angleX = CameraTransform.eulerAngles.x;
     }
 
     public override void Start()
     {
-        //Q往上
-        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.Q, () =>
-        {
-            CameraTransform.RotateAround(CameraCenterPoint.position, CameraTransform.right, rotSpeedY * Time.deltaTime);
-        }, KeyCodeType.ING);
-        //E往下
-        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.E, () =>
-        {
-            CameraTransform.RotateAround(CameraCenterPoint.position, CameraTransform.right, -rotSpeedY * Time.deltaTime);
-        }, KeyCodeType.ING);
+        ////Q往上
+        //UnitControllerComponent.inputComponent.BindInputAction(KeyCode.Q, () =>
+        //{
+        //    CameraTransform.RotateAround(CameraCenterPoint.position, CameraTransform.right, rotSpeedY * Time.deltaTime);
+        //}, KeyCodeType.ING);
+        ////E往下
+        //UnitControllerComponent.inputComponent.BindInputAction(KeyCode.E, () =>
+        //{
+        //    CameraTransform.RotateAround(CameraCenterPoint.position, CameraTransform.right, -rotSpeedY * Time.deltaTime);
+        //}, KeyCodeType.ING);
 
         UnitControllerComponent.inputComponent.BindInputAction(KeyCode.Mouse0, () =>
         {
@@ -45,11 +48,15 @@ public class PlayerRotateEntity : Entity
             }
             // 获得鼠标当前位置的X和Y
             float mouseX = Input.GetAxis("Mouse X") * rotSpeedX * Time.deltaTime;
-
-            //float mouseY = Input.GetAxis("Mouse Y") * rotSpeedY * Time.deltaTime;
-            //Debug.Log(mouseX + " " + Time.deltaTime + " " + Input.GetAxis("Mouse X"));
-            // 鼠标在X轴上的移动转为主角左右的移动，同时带动其子物体摄像机的左右移动
             CameraTransform.RotateAround(CameraCenterPoint.position, new Vector3(0, 1, 0), mouseX);
+
+            float mouseY = -Input.GetAxis("Mouse Y") * rotSpeedY * Time.deltaTime;
+            float rotX = angleX + mouseY;
+            rotX = Mathf.Clamp(rotX, -30, 60) - rotX;
+            mouseY += rotX;
+            CameraTransform.RotateAround(CameraCenterPoint.position, CameraTransform.right, mouseY);
+            angleX += mouseY;
+
         }, KeyCodeType.None);
     }
 }

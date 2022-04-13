@@ -27,10 +27,7 @@ public class ItemHP_Little_Factory : ItemFactoryInterface
 
     private void SpellAction(Transform Creator, Transform Target, Item item)
     {
-        if (!item.IsUsing)
-        {
-            Target.GetComponent<UnitControllerComponent>().combatEntity.unitSpellStatusToSelfComponent.SpellToSelf(StatusObject);
-        }
+        Target.GetComponent<UnitControllerComponent>().combatEntity.unitSpellStatusToSelfComponent.SpellToSelf(StatusObject);
     }
 
 }

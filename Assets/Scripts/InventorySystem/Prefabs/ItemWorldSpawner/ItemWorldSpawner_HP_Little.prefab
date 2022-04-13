@@ -48,5 +48,5 @@ MonoBehaviour:
     itemType: 1
     amount: 1
     useEvents: []
-  ItemType: 21
+  ItemType: 23
   amount: 5
