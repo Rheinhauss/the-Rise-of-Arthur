@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 439860}
   - component: {fileID: 3340764}
   - component: {fileID: 2364318}
-  - component: {fileID: 5729070631448522249}
   - component: {fileID: 8665482955161610555}
   - component: {fileID: 139981917009991583}
   - component: {fileID: 1774805014997397230}
   - component: {fileID: 3988039429234174733}
-  m_Layer: 10
+  - component: {fileID: 462653672}
+  m_Layer: 0
   m_Name: SM_Prop_Chest_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,28 +88,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5729070631448522249
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 149244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19e30934adc6beb4abd9461c1f3ccdca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsUseItemTypeCreate: 1
-  item:
-    itemType: 6
-    amount: 1
-    useEvents: []
-  ItemObjs:
-  - ItemType: 17
-    amount: 1
-  amount: 1
-  Player: {fileID: 0}
 --- !u!65 &8665482955161610555
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -252,7 +230,7 @@ MonoBehaviour:
   onExecute:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 462653672}
         m_TargetAssemblyTypeName: ItemChest, Assembly-CSharp
         m_MethodName: GetItem
         m_Mode: 1
@@ -268,6 +246,28 @@ MonoBehaviour:
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
   selectedDatabase: {fileID: 11400000, guid: 28b8114e8530a024c8bdf67cfcbabb30, type: 2}
+--- !u!114 &462653672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19e30934adc6beb4abd9461c1f3ccdca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsUseItemTypeCreate: 1
+  item:
+    itemType: 6
+    amount: 1
+    useEvents: []
+  ItemObjs:
+  - ItemType: 19
+    amount: 1
+  amount: 1
+  Player: {fileID: 0}
 --- !u!1 &157662
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 438264}
   - component: {fileID: 3319302}
   - component: {fileID: 2396090}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: SM_Prop_Chest_02_Lid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 8766934422773926810}
   - component: {fileID: 2721784743962419160}
   - component: {fileID: 8662327291513489665}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: SM_Prop_Chest_02_Lid (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

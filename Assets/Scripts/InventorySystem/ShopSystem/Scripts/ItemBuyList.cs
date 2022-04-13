@@ -35,7 +35,18 @@ public class ItemBuyList : MonoBehaviour
         {
             if (UI_Shop.GetShop().BuyItem(Customer, item, int.Parse(BuyAmountInput.text)))
             {
-                messageTip.text = "已购买 " + item.itemType.ToString() + "*" + BuyAmountInput.text;
+                if(item.itemType.ToString() == "HealthPotion_Little")
+                {
+                    messageTip.text = "已购买 小型HP药剂*" + BuyAmountInput.text;
+                }
+                else if(item.itemType.ToString() == "HealthPotion_Big")
+                {
+                    messageTip.text = "已购买 大型HP药剂*" + BuyAmountInput.text;
+                }
+                else
+                {
+                    messageTip.text = "已购买 " + item.itemType.ToString() + "*" + BuyAmountInput.text;
+                }
             }
             else
             {

@@ -67,6 +67,8 @@ public enum ItemType
     HealthPotion,
     [LabelText("小型HP药剂")]
     HealthPotion_Little,
+    [LabelText("大型HP药剂")]
+    HealthPotion_Big,
     [HideInInspector]
     HealthPotion_End,
 

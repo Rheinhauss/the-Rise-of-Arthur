@@ -1083,10 +1083,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pf_ItemWorld: {fileID: 1274780086038524997, guid: 5282a7c0d9d9d41429fe81b92368472d, type: 3}
   itemSpriteDictStructs:
-  - ItemType: 1
-    Sprite: {fileID: 21300000, guid: a40981489990940f7942012315b93f69, type: 3}
-  - ItemType: 2
-    Sprite: {fileID: 21300000, guid: 65ec0a20ee3664080987a02e414f2e38, type: 3}
   - ItemType: 5
     Sprite: {fileID: 21300000, guid: 7d96c87a1440846849d9c34b6d5cc4c1, type: 3}
   - ItemType: 6
@@ -1099,7 +1095,7 @@ MonoBehaviour:
     Sprite: {fileID: 21300000, guid: 0e3de6ba89fe6a242bfa146ef8ed525f, type: 3}
   - ItemType: 20
     Sprite: {fileID: 0}
-  - ItemType: 29
+  - ItemType: 30
     Sprite: {fileID: 21300000, guid: ade56b7149c6940ecbc3fe38cd065543, type: 3}
   - ItemType: 23
     Sprite: {fileID: 21300000, guid: 3d3b4b1d32565c944b0452176b513899, type: 3}

@@ -12,6 +12,17 @@ public class PlayerUIController : MonoBehaviour
     public UI_Inventory UI_Inventory;
     public UnitUI_Equip UI_Equip;
     public UnitUI_Money UI_Money;
+    private Transform MainUICavas;
+    private Transform UI;
+    private Button CloseBtn;
+
+
+    private void Awake()
+    {
+        MainUICavas = transform.Find("MainUICanvas");
+        UI = MainUICavas.Find("UI_Inventory");
+        CloseBtn = UI.Find("CloseBtn").GetComponent<Button>();
+    }
 
     private void Start()
     {
@@ -36,6 +47,12 @@ public class PlayerUIController : MonoBehaviour
             }
         }, KeyCodeType.DOWN);
         UI_Money.Init(ItemAssets.Instance.ItemSpriteDict[ItemType.Coin_A], 0, Money.MoneyType.GoldCoin);
+        CloseBtn.onClick.AddListener(() =>
+        {
+            UI_Inventory.gameObject.SetActive(!UI_Inventory.gameObject.activeSelf);
+            Player.Instance.IsOpenInventory = false;
+            Player.StartController();
+        });
     }
 
     public void UpdateUI()
