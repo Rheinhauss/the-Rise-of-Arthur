@@ -27,6 +27,10 @@ public enum ItemType
     Torso_Armor_B,
     [LabelText("板甲")]
     Torso_Armor_C,
+    [LabelText("布衣")]
+    Torso_Armor_D,
+    [LabelText("骑士的盔甲")]
+    Torso_Armor_E,
     [HideInInspector]
     Torso_Armor_End = 100,
 
@@ -59,6 +63,10 @@ public enum ItemType
     Weapon_B,
     [LabelText("精制品剑")]
     Weapon_C,
+    [LabelText("断剑")]
+    Weapon_D,
+    [LabelText("骑士的剑")]
+    Weapon_E,
     [HideInInspector]
     Weapon_End = 250,
 

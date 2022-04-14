@@ -9789,6 +9789,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7242700808505149619, guid: b69ed15661085f941bb6c9c69d8b75ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b69ed15661085f941bb6c9c69d8b75ba, type: 3}
 --- !u!1 &1250365442
@@ -12196,6 +12200,7 @@ GameObject:
   - component: {fileID: 1421505964}
   - component: {fileID: 1421505963}
   - component: {fileID: 1421505969}
+  - component: {fileID: 1421505970}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -12601,6 +12606,30 @@ MonoBehaviour:
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
   selectedDatabase: {fileID: 11400000, guid: 28b8114e8530a024c8bdf67cfcbabb30, type: 2}
+--- !u!114 &1421505970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421505962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19e30934adc6beb4abd9461c1f3ccdca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsUseItemTypeCreate: 1
+  item:
+    itemType: 0
+    CanUse: 1
+    CanDrop: 0
+    amount: 0
+    useEvents: []
+  ItemObjs:
+  - ItemType: 205
+    amount: 1
+  amount: 1
+  Player: {fileID: 2057937932}
 --- !u!1001 &1424461777
 PrefabInstance:
   m_ObjectHideFlags: 0

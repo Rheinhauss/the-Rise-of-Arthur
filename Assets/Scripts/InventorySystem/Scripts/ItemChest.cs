@@ -24,6 +24,7 @@ public class ItemChest : MonoBehaviour
     [Range(1, 99)]
     public int amount = 1;
     public Player Player = Player.Instance;
+    //private Transform Player0 = Player.Instance.transform;
     public HarvestInterface player;
 
     // Start is called before the first frame update
@@ -43,4 +44,11 @@ public class ItemChest : MonoBehaviour
             player.HarvestItem(Item_Factory.Instance.CreateItem(itemObj.ItemType, itemObj.amount));
         }
     }
+    //public void UseItem()
+    //{
+    //    player = Player.PlayerInventoryEntity;
+    //    HarvestItem(player);
+    //    //使用者->自己，作用者->自己
+    //    inventory.UseItem(item, Player0, Player0);
+    //}
 }
