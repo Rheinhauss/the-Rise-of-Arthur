@@ -89,10 +89,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.19308972
-  m_Height: 0.6976885
+  m_Radius: 0.67060494
+  m_Height: 3.8529875
   m_Direction: 1
-  m_Center: {x: 0, y: 0.3290743, z: -0.021614075}
+  m_Center: {x: 0.015470743, y: 1.9067239, z: 0.0738157}
 --- !u!54 &5161749122316690711
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -143,6 +143,7 @@ MonoBehaviour:
   EnemyUIController: {fileID: 3978504502979749522}
   WayPoints: {fileID: 0}
   dataPath: EnemyProperty.json
+  CoinAmount: 10
 --- !u!195 &5161749122582253379
 NavMeshAgent:
   m_ObjectHideFlags: 0

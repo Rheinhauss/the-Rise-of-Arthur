@@ -14,6 +14,11 @@ public class PlayerResetEntity : Entity
     private StatusObject StatusObject;
 
     private Transform ResurrectionPoint;
+    private GameObject Cube;
+    private Transform Finalfight;
+    private GameObject Trigger;
+    private GameObject OpenDoor;
+    private GameObject CloseDoor;
     private UnitAnimatorComponent unitAnimatorComponent => Player.unitAnimatorComponent;
     private CountDownTimer timer = new CountDownTimer(1, false, false);
 
@@ -26,7 +31,11 @@ public class PlayerResetEntity : Entity
             timer.Start();
         });
         ResurrectionPoint = GameObject.Find("PlayerDefaultResurrectionPoint").transform;
-
+        Finalfight = GameObject.Find("FinalFight").transform;
+        Cube = ResurrectionPoint.Find("Cube").gameObject;
+        Trigger = Finalfight.Find("Trigger").gameObject;
+        OpenDoor = Finalfight.Find("opendoor").gameObject;
+        CloseDoor = Finalfight.Find("closedoor").gameObject;
         timer.EndActions.Add(DeathReset);
     }
 
@@ -34,6 +43,7 @@ public class PlayerResetEntity : Entity
     {
         ResetHP();
         ResetToDeafultPoint();
+        ResetCollider();
     }
 
     public void ResetToDeafultPoint()
@@ -81,5 +91,13 @@ public class PlayerResetEntity : Entity
         {
             AfterResetEvent();
         }
+    }
+
+    public void ResetCollider()
+    {
+        Cube.SetActive(true);
+        OpenDoor.SetActive(true);
+        CloseDoor.SetActive(false);
+        Trigger.SetActive(true);
     }
 }

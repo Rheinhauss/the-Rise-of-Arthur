@@ -90,10 +90,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.19308972
-  m_Height: 0.6976885
+  m_Radius: 0.35364914
+  m_Height: 2.1407185
   m_Direction: 1
-  m_Center: {x: 0, y: 0.3290743, z: -0.021614075}
+  m_Center: {x: 0, y: -0.08964062, z: -0.013580322}
 --- !u!54 &8255908399631550856
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -144,6 +144,7 @@ MonoBehaviour:
   EnemyUIController: {fileID: 145992381111159309}
   WayPoints: {fileID: 0}
   dataPath: EnemyProperty.json
+  CoinAmount: 10
 --- !u!195 &8255908399902761948
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -290,20 +291,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!136 &1073070514818446281
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6363324619637682582}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2.32
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8255908399126941075
 GameObject:
   m_ObjectHideFlags: 0
@@ -2068,11 +2055,6 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 4a25f7be58aafb24f8ea2b7bbc9141c3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09c16b6421e2a0248b2831378e160959, type: 3}
---- !u!1 &6363324619637682582 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1731963648858646, guid: 09c16b6421e2a0248b2831378e160959, type: 3}
-  m_PrefabInstance: {fileID: 6361674432369240960}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6361295828101432124 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4197844917725372, guid: 09c16b6421e2a0248b2831378e160959, type: 3}

@@ -29,8 +29,6 @@ public enum ItemType
     Torso_Armor_C,
     [LabelText("布衣")]
     Torso_Armor_D,
-    [LabelText("骑士的盔甲")]
-    Torso_Armor_E,
     [HideInInspector]
     Torso_Armor_End = 100,
 
@@ -65,8 +63,6 @@ public enum ItemType
     Weapon_C,
     [LabelText("断剑")]
     Weapon_D,
-    [LabelText("骑士的剑")]
-    Weapon_E,
     [HideInInspector]
     Weapon_End = 250,
 
@@ -103,6 +99,10 @@ public enum ItemType
     RedFlower,
     [LabelText("三女神传说")]
     Book,
+    [LabelText("骑士的剑")]
+    Weapon_E,
+    [LabelText("骑士的盔甲")]
+    Torso_Armor_E,
     [HideInInspector]
     Mission_End = 450,
 

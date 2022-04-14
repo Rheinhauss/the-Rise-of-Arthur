@@ -64,17 +64,12 @@ namespace PixelCrushers.DialogueSystem.Demo
                 if (closeWhenQuestLogOpen) SetMenuStatus(false);
                 OpenQuestLog();
             }
-            if (GUI.Button(new Rect(60, 150, windowRect.width - 120, 48), "保存游戏"))
+            if (GUI.Button(new Rect(60, 150, windowRect.width - 120, 48), "设置"))
             {
-                SetMenuStatus(false);
+                if (closeWhenQuestLogOpen) SetMenuStatus(false);
                 SaveGame();
             }
-            if (GUI.Button(new Rect(60, 210, windowRect.width - 120, 48), "载入游戏"))
-            {
-                SetMenuStatus(false);
-                LoadGame();
-            }
-            if (GUI.Button(new Rect(60, 270, windowRect.width - 120, 48), "关闭菜单"))
+            if (GUI.Button(new Rect(60, 210, windowRect.width - 120, 48), "关闭菜单"))
             {
                 SetMenuStatus(false);
             }
