@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
+using UnityEngine.UI;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -16,17 +16,17 @@ public class ItemWorld : MonoBehaviour
     }
 
     private Item item;
-    public TextMeshProUGUI textMeshPro;
+    public Text textMeshPro;
 
     private void Awake()
     {
-        textMeshPro = transform.Find("Canvas").Find("Text").GetComponent<TextMeshProUGUI>();
+        textMeshPro = transform.Find("Canvas").Find("Text").GetComponent<Text>();
     }
 
     public void SetItem(Item item)
     {
         this.item = item;
-        textMeshPro.SetText(item.itemType.ToString() + " * " + item.amount);
+        textMeshPro.text = "½ð±Ò * " + item.amount;
     }
 
     public Item GetItem()
