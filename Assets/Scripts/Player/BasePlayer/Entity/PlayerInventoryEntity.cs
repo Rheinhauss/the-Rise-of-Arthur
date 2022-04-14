@@ -69,17 +69,20 @@ public class PlayerInventoryEntity : Entity, HarvestInterface
     /// 所有Item的获取调用函数
     /// </summary>
     /// <param name="item"></param>
-    public void HarvestItem(Item item)
+    public List<Item> HarvestItem(Item item)
     {
         //如果是货币，不进去背包，直接加入货币
         if (item.GetItemType() == ItemType.Coin)
         {
             playerMoneyEntity.AddMoney(item.amount);
+            var list = new List<Item>();
+            list.Add(item);
+            return list;
         }
         //默认拾取进背包
         else
         {
-            inventory.AddItem(item);
+            return inventory.AddItem(item);
         }
     }
 

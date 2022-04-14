@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface HarvestInterface
 {
-    public void HarvestItem(Item item);
+    public List<Item> HarvestItem(Item item);
 }

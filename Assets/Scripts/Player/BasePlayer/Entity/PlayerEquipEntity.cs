@@ -42,10 +42,10 @@ public class PlayerEquipEntity : Entity
     {
         hp_Item = Head_Armor = Torso_Armor = Leg_Armor = Foot_Armor = Weapon = null;
         UnitControllerComponent.inputComponent.BindInputAction(KeyCode.Alpha1, Execute, KeyCodeType.DOWN);
-        Item weapon = Item_Factory.Instance.CreateItem(ItemType.Weapon_E, 1);
-        Item torso = Item_Factory.Instance.CreateItem(ItemType.Torso_Armor_E, 1);
-        PlayerInventoryEntity.HarvestItem(weapon);
-        PlayerInventoryEntity.HarvestItem(torso);
+        Item weapon = Item_Factory.Instance.CreateItem(ItemType.Weapon_D, 1);
+        Item torso = Item_Factory.Instance.CreateItem(ItemType.Torso_Armor_D, 1);
+        weapon = PlayerInventoryEntity.HarvestItem(weapon)[0];
+        torso = PlayerInventoryEntity.HarvestItem(torso)[0];
         //使用者->自己，作用者->自己
         PlayerInventoryEntity.inventory.UseItem(weapon, player, player);
         PlayerInventoryEntity.inventory.UseItem(torso, player, player);

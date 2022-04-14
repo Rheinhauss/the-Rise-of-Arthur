@@ -29,24 +29,22 @@ public class ItemChest : MonoBehaviour
     [ShowIf("IsUseItemTypeCreate")]
     [Range(1, 99)]
     public int amount = 1;
-    public Player Player = Player.Instance;
-    public HarvestInterface player;
+    private Player Player => Player.Instance;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //void Start()
+    //{
+    //    Player = Player.Instance;
+    //}
     public void GetItem()
     {
-        player = Player.PlayerInventoryEntity;
-        HarvestItem(player);
+        HarvestItem();
     }
-    public void HarvestItem(HarvestInterface player)
+    public void HarvestItem()
     {
         foreach(ItemObj itemObj in ItemObjs)
         {
-            player.HarvestItem(Item_Factory.Instance.CreateItem(itemObj.ItemType, itemObj.amount));
+            Player.PlayerInventoryEntity.HarvestItem(Item_Factory.Instance.CreateItem(itemObj.ItemType, itemObj.amount));
         }
     }
 }

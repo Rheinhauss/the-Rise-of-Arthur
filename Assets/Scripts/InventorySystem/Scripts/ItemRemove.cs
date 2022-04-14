@@ -8,44 +8,25 @@ using UnityEngine.Events;
 
 public class ItemRemove : MonoBehaviour
 {
-    [System.Serializable]
-    public struct ItemObj
-    {
-        public ItemType ItemType;
-        public int amount;
-    }
-    public struct Items
-    {
-        public Item Item;
-        public int amount;
-    }
-    [LabelText("使用ItemType创建默认Item")]
-    public bool IsUseItemTypeCreate = false;
-    [HideIf("IsUseItemTypeCreate")]
-    public Item item;
-    [ShowIf("IsUseItemTypeCreate")]
-    public List<Items> items;
-    [ShowIf("IsUseItemTypeCreate")]
+    public ItemType type;
     [Range(1, 99)]
     public int amount = 1;
-    public Player Player = Player.Instance;
-    public HarvestInterface player;
+    private Player Player => Player.Instance;
 
-    // Start is called before the first frame update
-    void Start()
+    public void RemoveItem()
     {
-        
-    }
-    public void GetItem()
-    {
-        player = Player.PlayerInventoryEntity;
-        RemoveItem(player);
-    }
-    public void RemoveItem(HarvestInterface player)
-    {
-        foreach (Items items in items)
+        if(type == ItemType.Coin_A)
         {
-            Player.PlayerInventoryEntity.inventory.RemoveItem(items.Item, items.amount);
+            Player.PlayerMoneyEntity.MinusMoney(amount);
+            return;
+        }
+        foreach(var value in Player.PlayerInventoryEntity.inventory.GetItemList())
+        {
+            if(type == value.itemType)
+            {
+                Player.PlayerInventoryEntity.inventory.RemoveItem(value, amount);
+                break;
+            }
         }
     }
 }
