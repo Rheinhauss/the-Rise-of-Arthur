@@ -77,6 +77,8 @@ public class Enemy : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInter
 
     private bool IsExeStart = false;
 
+    public int CoinAmount = 10;
+
     public void Start()
     {
         if (IsExeStart)
@@ -95,6 +97,12 @@ public class Enemy : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInter
         LoadPropertyData();
 
         EnemyDeathEntity = combatEntity.AddChild<EnemyDeathEntity>();
+        EnemyDeathEntity.AddAction(() =>
+        {
+            ItemWorld.SpawnItemWorld(transform.position + new Vector3(0, 0.5f, 0), Item_Factory.Instance.CreateItem(ItemType.Coin_A, CoinAmount));
+        });
+
+
         EnemyBeHitEntity = combatEntity.AddChild<EnemyBeHitEntity>();
 
         EnemyMoveEntity = combatEntity.AddChild<EnemyMoveEntity>();

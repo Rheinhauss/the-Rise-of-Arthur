@@ -26,7 +26,7 @@ public class PlayerInventoryEntity : Entity, HarvestInterface
         Player.PlayerUIController.UpdateUI();
 
         //itemWorldÊ°È¡ÊÂ¼þ
-        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.X, TouchItem, KeyCodeType.DOWN);
+        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.F, TouchItem, KeyCodeType.DOWN);
 
     }
 

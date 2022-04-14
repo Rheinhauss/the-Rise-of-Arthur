@@ -15,6 +15,9 @@ public class EnemyDeathEntity : Entity
     private UnitSkillControllerComponent skillControllerComponent => enemy.skillControllerComponent;
     private UnitAnimatorComponent unitAnimatorComponent => enemy.unitAnimatorComponent;
 
+    private bool IsExecuteDeathAction = false;
+    private bool IsPlayOverDeathAnim = false;
+
     /// <summary>
     /// 判断角色是否死亡，若死亡则执行对应事件
     /// </summary>
@@ -25,24 +28,36 @@ public class EnemyDeathEntity : Entity
             DeathAction();
             return true;
         }
+        IsExecuteDeathAction = false;
+        IsPlayOverDeathAnim = false;
         return false;
     }
 
     private void DeathAction()
     {
+        if (IsExecuteDeathAction)
+        {
+            return;
+        }
         var state = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["EnemyDeath"]);
         enemy.currentState = state;
         enemy.AnimState = AnimState.ForcePost;
         enemy.PlayerAction = EnemyAction.Death;
         state.Events.OnEnd = () =>
         {
+            if (IsPlayOverDeathAnim)
+            {
+                return;
+            }
             foreach (var action in actions)
             {
                 action.Invoke();
             }
+            IsPlayOverDeathAnim = true;
             combatEntity.Dispose();
             GameObject.Destroy(combatEntity.ModelObject, 0.5f);
         };
+        IsExecuteDeathAction = true;
     }
 
     /// <summary>
