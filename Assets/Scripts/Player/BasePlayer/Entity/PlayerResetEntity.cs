@@ -52,6 +52,11 @@ public class PlayerResetEntity : Entity
 
     public void SetResurrectionPoint(Transform transform)
     {
+        if(transform == null)
+        {
+            ResurrectionPoint = null;
+            return;
+        }
         ResurrectionPoint = transform;
     }
 
