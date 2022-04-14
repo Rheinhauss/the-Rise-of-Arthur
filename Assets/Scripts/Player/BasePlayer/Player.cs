@@ -60,7 +60,7 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
     public Animancer.AnimancerState currentState;
     #endregion
 
-    #region ����
+    #region 能力实体
     /// <summary>
     /// ���ܵ������
     /// </summary>
@@ -123,7 +123,7 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
     public PlayerResetEntity PlayerResetEntity;
     #endregion
 
-    #region ����
+    #region 控制bool
     /// <summary>
     /// �ƶ�����
     /// </summary>
@@ -205,13 +205,13 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
         PlayerEvadeEntity = combatEntity.AddChild<PlayerEvadeEntity>();
         PlayerEvadeEntity.Init();
 
-        //����װ��ʵ��
-        PlayerEquipEntity = combatEntity.AddChild<PlayerEquipEntity>();
-        PlayerEquipEntity.Init();
-
         //����ʵ��
         PlayerInventoryEntity = combatEntity.AddChild<PlayerInventoryEntity>();
         PlayerInventoryEntity.Init();
+
+        //����װ��ʵ��
+        PlayerEquipEntity = combatEntity.AddChild<PlayerEquipEntity>();
+        PlayerEquipEntity.Init();
 
         //����ʵ��
         PlayerMoneyEntity = combatEntity.AddChild<PlayerMoneyEntity>();

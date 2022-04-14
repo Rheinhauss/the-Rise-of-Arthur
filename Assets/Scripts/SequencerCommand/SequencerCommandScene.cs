@@ -12,13 +12,13 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
     {
         public void Start()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             if (Player.Instance != null)
             {
                 Player.Instance.SwitchScene();
             }
-            //SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
-            //StartCoroutine(waitForLevelToLoad(SceneManager.GetActiveScene().buildIndex + 1));
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+            StartCoroutine(waitForLevelToLoad(SceneManager.GetActiveScene().buildIndex + 1));
         }
 
         private IEnumerator waitForLevelToLoad(int index)
@@ -27,6 +27,10 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
             {
                 //Debug.Log("loading scene:" + SceneManager.GetActiveScene().name);
                 yield return null;
+            }
+            if (Player.Instance != null)
+            {
+                Player.Instance.SwitchScene();
             }
         }
 

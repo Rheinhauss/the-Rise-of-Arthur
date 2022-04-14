@@ -36,11 +36,19 @@ public class PlayerEquipEntity : Entity
     private Transform Owner => combatEntity.ModelObject.transform;
     private PlayerInventoryEntity PlayerInventoryEntity => Player.Instance.PlayerInventoryEntity;
     private PlayerUIController PlayerUI => Player.Instance.PlayerUIController;
+    private Transform player => Player.Instance.transform;
 
     public void Init()
     {
         hp_Item = Head_Armor = Torso_Armor = Leg_Armor = Foot_Armor = Weapon = null;
         UnitControllerComponent.inputComponent.BindInputAction(KeyCode.Alpha1, Execute, KeyCodeType.DOWN);
+        Item weapon = Item_Factory.Instance.CreateItem(ItemType.Weapon_E, 1);
+        Item torso = Item_Factory.Instance.CreateItem(ItemType.Torso_Armor_E, 1);
+        PlayerInventoryEntity.HarvestItem(weapon);
+        PlayerInventoryEntity.HarvestItem(torso);
+        //使用者->自己，作用者->自己
+        PlayerInventoryEntity.inventory.UseItem(weapon, player, player);
+        PlayerInventoryEntity.inventory.UseItem(torso, player, player);
     }
 
     private void Execute()
