@@ -154,4 +154,30 @@ public class InputComponent : MonoBehaviour
         }
         return flag;
     }
+
+    /// <summary>
+    /// 更改某个事件的按键
+    /// </summary>
+    /// <param name="keyCode">事件对应的原按键</param>
+    /// <param name="action">事件</param>
+    /// <param name="keyCodeType">事件对应的原按键的类型</param>
+    /// <param name="newKeyCode">事件对应的新按键</param>
+    /// <returns></returns>
+    public bool SetActionKeyCode(KeyCode keyCode, Action action, KeyCodeType keyCodeType, KeyCode newKeyCode)
+    {
+        UnBindInputAction(keyCode, action, keyCodeType);
+        BindInputAction(newKeyCode, action, keyCodeType);
+        return false;
+    }
+
+    ////用于面板输入更改按键设置
+    //void OnGUI()
+    //{
+    //    Event e = Event.current;//获取当前事件
+    //    // 有事件、事件是按键、按键不是None
+    //    if (e != null && e.isKey && e.keyCode != KeyCode.None)
+    //    {
+    //    }
+    //}
+
 }
