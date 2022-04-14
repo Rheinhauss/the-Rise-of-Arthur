@@ -117,6 +117,10 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
     /// Player受到伤害实体
     /// </summary>
     public PlayerDamageEntity PlayerDamageEntity;
+    /// <summary>
+    /// Player复位实体
+    /// </summary>
+    public PlayerResetEntity PlayerResetEntity;
     #endregion
 
     #region 控制
@@ -220,6 +224,10 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
         //受到伤害实体
         PlayerDamageEntity = combatEntity.AddChild<PlayerDamageEntity>();
         PlayerDamageEntity.Init();
+
+        //复位实体
+        PlayerResetEntity = combatEntity.AddChild<PlayerResetEntity>();
+        PlayerResetEntity.Init();
 
         StartController();
         CanOpenInventory = true;

@@ -15,6 +15,9 @@ public class PlayerDeathEntity : Entity
     private UnitSkillControllerComponent skillControllerComponent => player.skillControllerComponent;
     private UnitAnimatorComponent unitAnimatorComponent => player.unitAnimatorComponent;
 
+    private bool IsExecuteDeathAction = false;
+    private bool IsPlayOverDeathAnim = false;
+
     /// <summary>
     /// 判断角色是否死亡，若死亡则执行对应事件
     /// </summary>
@@ -25,22 +28,34 @@ public class PlayerDeathEntity : Entity
             DeathAction();
             return true;
         }
+        IsExecuteDeathAction = false;
+        IsPlayOverDeathAnim = false;
         return false;
     }
 
     private void DeathAction()
     {
+        if (IsExecuteDeathAction)
+        {
+            return;
+        }
         var state = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["SwordsmanDeath"]);
         player.currentState = state;
         player.AnimState = AnimState.ForcePost;
         player.PlayerAction = PlayerAction.Death;
         state.Events.OnEnd = () =>
         {
+            if (IsPlayOverDeathAnim)
+            {
+                return;
+            }
             foreach (var action in actions)
             {
                 action.Invoke();
             }
+            IsPlayOverDeathAnim = true;
         };
+        IsExecuteDeathAction = true;
     }
 
     /// <summary>
