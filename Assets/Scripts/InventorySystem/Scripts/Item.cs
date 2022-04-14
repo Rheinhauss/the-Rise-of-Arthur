@@ -19,7 +19,7 @@ public class Item
     /// <summary>
     /// ÊÇ·ñÄÜ¶ªÆú
     /// </summary>
-    public bool CanDrop = false;
+    public bool CanDrop = true;
     public int amount;
     [SerializeField]
     public List<UnityEvent<Transform,Transform, Item>> useEvents;
