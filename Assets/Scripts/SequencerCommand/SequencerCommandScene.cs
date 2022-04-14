@@ -12,11 +12,11 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
     {
         public void Start()
         {
-            if(Player.Instance != null)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            if (Player.Instance != null)
             {
                 Player.Instance.SwitchScene();
             }
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             //SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
             //StartCoroutine(waitForLevelToLoad(SceneManager.GetActiveScene().buildIndex + 1));
         }

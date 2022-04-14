@@ -9,8 +9,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Ã¶¾Ù£ºÈËÎï»áÖ´ÐÐµÄ¼¼ÄÜÀàÐÍ
-/// Õ¾Á¢¡¢ÒÆ¶¯¡¢Çá»÷
+/// Ã¶ï¿½Ù£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ÐµÄ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+/// Õ¾ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 /// </summary>
 public enum PlayerAction
 {
@@ -24,8 +24,8 @@ public enum PlayerAction
     Death,
 }
 /// <summary>
-/// Ã¶¾Ù£ºActionÀàÐÍµÄ½×¶Î
-/// Ç°Ò¡¡¢Ç¿ÖÆºóÒ¡¡¢ºóÒ¡
+/// Ã¶ï¿½Ù£ï¿½Actionï¿½ï¿½ï¿½ÍµÄ½×¶ï¿½
+/// Ç°Ò¡ï¿½ï¿½Ç¿ï¿½Æºï¿½Ò¡ï¿½ï¿½ï¿½ï¿½Ò¡
 /// </summary>
 public enum AnimState
 {
@@ -36,116 +36,120 @@ public enum AnimState
 }
 
 /// <summary>
-/// Íæ¼Ò»ùÀà£»ºóÐøÅ®ÏÀ¡¢ÀÏÍâµÈ½ÇÉ«½Å±¾»á¼Ì³ÐPlayer
-/// ¼Ì³Ð£ºUnityControllerComponent
+/// ï¿½ï¿½Ò»ï¿½ï¿½à£»ï¿½ï¿½ï¿½ï¿½Å®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È½ï¿½É«ï¿½Å±ï¿½ï¿½ï¿½Ì³ï¿½Player
+/// ï¿½Ì³Ð£ï¿½UnityControllerComponent
 /// </summary>
 public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInterface
 {
     /// <summary>
-    /// ³õÊ¼»¯Player
+    /// ï¿½ï¿½Ê¼ï¿½ï¿½Player
     /// </summary>
     public static Player Instance;
     #region ×´Ì¬
     /// <summary>
-    /// Playerµ±Ç°ActionÀàÐÍ
+    /// Playerï¿½ï¿½Ç°Actionï¿½ï¿½ï¿½ï¿½
     /// </summary>
     public PlayerAction PlayerAction = PlayerAction.Idle;
     /// <summary>
-    /// PlayerµÄActionÀàÐÍµÄ½×¶Î
+    /// Playerï¿½ï¿½Actionï¿½ï¿½ï¿½ÍµÄ½×¶ï¿½
     /// </summary>
     public AnimState AnimState = AnimState.None;
     /// <summary>
-    /// Playerµ±Ç°²¥·ÅµÄAction¶¯»­µÄ½×¶Î
+    /// Playerï¿½ï¿½Ç°ï¿½ï¿½ï¿½Åµï¿½Actionï¿½ï¿½ï¿½ï¿½ï¿½Ä½×¶ï¿½
     /// </summary>
     public Animancer.AnimancerState currentState;
     #endregion
 
-    #region ÄÜÁ¦
+    #region ï¿½ï¿½ï¿½ï¿½
     /// <summary>
-    /// ¼¼ÄÜµ÷ÓÃ×é¼þ
+    /// ï¿½ï¿½ï¿½Üµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     public SpellComponent SpellComponent => combatEntity.GetComponent<SpellComponent>();
     /// <summary>
-    /// PlayerÒÆ¶¯SkillÊµÌå
+    /// Playerï¿½Æ¶ï¿½SkillÊµï¿½ï¿½
     /// </summary>
     public PlayerMoveEntity PlayerMoveEntity;
     /// <summary>
-    /// PlayerÐý×ªÊµÌå
+    /// Playerï¿½ï¿½×ªÊµï¿½ï¿½
     /// </summary>
     public PlayerRotateEntity PlayerRotateEntity;
     /// <summary>
-    /// PlayerËùÓÐUIµÄ¿ØÖÆ
+    /// Playerï¿½ï¿½ï¿½ï¿½UIï¿½Ä¿ï¿½ï¿½ï¿½
     /// </summary>
     public PlayerUIController PlayerUIController;
     /// <summary>
-    /// PlayerµÄËÀÍö¼ì²â+¿ØÖÆ+ËÀÍöºóÊÂ¼þ
+    /// Playerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½+ï¿½ï¿½ï¿½ï¿½+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
     /// </summary>
     public PlayerDeathEntity PlayerDeathEntity;
     /// <summary>
-    /// PlayerÊó±ê¿ØÖÆ
+    /// Playerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     public PlayerCursorEntity PlayerCursorEntity;
     /// <summary>
-    /// ÉÁ±ÜSkillÊµÌå
+    /// ï¿½ï¿½ï¿½ï¿½SkillÊµï¿½ï¿½
     /// </summary>
     public PlayerEvadeEntity PlayerEvadeEntity;
     /// <summary>
-    /// Çá»÷SkillÊµÌå
+    /// ï¿½ï¿½ï¿½SkillÊµï¿½ï¿½
     /// </summary>
     public Skill_2_Attack1_Entity Skill_2_Attack1_Entity;
     /// <summary>
-    /// ÖØ»÷SkillÊµÌå
+    /// ï¿½Ø»ï¿½SkillÊµï¿½ï¿½
     /// </summary>
     public Skill_6_AttackHeavy Skill_6_AttackHeavy;
     /// <summary>
-    /// ±³°ü
+    /// ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     public PlayerInventoryEntity PlayerInventoryEntity;
     /// <summary>
-    /// ×°±¸ÊµÌå
+    /// ×°ï¿½ï¿½Êµï¿½ï¿½
     /// </summary>
     public PlayerEquipEntity PlayerEquipEntity;
     /// <summary>
-    /// »õ±ÒÊµÌå
+    /// ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
     /// </summary>
     public PlayerMoneyEntity PlayerMoneyEntity;
     /// <summary>
-    /// Player½ÓÊÕÖÎÁÆÊµÌå
+    /// Playerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
     /// </summary>
     public PlayerCureEntity PlayerCureEntity;
     /// <summary>
-    /// PlayerÊÜµ½ÉËº¦ÊµÌå
+    /// Playerï¿½Üµï¿½ï¿½Ëºï¿½Êµï¿½ï¿½
     /// </summary>
     public PlayerDamageEntity PlayerDamageEntity;
+    /// <summary>
+    /// Playerï¿½ï¿½Î»Êµï¿½ï¿½
+    /// </summary>
+    public PlayerResetEntity PlayerResetEntity;
     #endregion
 
-    #region ¿ØÖÆ
+    #region ï¿½ï¿½ï¿½ï¿½
     /// <summary>
-    /// ÒÆ¶¯½ûÖÆ
+    /// ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     public bool CanMove { get; set; }
     /// <summary>
-    /// ¹¥»÷½ûÖÆ
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     public bool CanAttack { get; set; }
     /// <summary>
-    /// ÉãÏñ»úÐý×ª½ûÖ¹
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Ö¹
     /// </summary>
     public bool CanCameraRot { get { return PlayerRotateEntity.RotEnable; } set { PlayerRotateEntity.RotEnable = value; } }
     /// <summary>
-    /// Ê¹ÓÃµÀ¾ß½ûÖ¹
+    /// Ê¹ï¿½Ãµï¿½ï¿½ß½ï¿½Ö¹
     /// </summary>
     public bool CanUseItem = true;
     /// <summary>
-    /// ÊÇ·ñÕýÔÚ¹ºÎï
+    /// ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ú¹ï¿½ï¿½ï¿½
     /// </summary>
     public bool IsShopping = false;
     /// <summary>
-    /// ÊÇ·ñ´ò¿ª±³°ü
+    /// ï¿½Ç·ï¿½ò¿ª±ï¿½ï¿½ï¿½
     /// </summary>
     public bool IsOpenInventory = false;
     /// <summary>
-    /// ÊÇ·ñÄÜ¹»´ò¿ª±³°ü
+    /// ï¿½Ç·ï¿½ï¿½Ü¹ï¿½ï¿½ò¿ª±ï¿½ï¿½ï¿½
     /// </summary>
     public bool CanOpenInventory { get; set; }
     #endregion
@@ -167,59 +171,63 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
 
     private void Start()
     {
-        // ³õÊ¼»¯CombatEntity
+        // ï¿½ï¿½Ê¼ï¿½ï¿½CombatEntity
         combatEntity = CombatContext.Instance.AddChild<CombatEntity>();
         CombatContext.Instance.Object2Entities.Add(gameObject, combatEntity);
         combatEntity.ModelObject = this.gameObject;
         currentState = unitAnimatorComponent.PlayFade(unitAnimatorComponent.animationClipsDict["SwordsmanIdle"]);
         combatEntity.InitProperty(Application.streamingAssetsPath + "/PlayerProperty.json");
 
-        // ¹ÒÔØÒÆ¶¯SkillÊµÌå
+        // ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½SkillÊµï¿½ï¿½
         PlayerMoveEntity = combatEntity.AddChild<PlayerMoveEntity>();
         PlayerMoveEntity.Init(this.transform, this.transform.GetChild(0));
 
-        //¹ÒÔØÐý×ªÊµÌå
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªÊµï¿½ï¿½
         PlayerRotateEntity = combatEntity.AddChild<PlayerRotateEntity>();
         PlayerRotateEntity.Init();
 
-        // ¹ÒÔØDeathÊµÌå
+        // ï¿½ï¿½ï¿½ï¿½DeathÊµï¿½ï¿½
         PlayerDeathEntity = combatEntity.AddChild<PlayerDeathEntity>();
 
-        //Êó±êÖ¸ÕëÊµÌå
+        //ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Êµï¿½ï¿½
         PlayerCursorEntity = combatEntity.AddChild<PlayerCursorEntity>();
         PlayerCursorEntity.Init();
 
-        // ¹ÒÔØÇá»÷SkillÊµÌå£¬ÒÑ¾­¹ÒÔØCanAttack
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½SkillÊµï¿½å£¬ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½CanAttack
         Skill_2_Attack1_Entity = combatEntity.AddChild<Skill_2_Attack1_Entity>();
         Skill_2_Attack1_Entity.Init();
 
-        // ¹ÒÔØÖØ»÷SkillÊµÌå£¬ÒÑ¾­¹ÒÔØCanAttack
+        // ï¿½ï¿½ï¿½ï¿½ï¿½Ø»ï¿½SkillÊµï¿½å£¬ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½CanAttack
         Skill_6_AttackHeavy = combatEntity.AddChild<Skill_6_AttackHeavy>();
         Skill_6_AttackHeavy.Init();
 
-        // ¹ÒÔØÉÁ±ÜSkillÊµÌå
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½SkillÊµï¿½ï¿½
         PlayerEvadeEntity = combatEntity.AddChild<PlayerEvadeEntity>();
         PlayerEvadeEntity.Init();
 
-        //¹ÒÔØ×°±¸ÊµÌå
+        //ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½Êµï¿½ï¿½
         PlayerEquipEntity = combatEntity.AddChild<PlayerEquipEntity>();
         PlayerEquipEntity.Init();
 
-        //±³°üÊµÌå
+        //ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
         PlayerInventoryEntity = combatEntity.AddChild<PlayerInventoryEntity>();
         PlayerInventoryEntity.Init();
 
-        //»õ±ÒÊµÌå
+        //ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
         PlayerMoneyEntity = combatEntity.AddChild<PlayerMoneyEntity>();
         PlayerMoneyEntity.Init();
 
-        //½ÓÊÕÖÎÁÆÊµÌå
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
         PlayerCureEntity = combatEntity.AddChild<PlayerCureEntity>();
         PlayerCureEntity.Init();
 
-        //ÊÜµ½ÉËº¦ÊµÌå
+        //ï¿½Üµï¿½ï¿½Ëºï¿½Êµï¿½ï¿½
         PlayerDamageEntity = combatEntity.AddChild<PlayerDamageEntity>();
         PlayerDamageEntity.Init();
+
+        //ï¿½ï¿½Î»Êµï¿½ï¿½
+        PlayerResetEntity = combatEntity.AddChild<PlayerResetEntity>();
+        PlayerResetEntity.Init();
 
         StartController();
         CanOpenInventory = true;
@@ -281,6 +289,7 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
         Skill_1_Move.CurrentPosition = CurrentPosition.None;
         Skill_1_Move.movePosition = Vector3.zero;
         PlayerAction = PlayerAction.Idle;
+        PlayerResetEntity.SetResurrectionPoint(GameObject.Find("PlayerDefaultResurrectionPoint").transform);
     }
 
     private void OnDestroy()
