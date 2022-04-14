@@ -64,10 +64,6 @@ public class Inventory
 
     public Item RemoveItem(Item item, int amount)
     {
-        if (!item.CanDrop)
-        {
-            return null;
-        }
         if (item.IsStackable())
         {
             Item itemInInventory = null;

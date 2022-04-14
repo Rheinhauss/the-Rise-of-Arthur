@@ -14,12 +14,18 @@ public class ItemChest : MonoBehaviour
         public ItemType ItemType;
         public int amount;
     }
+    public struct Items
+    {
+        public Item Item;
+        public int amount;
+    }
     [LabelText("使用ItemType创建默认Item")]
     public bool IsUseItemTypeCreate = false;
     [HideIf("IsUseItemTypeCreate")]
     public Item item;
     [ShowIf("IsUseItemTypeCreate")]
     public List<ItemObj> ItemObjs;
+    public List<Items> items;
     [ShowIf("IsUseItemTypeCreate")]
     [Range(1, 99)]
     public int amount = 1;

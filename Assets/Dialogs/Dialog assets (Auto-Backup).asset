@@ -1168,6 +1168,62 @@ MonoBehaviour:
       value: "# \u4E0D\u8981\u54ED\u6CE3\u5973\u4EBA\u94B1"
       type: 0
       typeString: CustomFieldType_Text
+  - id: 25
+    fields:
+    - title: Name
+      value: isequipment
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Initial Value
+      value: False
+      type: 2
+      typeString: CustomFieldType_Boolean
+    - title: Description
+      value: "# \u662F\u5426\u83B7\u5F97\u88C5\u5907"
+      type: 0
+      typeString: CustomFieldType_Text
+  - id: 26
+    fields:
+    - title: Name
+      value: 'isKnownResearcher '
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Initial Value
+      value: False
+      type: 2
+      typeString: CustomFieldType_Boolean
+    - title: Description
+      value: 
+      type: 0
+      typeString: CustomFieldType_Text
+  - id: 27
+    fields:
+    - title: Name
+      value: isLichBookRead
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Initial Value
+      value: False
+      type: 2
+      typeString: CustomFieldType_Boolean
+    - title: Description
+      value: 
+      type: 0
+      typeString: CustomFieldType_Text
+  - id: 28
+    fields:
+    - title: Name
+      value: isResearcherTalkLich
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Initial Value
+      value: False
+      type: 2
+      typeString: CustomFieldType_Boolean
+    - title: Description
+      value: 
+      type: 0
+      typeString: CustomFieldType_Text
   conversations:
   - id: 1
     fields:
@@ -1711,7 +1767,13 @@ MonoBehaviour:
       delaySimStatus: 0
       falseConditionAction: Block
       conditionPriority: 2
-      outgoingLinks: []
+      outgoingLinks:
+      - originConversationID: 1
+        originDialogueID: 6
+        destinationConversationID: 1
+        destinationDialogueID: 13
+        isConnector: 0
+        priority: 2
       conditionsString: 
       userScript: 
       onExecute:
@@ -1776,7 +1838,13 @@ MonoBehaviour:
       delaySimStatus: 0
       falseConditionAction: Block
       conditionPriority: 2
-      outgoingLinks: []
+      outgoingLinks:
+      - originConversationID: 1
+        originDialogueID: 7
+        destinationConversationID: 1
+        destinationDialogueID: 13
+        isConnector: 0
+        priority: 2
       conditionsString: "CurrentQuestState(\"\u5BFB\u627E\u300A\u4E09\u5973\u795E\u4F20\u8BF4\u300B\")
         == \"success\""
       userScript: 
@@ -1984,7 +2052,13 @@ MonoBehaviour:
       delaySimStatus: 0
       falseConditionAction: Block
       conditionPriority: 2
-      outgoingLinks: []
+      outgoingLinks:
+      - originConversationID: 1
+        originDialogueID: 10
+        destinationConversationID: 1
+        destinationDialogueID: 13
+        isConnector: 0
+        priority: 2
       conditionsString: 
       userScript: 
       onExecute:
@@ -2049,7 +2123,13 @@ MonoBehaviour:
       delaySimStatus: 0
       falseConditionAction: Block
       conditionPriority: 2
-      outgoingLinks: []
+      outgoingLinks:
+      - originConversationID: 1
+        originDialogueID: 11
+        destinationConversationID: 1
+        destinationDialogueID: 13
+        isConnector: 0
+        priority: 2
       conditionsString: 
       userScript: "SetQuestState(\"\u5BFB\u627E\u300A\u4E09\u5973\u795E\u4F20\u8BF4\u300B\",
         \"success\")"
@@ -2139,9 +2219,74 @@ MonoBehaviour:
         y: 57.46576
         width: 160
         height: 30
+    - id: 13
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Pictures
+        value: '[]'
+        type: 3
+        typeString: CustomFieldType_Files
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Parenthetical
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Audio Files
+        value: '[]'
+        type: 3
+        typeString: CustomFieldType_Files
+      - title: Video File
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      conversationID: 1
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 587.21234
+        y: 442.15497
+        width: 160
+        height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 198.51851, y: 12.682286}
-    canvasZoom: 1.0299996
+    canvasScrollPosition: {x: 169.37889, y: 0}
+    canvasZoom: 0.8199998
   - id: 2
     fields:
     - title: Title
@@ -7334,8 +7479,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1065.6412
-        y: 388.6484
+        x: 1083.823
+        y: 477.73923
         width: 160
         height: 30
     - id: 29
@@ -7365,7 +7510,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: " \u554A\uFF0C\u5DEB\u5996\u554A\uFF0C\u66FE\u7ECF\u6709\u53E4\u8001\u7684\u4F20\u8BF4\u63D0\u53CA\u8FC7\u8FD9\u79CD\u4E1C\u897F\uFF0C\u4F46\u8C01\u90FD\u6CA1\u89C1\u8FC7\u3002"
+        value: "\u554A\uFF0C\u5DEB\u5996\u554A\uFF0C\u66FE\u7ECF\u6709\u53E4\u8001\u7684\u4F20\u8BF4\u63D0\u53CA\u8FC7\u8FD9\u79CD\u4E1C\u897F\uFF0C\u4F46\u8C01\u90FD\u6CA1\u89C1\u8FC7\u3002"
         type: 0
         typeString: CustomFieldType_Text
       - title: Parenthetical
@@ -7405,8 +7550,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1065.6412
-        y: 438.6484
+        x: 1083.823
+        y: 527.7392
         width: 160
         height: 30
     - id: 30
@@ -7476,8 +7621,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1065.6412
-        y: 488.6484
+        x: 1083.823
+        y: 577.7392
         width: 160
         height: 30
     - id: 31
@@ -7547,8 +7692,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1065.6412
-        y: 538.64844
+        x: 1083.823
+        y: 627.73926
         width: 160
         height: 30
     - id: 32
@@ -7845,6 +7990,12 @@ MonoBehaviour:
       - originConversationID: 8
         originDialogueID: 35
         destinationConversationID: 8
+        destinationDialogueID: 6
+        isConnector: 0
+        priority: 2
+      - originConversationID: 8
+        originDialogueID: 35
+        destinationConversationID: 8
         destinationDialogueID: 27
         isConnector: 0
         priority: 2
@@ -8008,8 +8159,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 75.27992, y: 29.451008}
-    canvasZoom: 0.5800005
+    canvasScrollPosition: {x: 679.0753, y: 346.92712}
+    canvasZoom: 0.97000015
   - id: 9
     fields:
     - title: Title
@@ -8556,7 +8707,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\u8FD9\u662F\u2026\u2026\u300A\u5DEB\u5996\u4E4B\u4E66\u300B\u2026\uFF1F"
+        value: " \u8FD9\u662F\u2026\u2026\u300A\u5DEB\u5996\u4E4B\u4E66\u300B\uFF0C\u4F5C\u8005\u662F\u6492\u624E\u65AF\u5766\uFF1F"
         type: 0
         typeString: CustomFieldType_Text
       - title: Parenthetical
@@ -8597,7 +8748,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 171
-        y: 106
+        y: 104.02913
         width: 160
         height: 30
     - id: 3
@@ -8698,7 +8849,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\uFF08\u6885\u6797\u7684\u8BED\u6C14\u4E3A\u4EC0\u4E48\u4F3C\u4E4E\u6709\u4E00\u4E9B\u7D27\u5F20\uFF1F\uFF09"
+        value: "\uFF08\u62A4\u7B26\u7684\u8BED\u6C14\u4E3A\u4EC0\u4E48\u4F3C\u4E4E\u6709\u4E00\u4E9B\u7D27\u5F20\uFF1F\uFF09"
         type: 0
         typeString: CustomFieldType_Text
       - title: Parenthetical
@@ -8952,7 +9103,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 30
-        y: 319
+        y: 318.0291
         width: 160
         height: 30
     - id: 8
@@ -9013,6 +9164,12 @@ MonoBehaviour:
         originDialogueID: 8
         destinationConversationID: 10
         destinationDialogueID: 9
+        isConnector: 0
+        priority: 2
+      - originConversationID: 10
+        originDialogueID: 8
+        destinationConversationID: 10
+        destinationDialogueID: 10
         isConnector: 0
         priority: 2
       conditionsString: 
@@ -9080,20 +9237,86 @@ MonoBehaviour:
       falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks: []
-      conditionsString: Variable["isbusinessmantalk"] == true
+      conditionsString: Variable["isbusinessmantalk"] == true and Variable["isKnownResearcher"]
+        ==false
       userScript: 
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 31
-        y: 419
+        x: 57.2136
+        y: 446.18445
+        width: 160
+        height: 30
+    - id: 10
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Pictures
+        value: '[]'
+        type: 3
+        typeString: CustomFieldType_Files
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 8
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: "\u4E5F\u8BB8\u90A3\u4E2A\u6D88\u606F\u7075\u901A\u7684\u5546\u4EBA\u548C\u5386\u53F2\u5B66\u5BB6\u77E5\u9053\u76F8\u5173\u7684\u6D88\u606F......\u56DE\u53BB\u95EE\u95EE\u5427\uFF09"
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Parenthetical
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Audio Files
+        value: '[]'
+        type: 3
+        typeString: CustomFieldType_Files
+      - title: Video File
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      conversationID: 10
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: 'Variable["isKnownResearcher"] == true '
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 314.49515
+        y: 449.09714
         width: 160
         height: 30
     entryGroups: []
     canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 1
+    canvasZoom: 1.03
   - id: 11
     fields:
     - title: Title
@@ -11119,7 +11342,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\u90A3\u6211\u5C31\u6536\u4E0B \u4E86"
+        value: "\u90A3\u6211\u5C31\u6536\u4E0B\u4E86"
         type: 0
         typeString: CustomFieldType_Text
       - title: Parenthetical
@@ -11149,7 +11372,10 @@ MonoBehaviour:
       conditionsString: 
       userScript: 'Variable["mercy"] = true;
 
-        Variable["equipment"] = 2'
+        Variable["equipment"] = 2;
+
+        Variable["isequipment"]
+        = true'
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -11293,8 +11519,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 432
-        y: 303
+        x: 436
+        y: 307
         width: 160
         height: 30
     - id: 9
@@ -11358,7 +11584,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: Variable["mercy"] == true and (Variable["ontalk"] == true)
-      userScript: 
+      userScript: Variable["isequipment"] = false
       onExecute:
         m_PersistentCalls:
           m_Calls: []
