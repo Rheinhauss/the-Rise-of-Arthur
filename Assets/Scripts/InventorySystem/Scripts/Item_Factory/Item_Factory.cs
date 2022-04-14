@@ -34,6 +34,8 @@ public class Item_Factory
         FactoryDict.Add(ItemType.Foot_Armor_A, new Item_FootArmor_A_Factory());
         FactoryDict.Add(ItemType.Foot_Armor_B, new Item_FootArmor_B_Factory());
         FactoryDict.Add(ItemType.Coin_A, new ItemCoin_Factory(ItemType.Coin_A));
+        FactoryDict.Add(ItemType.RedFlower, new Item_RedFlower_Factory());
+        FactoryDict.Add(ItemType.Book, new Item_Book_Factory());
     }
     private static Item_Factory _instance;
     public static Item_Factory Instance

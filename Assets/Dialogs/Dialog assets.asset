@@ -1168,6 +1168,20 @@ MonoBehaviour:
       value: "# \u4E0D\u8981\u54ED\u6CE3\u5973\u4EBA\u94B1"
       type: 0
       typeString: CustomFieldType_Text
+  - id: 25
+    fields:
+    - title: Name
+      value: isequipment
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Initial Value
+      value: False
+      type: 2
+      typeString: CustomFieldType_Boolean
+    - title: Description
+      value: "# \u662F\u5426\u83B7\u5F97\u88C5\u5907"
+      type: 0
+      typeString: CustomFieldType_Text
   conversations:
   - id: 1
     fields:
@@ -6901,8 +6915,7 @@ MonoBehaviour:
         destinationDialogueID: 23
         isConnector: 0
         priority: 2
-      conditionsString: Variable["isfight"] == 0 and (Variable["flag_talk_pullsword"]
-        == false)
+      conditionsString: Variable["flag_talk_pullsword"] == false
       userScript: 
       onExecute:
         m_PersistentCalls:
@@ -6973,8 +6986,7 @@ MonoBehaviour:
         destinationDialogueID: 24
         isConnector: 0
         priority: 2
-      conditionsString: Variable["isfight"] == 1 and (Variable["flag_talk_pullsword"]
-        == false)
+      conditionsString: Variable["flag_talk_pullsword"] == false
       userScript: 
       onExecute:
         m_PersistentCalls:
@@ -11121,7 +11133,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\u90A3\u6211\u5C31\u6536\u4E0B \u4E86"
+        value: "\u90A3\u6211\u5C31\u6536\u4E0B\u4E86"
         type: 0
         typeString: CustomFieldType_Text
       - title: Parenthetical
@@ -11151,7 +11163,10 @@ MonoBehaviour:
       conditionsString: 
       userScript: 'Variable["mercy"] = true;
 
-        Variable["equipment"] = 2'
+        Variable["equipment"] = 2;
+
+        Variable["isequipment"]
+        = true'
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -11295,8 +11310,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 432
-        y: 303
+        x: 436
+        y: 307
         width: 160
         height: 30
     - id: 9
@@ -11360,7 +11375,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: Variable["mercy"] == true and (Variable["ontalk"] == true)
-      userScript: 
+      userScript: Variable["isequipment"] = false
       onExecute:
         m_PersistentCalls:
           m_Calls: []

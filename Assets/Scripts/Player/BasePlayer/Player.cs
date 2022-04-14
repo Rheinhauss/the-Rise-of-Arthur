@@ -255,6 +255,9 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
         Player.Instance.CanMove = false;
         Player.Instance.CanCameraRot = false;
         Player.Instance.CanUseItem = false;
+        Player.Instance.currentState = Player.Instance.unitAnimatorComponent.PlayFade(Player.Instance.unitAnimatorComponent.animationClipsDict["SwordsmanIdle"]);
+        Player.Instance.AnimState = AnimState.None;
+        Player.Instance.PlayerAction = PlayerAction.Idle;
     }
 
     public static void StartController()

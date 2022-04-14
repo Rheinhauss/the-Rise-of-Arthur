@@ -41,6 +41,9 @@ public class Item
         this.itemType = item.itemType;
         this.amount = item.amount;
         useEvents = item.useEvents;
+        this.IsUsing = item.IsUsing;
+        this.CanUse = item.CanUse;
+        this.CanDrop = item.CanDrop;
     }
 
     public Sprite GetSprite()
@@ -64,13 +67,13 @@ public class Item
             case ItemType.Coin:
             case ItemType.HealthPotion:
             case ItemType.ManaPotion:
+            case ItemType.Mission:
                 return true;
             case ItemType.Head_Armor:
             case ItemType.Torso_Armor:
             case ItemType.Leg_Armor:
             case ItemType.Foot_Armor:
             case ItemType.Weapon:
-            case ItemType.Mission:
                 return false;
         }
     }
@@ -125,7 +128,7 @@ public class Item
             return ItemType.ManaPotion;
         }
         //»õ±Ò
-        else if (BetweenItemType(itemType, ItemType.Coin, ItemType.Coin_A))
+        else if (BetweenItemType(itemType, ItemType.Coin, ItemType.Coin_End))
         {
             return ItemType.Coin;
         }

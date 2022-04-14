@@ -101,6 +101,8 @@ public enum ItemType
     Mission = 401,
     [LabelText("红花")]
     RedFlower,
+    [LabelText("三女神传说")]
+    Book,
     [HideInInspector]
     Mission_End = 450,
 
