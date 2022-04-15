@@ -10,7 +10,10 @@ public class PlayerResetBtn : MonoBehaviour
     {
         GetComponent<Button>().onClick.AddListener(() =>
         {
-            Player.PlayerResetEntity.ResetToDeafultPoint();
+            if(Player.PlayerResetEntity != null)
+            {
+                Player.PlayerResetEntity.ResetToDeafultPoint();
+            }
         });
     }
 }
