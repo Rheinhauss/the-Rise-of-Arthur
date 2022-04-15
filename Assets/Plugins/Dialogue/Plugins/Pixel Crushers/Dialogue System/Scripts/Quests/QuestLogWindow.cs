@@ -322,7 +322,6 @@ namespace PixelCrushers.DialogueSystem
         protected virtual void ResumeGameplay()
         {
             if (pauseWhileOpen) Time.timeScale = previousTimeScale;
-            if (unlockCursorWhileOpen && !wasCursorActive) Tools.SetCursorActive(false);
         }
 
         public virtual bool IsQuestVisible(string questTitle)

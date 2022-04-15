@@ -20,7 +20,7 @@ public class PlayerJumpBtn : MonoBehaviour
                 GameObject gameObject = GameObject.Find(Point);
                 if (gameObject != null)
                 {
-                    Player.PlayerResetEntity.ResetTransform(gameObject);
+                    Player.PlayerResetEntity.ResetTransform(gameObject.transform);
                 }
             }
         });

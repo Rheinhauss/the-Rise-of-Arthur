@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 769622920}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: 400, z: 0}
-  m_LocalScale: {x: 2, y: 3, z: 2}
+  m_LocalScale: {x: 5, y: 6, z: 6}
   m_Children: []
   m_Father: {fileID: 6633341691021424214}
   m_RootOrder: 2
@@ -937,6 +937,23 @@ Transform:
   m_Father: {fileID: 170669187627784584}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3778395979466018262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6637492291849834976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c75c0dcb6d50eb64abd727a90406ca2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Animator: {fileID: 6722394873629430818}
+  _ActionOnDisable: 0
+  _PlayAutomatically: 1
+  _Animations:
+  - {fileID: 7400000, guid: efd5fb0c423fe2b49a05754b5d1bdaa2, type: 2}
 --- !u!1001 &312582720419365526
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1308,6 +1325,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 5662933636160963604, guid: 3a91e3d71b4033341a79cf840e6f9b25, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: da19aca830ecf4c4695256b339d702ba, type: 3}
     - target: {fileID: 5895073154551610372, guid: 3a91e3d71b4033341a79cf840e6f9b25, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -4923,20 +4944,3 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 95771768629546304, guid: 757a35894f2fe494dbce37fef717ec21, type: 3}
   m_PrefabInstance: {fileID: 6637885218193283426}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3778395979466018262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6637492291849834976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c75c0dcb6d50eb64abd727a90406ca2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Animator: {fileID: 6722394873629430818}
-  _ActionOnDisable: 0
-  _PlayAutomatically: 1
-  _Animations:
-  - {fileID: 7400000, guid: efd5fb0c423fe2b49a05754b5d1bdaa2, type: 2}
