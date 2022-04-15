@@ -4107,7 +4107,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 262135
 --- !u!114 &681042949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5148,7 +5148,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000076294, y: -55.2}
+  m_AnchoredPosition: {x: -0.0000076294, y: -89.8}
   m_SizeDelta: {x: 223.1616, y: 49.3313}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &818313085
@@ -5959,7 +5959,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000022888, y: -114.4}
+  m_AnchoredPosition: {x: 0.000022888, y: -149}
   m_SizeDelta: {x: 223.1616, y: 49.3313}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &920839052
@@ -10550,6 +10550,7 @@ GameObject:
   - component: {fileID: 1751277948}
   - component: {fileID: 1751277947}
   - component: {fileID: 1751277946}
+  - component: {fileID: 1751277950}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -10630,6 +10631,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0.354, y: -82.19, z: 0}
+--- !u!114 &1751277950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751277945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1001 &1761306006
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12725,8 +12759,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000030518, y: 84.4}
-  m_SizeDelta: {x: 302.1025, y: 100}
+  m_AnchoredPosition: {x: 4.2200554e-10, y: 85}
+  m_SizeDelta: {x: 462.0179, y: 363.2532}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2051714116
 MonoBehaviour:
@@ -12748,7 +12782,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2800216b29cd14e52a956236743a7665, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 71a5ec2bc32e7f54c896e6821410dda9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

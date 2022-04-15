@@ -219,5 +219,9 @@ public class Enemy : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInter
     private void OnDestroy()
     {
         Entity.Destroy(combatEntity);
+        if(combatTarget != null)
+        {
+            combatTarget.GetComponent<Player>().PlayerResetEntity.timer.EndActions.Remove(ResetSelf);
+        }
     }
 }
