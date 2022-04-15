@@ -7,7 +7,8 @@ public class PlayerJumpBtn : MonoBehaviour
 {
     Player Player => Player.Instance;
 
-    public Transform Point;
+    [Tooltip("跳转场景点的name")]
+    public string Point;
 
     // Start is called before the first frame update
     void Start()
@@ -16,9 +17,10 @@ public class PlayerJumpBtn : MonoBehaviour
         {
             if (Player.PlayerResetEntity != null)
             {
-                if(Point != null)
+                GameObject gameObject = GameObject.Find(Point);
+                if (gameObject != null)
                 {
-                    Player.PlayerResetEntity.ResetTransform(Point);
+                    Player.PlayerResetEntity.ResetTransform(gameObject);
                 }
             }
         });
