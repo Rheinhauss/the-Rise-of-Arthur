@@ -32,14 +32,6 @@ public class PlayerResetEntity : Entity
             timer.Start();
         });
         ResurrectionPoint = GameObject.Find("PlayerDefaultResurrectionPoint").transform;
-        if(SceneManager.GetActiveScene().buildIndex == 3)
-        {
-            Finalfight = GameObject.Find("FinalFight").transform;
-            Cube = ResurrectionPoint.Find("Cube").gameObject;
-            Trigger = Finalfight.Find("Trigger").gameObject;
-            OpenDoor = Finalfight.Find("opendoor").gameObject;
-            CloseDoor = Finalfight.Find("closedoor").gameObject;
-        }
         timer.EndActions.Add(DeathReset);
     }
 
@@ -75,6 +67,14 @@ public class PlayerResetEntity : Entity
             return;
         }
         ResurrectionPoint = transform;
+        if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            Finalfight = GameObject.Find("FinalFight").transform;
+            Cube = ResurrectionPoint.Find("Cube").gameObject;
+            Trigger = Finalfight.Find("Trigger").gameObject;
+            OpenDoor = Finalfight.Find("opendoor").gameObject;
+            CloseDoor = Finalfight.Find("closedoor").gameObject;
+        }
     }
 
     public void ResetTransform(Vector3 point)

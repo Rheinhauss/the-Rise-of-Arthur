@@ -82,7 +82,7 @@ MonoBehaviour:
       Data: 0
     - Name: DamageValueFormula
       Entry: 1
-      Data: "\u653B\u51FB\u529B*10"
+      Data: "\u653B\u51FB\u529B"
     - Name: CanCrit
       Entry: 5
       Data: false
