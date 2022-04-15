@@ -76,7 +76,11 @@ public class InputEntity
     /// <returns></returns>
     public bool UnBindInputAction(Action action)
     {
-        return actions.Remove(action);
+        if (actions.Contains(action))
+        {
+            return actions.Remove(action);
+        }
+        return false;
     }
 
     /// <summary>

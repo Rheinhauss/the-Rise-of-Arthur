@@ -172,7 +172,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8.8047085
+  orthographic size: 20
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -937,23 +937,6 @@ Transform:
   m_Father: {fileID: 170669187627784584}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3778395979466018262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6637492291849834976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c75c0dcb6d50eb64abd727a90406ca2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Animator: {fileID: 6722394873629430818}
-  _ActionOnDisable: 0
-  _PlayAutomatically: 1
-  _Animations:
-  - {fileID: 7400000, guid: efd5fb0c423fe2b49a05754b5d1bdaa2, type: 2}
 --- !u!1001 &312582720419365526
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4940,3 +4923,20 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 95771768629546304, guid: 757a35894f2fe494dbce37fef717ec21, type: 3}
   m_PrefabInstance: {fileID: 6637885218193283426}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3778395979466018262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6637492291849834976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c75c0dcb6d50eb64abd727a90406ca2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Animator: {fileID: 6722394873629430818}
+  _ActionOnDisable: 0
+  _PlayAutomatically: 1
+  _Animations:
+  - {fileID: 7400000, guid: efd5fb0c423fe2b49a05754b5d1bdaa2, type: 2}
