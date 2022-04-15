@@ -161,6 +161,7 @@ public class Player : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInte
             Instance.transform.position = this.transform.position;
             Instance.transform.rotation = this.transform.rotation;
             Destroy(this.gameObject);
+            return;
         }
         else
         {
