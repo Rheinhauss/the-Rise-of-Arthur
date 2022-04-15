@@ -17,6 +17,7 @@ public class PlayerRotateEntity : Entity
     public float radius { get; set; }
 
     private float angleX;
+    private InputEntity inputEntity;
 
     public void Init()
     {
@@ -39,8 +40,9 @@ public class PlayerRotateEntity : Entity
         //{
         //    CameraTransform.RotateAround(CameraCenterPoint.position, CameraTransform.right, -rotSpeedY * Time.deltaTime);
         //}, KeyCodeType.ING);
-
-        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.Mouse0, Execute, KeyCodeType.None);
+        inputEntity = new InputEntity(KeyCode.Mouse0, KeyCodeType.None, false);
+        inputEntity.name = "PlayerRotateEntity";
+        inputEntity.BindInputAction(Execute);
     }
 
     private void Execute()
@@ -65,6 +67,6 @@ public class PlayerRotateEntity : Entity
     public override void OnDestroy()
     {
         base.OnDestroy();
-        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.Mouse0, Execute, KeyCodeType.None);
+        inputEntity.UnBindInputAction(Execute);
     }
 }

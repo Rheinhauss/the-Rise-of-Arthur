@@ -16,12 +16,16 @@ public class Skill_6_AttackHeavy : Entity
 
     private CountDownTimer countDownTimer;
 
+    private InputEntity inputEntity;
+
 
     public void Init()
     {
         skill_6_AttackHeavy = new SkillObject();
         Skill_AttackHeavy();
-        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.Mouse1, Execute, KeyCodeType.DOWN);
+        inputEntity = new InputEntity(KeyCode.Mouse1, KeyCodeType.DOWN, false);
+        inputEntity.name = "Skill_6_AttackHeavy";
+        inputEntity.BindInputAction(Execute);
     }
 
     private void Execute()
@@ -63,6 +67,6 @@ public class Skill_6_AttackHeavy : Entity
     public override void OnDestroy()
     {
         base.OnDestroy();
-        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.Mouse1, Execute, KeyCodeType.DOWN);
+        inputEntity.UnBindInputAction(Execute);
     }
 }

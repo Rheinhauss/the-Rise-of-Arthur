@@ -48,7 +48,7 @@ public class UI_Shop : MonoBehaviour
     public void CloseShop()
     {
         this.gameObject.SetActive(false);
-        //Player.StartController();
+        Player.StartController();
         SetCustomer(null);
         OnCloseShop?.Invoke(this, EventArgs.Empty);
         itemBuyList.gameObject.SetActive(false);

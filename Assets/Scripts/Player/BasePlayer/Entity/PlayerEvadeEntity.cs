@@ -27,12 +27,15 @@ public class PlayerEvadeEntity : Entity
     CountDownTimer timer = new CountDownTimer(0.3f, false, false);
 
     private Rigidbody Rigidbody => Player.GetComponent<Rigidbody>();
+    private InputEntity inputEntity;
 
     public void Init()
     {
         Skill_5_Evade = new SkillObject();
         Skill_Evade();
-        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.Space,Execute, KeyCodeType.DOWN);
+        inputEntity = new InputEntity(KeyCode.Space, KeyCodeType.DOWN);
+        inputEntity.name = "PlayerEvadeEntity";
+        inputEntity.BindInputAction(Execute);
 
         timer.UpdateAction.Add(OnUpdate);
 
@@ -112,7 +115,7 @@ public class PlayerEvadeEntity : Entity
 
     public override void OnDestroy()
     {
-        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.Space, Execute, KeyCodeType.DOWN);
+        inputEntity.UnBindInputAction(Execute);
     }
 
 
