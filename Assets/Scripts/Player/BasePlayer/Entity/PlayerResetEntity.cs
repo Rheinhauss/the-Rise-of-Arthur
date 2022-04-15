@@ -31,11 +31,14 @@ public class PlayerResetEntity : Entity
             timer.Start();
         });
         ResurrectionPoint = GameObject.Find("PlayerDefaultResurrectionPoint").transform;
-        //Finalfight = GameObject.Find("FinalFight").transform;
-        //Cube = ResurrectionPoint.Find("Cube").gameObject;
-        //Trigger = Finalfight.Find("Trigger").gameObject;
-        //OpenDoor = Finalfight.Find("opendoor").gameObject;
-        //CloseDoor = Finalfight.Find("closedoor").gameObject;
+        Finalfight = GameObject.Find("FinalFight").transform;
+        Cube = ResurrectionPoint.Find("Cube").gameObject;
+        if(Finalfight != null)
+        {
+            Trigger = Finalfight.Find("Trigger").gameObject;
+            OpenDoor = Finalfight.Find("opendoor").gameObject;
+            CloseDoor = Finalfight.Find("closedoor").gameObject;
+        }
         timer.EndActions.Add(DeathReset);
     }
 
