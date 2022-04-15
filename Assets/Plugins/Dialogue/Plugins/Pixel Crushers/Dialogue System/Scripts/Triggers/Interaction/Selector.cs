@@ -640,7 +640,7 @@ namespace PixelCrushers.DialogueSystem
                     useMessage = DialogueManager.GetLocalizedText(string.IsNullOrEmpty(usable.overrideUseMessage) ? defaultUseMessage : usable.overrideUseMessage);
                     s = heading + '\n' + useMessage;
                 }
-                UnityGUITools.DrawText(new Rect(Screen.width/2-90f, 0, 180f, 90f), s, guiStyle, textStyle, textStyleColor);
+                UnityGUITools.DrawText(new Rect(Screen.width/2-90f, 0, 280f, 140f), s, guiStyle, textStyle, textStyleColor);
                 Texture2D reticleTexture = inUseRange ? reticle.inRange : reticle.outOfRange;
                 if (reticleTexture != null) GUI.Box(new Rect(0.5f * (Screen.width - reticle.width), 0.5f * (Screen.height - reticle.height), reticle.width, reticle.height), reticleTexture);
             }
