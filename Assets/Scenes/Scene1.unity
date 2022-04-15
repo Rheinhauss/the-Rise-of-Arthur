@@ -7807,6 +7807,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 417300, guid: a46d562cc4980004b95e73322fc948be, type: 3}
   m_PrefabInstance: {fileID: 974389056}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &977963116 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3654827599140046922, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+  m_PrefabInstance: {fileID: 1494602706}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &991156797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13447,6 +13452,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1536366542, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+      propertyPath: setting
+      value: 
+      objectReference: {fileID: 977963116}
     - target: {fileID: 1536366542, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: onOpen.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

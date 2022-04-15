@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 using PixelCrushers.DialogueSystem.UnityGUI;
 
@@ -24,9 +25,14 @@ namespace PixelCrushers.DialogueSystem.Demo
         private Rect windowRect = new Rect(Screen.width/2-200f, Screen.height/2-200f, 400f, 400f);
         private ScaledRect scaledRect = ScaledRect.FromOrigin(ScaledRectAlignment.MiddleCenter, ScaledValue.FromPixelValue(300), ScaledValue.FromPixelValue(320));
 
+        public GameObject setting;
         void Start()
         {
             if (questLogWindow == null) questLogWindow = FindObjectOfType<QuestLogWindow>();
+            setting.transform.Find("Settings").Find("CloseBtn").GetComponent<Button>().onClick.AddListener(() =>
+            {
+                this.enabled = true;
+            });
         }
 
         void Update()
@@ -66,8 +72,8 @@ namespace PixelCrushers.DialogueSystem.Demo
             }
             if (GUI.Button(new Rect(60, 150, windowRect.width - 120, 48), "…Ë÷√"))
             {
-                if (closeWhenQuestLogOpen) SetMenuStatus(false);
-                SaveGame();
+                setting.SetActive(true);
+                this.enabled = false;
             }
             if (GUI.Button(new Rect(60, 210, windowRect.width - 120, 48), "πÿ±’≤Àµ•"))
             {
