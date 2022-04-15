@@ -17,6 +17,7 @@ public class EGamePlayInit : SerializedMonoBehaviour
         if (Instance != null)
         {
             DestroyImmediate(this.gameObject);
+            return;
         }
         else
         {

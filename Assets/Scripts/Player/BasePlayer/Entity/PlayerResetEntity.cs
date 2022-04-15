@@ -20,7 +20,7 @@ public class PlayerResetEntity : Entity
     private GameObject OpenDoor;
     private GameObject CloseDoor;
     private UnitAnimatorComponent unitAnimatorComponent => Player.unitAnimatorComponent;
-    private CountDownTimer timer = new CountDownTimer(1, false, false);
+    public CountDownTimer timer = new CountDownTimer(1, false, false);
 
     public void Init()
     {

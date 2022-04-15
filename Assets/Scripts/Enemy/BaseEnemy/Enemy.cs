@@ -68,6 +68,7 @@ public class Enemy : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInter
     /// 战斗对象
     /// </summary>
     public Transform CombatTarget => GetComponent<BehaviorTree>().GetVariable("SeekTarget").GetValue() as Transform;
+    private Transform combatTarget = null;
     /// <summary>
     /// 攻击能力实体
     /// </summary>
@@ -125,10 +126,41 @@ public class Enemy : UnitControllerComponent, MoveCtrlInterface, AttackCtrlInter
         //Debug.Log(t.sourceTransform.name);
     }
 
-    //private void Update()
-    //{
-    //    //this.transform.rotation = Quaternion.identity;
-    //}
+    private void ResetSelf()
+    {
+        GetComponent<BehaviorTree>().GetVariable("SeekTarget").SetValue(null);
+        GetComponent<BehaviorTree>().GetVariable("BeHit").SetValue(false);
+        StatusObject StatusObject = new StatusObject();
+        StatusObject.Init(StatusType.AddStatus, "Status/BaseStatus/Status_5_ResetHP", AddSkillEffetTargetType.Self);
+        combatEntity.unitSpellStatusToSelfComponent.SpellToSelf(StatusObject);
+    }
+
+    private void Update()
+    {
+        if(combatTarget != CombatTarget)
+        {
+            //丢失战斗目标
+            if(CombatTarget == null)
+            {
+                combatTarget.GetComponent<Player>().PlayerResetEntity.timer.EndActions.Add(ResetSelf);
+                combatTarget = null;
+                ResetSelf();
+            }
+            //获得战斗目标
+            else if(combatTarget == null)
+            {
+                combatTarget = CombatTarget;
+                combatTarget.GetComponent<Player>().PlayerResetEntity.timer.EndActions.Add(ResetSelf);
+            }
+            //更换战斗目标
+            else
+            {
+                combatTarget.GetComponent<Player>().PlayerResetEntity.timer.EndActions.Remove(ResetSelf);
+                combatTarget = CombatTarget;
+                combatTarget.GetComponent<Player>().PlayerResetEntity.timer.EndActions.Add(ResetSelf);
+            }
+        }
+    }
 
     /// <summary>
     /// 接受治愈Action，进行跳字UI
