@@ -1260,6 +1260,20 @@ MonoBehaviour:
       value: "# \u7B2C\u4E00\u6B21\u6B7B\u4EA1"
       type: 0
       typeString: CustomFieldType_Text
+  - id: 30
+    fields:
+    - title: Name
+      value: isResearcheraward
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Initial Value
+      value: False
+      type: 2
+      typeString: CustomFieldType_Boolean
+    - title: Description
+      value: "# \u5386\u53F2\u5B66\u5BB6\u662F\u5426\u7ED9\u5956\u52B1"
+      type: 0
+      typeString: CustomFieldType_Text
   conversations:
   - id: 1
     fields:
@@ -2818,7 +2832,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 0}
+    canvasScrollPosition: {x: 96.40133, y: 0}
     canvasZoom: 0.6999999
   - id: 2
     fields:
@@ -10409,6 +10423,12 @@ MonoBehaviour:
         destinationDialogueID: 2
         isConnector: 0
         priority: 2
+      - originConversationID: 11
+        originDialogueID: 0
+        destinationConversationID: 11
+        destinationDialogueID: 3
+        isConnector: 0
+        priority: 2
       conditionsString: 
       userScript: 
       onExecute:
@@ -10476,14 +10496,14 @@ MonoBehaviour:
       outgoingLinks: []
       conditionsString: "CurrentQuestState(\"\u5BFB\u627E\u300A\u4E09\u5973\u795E\u4F20\u8BF4\u300B\")
         == \"active\" and (CurrentQuestState(\"\u795E\u5E99\u7684\u8C1C\u9898\")
-        ~= \"success\")"
+        ~= \"success\") and (Variable[\"opendoor\"] ~= 3)"
       userScript: "SetQuestState(\"\u795E\u5E99\u7684\u8C1C\u9898\", \"active\")"
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 119
+        x: 333
         y: 100
         width: 160
         height: 30
@@ -10542,15 +10562,81 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: "CurrentQuestState(\"\u5BFB\u627E\u300A\u4E09\u5973\u795E\u4F20\u8BF4\u300B\")
-        == \"unassigned\""
+        == \"unassigned\" and (CurrentQuestState(\"\u96D5\u5851\u8C1C\u9898\") ~=
+        \"success\") and (Variable[\"opendoor\"] ~= 3)"
       userScript: "SetQuestState(\"\u96D5\u5851\u8C1C\u9898\", \"active\")"
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 440
-        y: 100
+        x: 540
+        y: 98
+        width: 160
+        height: 30
+    - id: 3
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Pictures
+        value: '[]'
+        type: 3
+        typeString: CustomFieldType_Files
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 11
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: "\u8DF3\u52A8\u7684\u706B\u7130\u554A\uFF0C\u5728\u6E56\u7554\u7684\u6B4C\u58F0\u4E2D\uFF0C\u5728\u6559\u5802\u7684\u7948\u7977\u4E2D\uFF0C\u5728\u57CE\u5821\u7684\u58C1\u5792\u4E2D......"
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Parenthetical
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Audio Files
+        value: '[]'
+        type: 3
+        typeString: CustomFieldType_Files
+      - title: Video File
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      conversationID: 11
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: Variable["opendoor"] == 3
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 134
+        y: 102
         width: 160
         height: 30
     entryGroups: []
@@ -16636,7 +16722,7 @@ MonoBehaviour:
         height: 30
     entryGroups: []
     canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 0.85000014
+    canvasZoom: 0.64000034
   - id: 23
     fields:
     - title: Title
