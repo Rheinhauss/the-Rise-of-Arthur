@@ -28,6 +28,8 @@ public class BaseShopEntity : MonoBehaviour
     private Inventory customer;
     private GameObject player;
 
+    private InputEntity inputEntity;
+
     private void Awake()
     {
         UI_Shop.gameObject.SetActive(true);
@@ -44,6 +46,8 @@ public class BaseShopEntity : MonoBehaviour
         {
             UI_Shop.GetShop().AddItemShop(Item_Factory.Instance.CreateItem(itemShop.ItemType, itemShop.amount), itemShop.price);
         }
+        inputEntity = new InputEntity(KeyCode.I, KeyCodeType.DOWN);
+        inputEntity.name = "BaseShopEntity";
     }
     private void UI_Shop_OnOpenShop(object sender, System.EventArgs e)
     {
@@ -116,7 +120,7 @@ public class BaseShopEntity : MonoBehaviour
     {
         if (other.tag.Equals("Player"))
         {
-            UnitControllerComponent.inputComponent.BindInputAction(KeyCode.I, OpenShop, KeyCodeType.DOWN);
+            inputEntity.BindInputAction(OpenShop);
             messageTip.gameObject.SetActive(true);
             customer = other.GetComponent<Player>().PlayerInventoryEntity.inventory;
         }
@@ -125,7 +129,7 @@ public class BaseShopEntity : MonoBehaviour
     {
         if (other.tag.Equals("Player"))
         {
-            UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.Escape, OpenShop, KeyCodeType.DOWN);
+            inputEntity.UnBindInputAction(OpenShop);
             messageTip.gameObject.SetActive(false);
             customer = null;
         }

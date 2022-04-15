@@ -37,11 +37,15 @@ public class PlayerEquipEntity : Entity
     private PlayerInventoryEntity PlayerInventoryEntity => Player.Instance.PlayerInventoryEntity;
     private PlayerUIController PlayerUI => Player.Instance.PlayerUIController;
     private Transform player => Player.Instance.transform;
+    private InputEntity inputEntity;
 
     public void Init()
     {
+        inputEntity = new InputEntity(KeyCode.Alpha1, KeyCodeType.DOWN);
+        inputEntity.name = "PlayerEquipEntity";
+        inputEntity.BindInputAction(Execute);
+
         hp_Item = Head_Armor = Torso_Armor = Leg_Armor = Foot_Armor = Weapon = null;
-        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.Alpha1, Execute, KeyCodeType.DOWN);
         Item weapon = Item_Factory.Instance.CreateItem(ItemType.Weapon_D, 1);
         Item torso = Item_Factory.Instance.CreateItem(ItemType.Torso_Armor_D, 1);
         weapon = PlayerInventoryEntity.HarvestItem(weapon)[0];
@@ -61,7 +65,7 @@ public class PlayerEquipEntity : Entity
     public override void OnDestroy()
     {
         base.OnDestroy();
-        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.Alpha1, Execute, KeyCodeType.DOWN);
+        inputEntity.UnBindInputAction(Execute);
     }
 
     public void UpdateEquip()

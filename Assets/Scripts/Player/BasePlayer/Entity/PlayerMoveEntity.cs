@@ -29,6 +29,15 @@ public class PlayerMoveEntity : Entity
     private Transform CameraTransform => Camera.main.transform;
 
     private Rigidbody rigidbody => PlayerTransform.GetComponent<Rigidbody>();
+    private InputEntity inputEntity_left;
+    private InputEntity inputEntity_leftUp;
+    private InputEntity inputEntity_right;
+    private InputEntity inputEntity_rightUp;
+    private InputEntity inputEntity_forward;
+    private InputEntity inputEntity_forwardUp;
+    private InputEntity inputEntity_back;
+    private InputEntity inputEntity_backUp;
+
 
     /// <summary>
     /// 初始化函数
@@ -81,10 +90,22 @@ public class PlayerMoveEntity : Entity
                 Skill_1_Move.CurrentPosition = CurrentPosition.Cross;
         });
         this.skillControllerComponent.AddSkillObject(moveEnd_forward);
-        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.W, moveEnd_forward.action, KeyCodeType.UP);
-        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.A, moveEnd_left.action, KeyCodeType.UP);
-        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.S, moveEnd_backward.action, KeyCodeType.UP);
-        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.D, moveEnd_right.action, KeyCodeType.UP);
+        inputEntity_leftUp = new InputEntity(KeyCode.A, KeyCodeType.UP);
+        inputEntity_leftUp.name = "Move_LeftUp";
+        inputEntity_leftUp.BindInputAction(moveEnd_left.action);
+
+        inputEntity_rightUp = new InputEntity(KeyCode.D, KeyCodeType.UP);
+        inputEntity_rightUp.name = "Move_RightUp";
+        inputEntity_rightUp.BindInputAction(moveEnd_right.action);
+
+        inputEntity_forwardUp = new InputEntity(KeyCode.W, KeyCodeType.UP);
+        inputEntity_forwardUp.name = "Move_ForwardUp";
+        inputEntity_forwardUp.BindInputAction(moveEnd_forward.action);
+
+        inputEntity_backUp = new InputEntity(KeyCode.S, KeyCodeType.UP);
+        inputEntity_backUp.name = "Move_BackUp";
+        inputEntity_backUp.BindInputAction(moveEnd_backward.action);
+
         #endregion
 
         #region 按键
@@ -99,7 +120,9 @@ public class PlayerMoveEntity : Entity
             Skill_1_Move.movePosition -= skill_1_move_left.position.normalized;
         });
         this.skillControllerComponent.AddSkillObject(skill_1_move_left);
-        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.A, skill_1_move_left.action, KeyCodeType.ING);
+        inputEntity_left = new InputEntity(KeyCode.A, KeyCodeType.ING);
+        inputEntity_left.name = "Move_Left";
+        inputEntity_left.BindInputAction(skill_1_move_left.action);
         //backward
         skill_1_move_backward = new Skill_1_Move();
         skill_1_move_backward.position = new Vector3(0, 0, -1);
@@ -111,7 +134,9 @@ public class PlayerMoveEntity : Entity
             Skill_1_Move.movePosition -= skill_1_move_backward.position.normalized;
         });
         this.skillControllerComponent.AddSkillObject(skill_1_move_backward);
-        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.S, skill_1_move_backward.action, KeyCodeType.ING);
+        inputEntity_back = new InputEntity(KeyCode.S, KeyCodeType.ING);
+        inputEntity_back.name = "Move_Back";
+        inputEntity_back.BindInputAction(skill_1_move_backward.action);
         //right
         skill_1_move_right = new Skill_1_Move();
         skill_1_move_right.position = new Vector3(1, 0, 0);
@@ -123,7 +148,9 @@ public class PlayerMoveEntity : Entity
             Skill_1_Move.movePosition += skill_1_move_right.position.normalized;
         });
         this.skillControllerComponent.AddSkillObject(skill_1_move_right);
-        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.D, skill_1_move_right.action, KeyCodeType.ING);
+        inputEntity_right = new InputEntity(KeyCode.D, KeyCodeType.ING);
+        inputEntity_right.name = "Move_Right";
+        inputEntity_right.BindInputAction(skill_1_move_right.action);
         //forward
         skill_1_move_forward = new Skill_1_Move();
         skill_1_move_forward.SetAction(() =>
@@ -134,7 +161,9 @@ public class PlayerMoveEntity : Entity
             Skill_1_Move.movePosition += skill_1_move_forward.position.normalized;
         });
         this.skillControllerComponent.AddSkillObject(skill_1_move_forward);
-        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.W, skill_1_move_forward.action, KeyCodeType.ING);
+        inputEntity_forward = new InputEntity(KeyCode.W, KeyCodeType.ING);
+        inputEntity_forward.name = "Move_Forward";
+        inputEntity_forward.BindInputAction(skill_1_move_forward.action);
         #endregion
     }
 
@@ -192,14 +221,17 @@ public class PlayerMoveEntity : Entity
 
     public override void OnDestroy()
     {
-        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.W, moveEnd_forward.action, KeyCodeType.UP);
-        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.A, moveEnd_left.action, KeyCodeType.UP);
-        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.S, moveEnd_backward.action, KeyCodeType.UP);
-        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.D, moveEnd_right.action, KeyCodeType.UP);
-        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.W, skill_1_move_forward.action, KeyCodeType.ING);
-        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.D, skill_1_move_right.action, KeyCodeType.ING);
-        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.S, skill_1_move_backward.action, KeyCodeType.ING);
-        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.A, skill_1_move_left.action, KeyCodeType.ING);
+        inputEntity_left.UnBindInputAction(skill_1_move_left.action);
+        inputEntity_leftUp.UnBindInputAction(moveEnd_left.action);
+
+        inputEntity_right.UnBindInputAction(skill_1_move_right.action);
+        inputEntity_rightUp.UnBindInputAction(moveEnd_right.action);
+
+        inputEntity_forward.UnBindInputAction(skill_1_move_forward.action);
+        inputEntity_forwardUp.UnBindInputAction(moveEnd_forward.action);
+
+        inputEntity_back.UnBindInputAction(skill_1_move_backward.action);
+        inputEntity_backUp.UnBindInputAction(moveEnd_backward.action);
     }
 
 }

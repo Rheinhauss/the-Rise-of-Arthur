@@ -15,6 +15,7 @@ public class PlayerUIController : MonoBehaviour
     private Transform MainUICavas;
     private Transform UI;
     private Button CloseBtn;
+    private InputEntity inputEntity;
 
 
     private void Awake()
@@ -30,7 +31,10 @@ public class PlayerUIController : MonoBehaviour
 
         UI_Inventory.gameObject.SetActive(false);
         UI_Inventory.SetPlayer(Player.Instance.transform);
-        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.P, OpenInventory, KeyCodeType.DOWN);
+        inputEntity = new InputEntity(KeyCode.P, KeyCodeType.DOWN);
+        inputEntity.name = "ShopUI";
+        inputEntity.BindInputAction(OpenInventory);
+
         UI_Money.Init(ItemAssets.Instance.ItemSpriteDict[ItemType.Coin_A], 0, Money.MoneyType.GoldCoin);
         CloseBtn.onClick.AddListener(() =>
         {
@@ -83,6 +87,6 @@ public class PlayerUIController : MonoBehaviour
 
     private void OnDestroy()
     {
-        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.P, OpenInventory, KeyCodeType.DOWN);
+        inputEntity.UnBindInputAction(OpenInventory);
     }
 }

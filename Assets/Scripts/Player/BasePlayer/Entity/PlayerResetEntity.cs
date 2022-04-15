@@ -3,7 +3,6 @@ using EGamePlay.Combat;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerResetEntity : Entity
 {
@@ -32,6 +31,11 @@ public class PlayerResetEntity : Entity
             timer.Start();
         });
         ResurrectionPoint = GameObject.Find("PlayerDefaultResurrectionPoint").transform;
+        //Finalfight = GameObject.Find("FinalFight").transform;
+        //Cube = ResurrectionPoint.Find("Cube").gameObject;
+        //Trigger = Finalfight.Find("Trigger").gameObject;
+        //OpenDoor = Finalfight.Find("opendoor").gameObject;
+        //CloseDoor = Finalfight.Find("closedoor").gameObject;
         timer.EndActions.Add(DeathReset);
     }
 
@@ -39,10 +43,7 @@ public class PlayerResetEntity : Entity
     {
         ResetHP();
         ResetToDeafultPoint();
-        if (SceneManager.GetActiveScene().buildIndex == 3)
-        {
-            ResetCollider();
-        }
+        ResetCollider();
     }
 
     public void ResetToDeafultPoint()
@@ -67,14 +68,6 @@ public class PlayerResetEntity : Entity
             return;
         }
         ResurrectionPoint = transform;
-        if (SceneManager.GetActiveScene().buildIndex == 3)
-        {
-            Finalfight = GameObject.Find("FinalFight").transform;
-            Cube = ResurrectionPoint.Find("Cube").gameObject;
-            Trigger = Finalfight.Find("Trigger").gameObject;
-            OpenDoor = Finalfight.Find("opendoor").gameObject;
-            CloseDoor = Finalfight.Find("closedoor").gameObject;
-        }
     }
 
     public void ResetTransform(Vector3 point)

@@ -12,9 +12,17 @@ public class TransObjectEntity : MonoBehaviour
 
     private static Transform TriggetObject;
 
+    private static InputEntity inputEntity;
+
     private void Awake()
     {
-        foreach(Transform child in childTransform)
+        if(inputEntity == null)
+        {
+            inputEntity = new InputEntity(KeyCode.F, KeyCodeType.DOWN);
+            inputEntity.name = "TransObjectEntity";
+        }
+
+        foreach (Transform child in childTransform)
         {
             var outline = child.gameObject.AddComponent<Outline>();
 
@@ -60,7 +68,7 @@ public class TransObjectEntity : MonoBehaviour
             {
                 TriggetObject = m_transform;
                 SelectedEnter();
-                UnitControllerComponent.inputComponent.BindInputAction(KeyCode.F, Rotate, KeyCodeType.DOWN);
+                inputEntity.BindInputAction(Rotate);
             }
         }
     }
@@ -73,7 +81,7 @@ public class TransObjectEntity : MonoBehaviour
             {
                 TriggetObject = null;
                 SelectedExit();
-                UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.F, Rotate, KeyCodeType.DOWN);
+                inputEntity.UnBindInputAction(Rotate);
             }
         }
     }

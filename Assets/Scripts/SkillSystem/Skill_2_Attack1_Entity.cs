@@ -27,6 +27,7 @@ public class Skill_2_Attack1_Entity : Entity
 
     public StatusObject Status_ElementPassive_Jin1 = new StatusObject();
 
+    private InputEntity inputEntity;
     public void Init()
     {
         Skill_2_Attack1 = new SkillObject[4];
@@ -44,8 +45,9 @@ public class Skill_2_Attack1_Entity : Entity
         {
             curAttackState = 0;
         });
-
-        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.Mouse0, Execute, KeyCodeType.DOWN);
+        inputEntity = new InputEntity(KeyCode.Mouse0, KeyCodeType.DOWN, false);
+        inputEntity.name = "Skill_2_Attack1_Entity";
+        inputEntity.BindInputAction(Execute);
     }
 
     private void Execute()
@@ -213,6 +215,6 @@ public class Skill_2_Attack1_Entity : Entity
     public override void OnDestroy()
     {
         base.OnDestroy();
-        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.Mouse0, Execute, KeyCodeType.DOWN);
+        inputEntity.UnBindInputAction(Execute);
     }
 }

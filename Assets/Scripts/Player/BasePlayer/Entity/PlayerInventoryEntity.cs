@@ -12,6 +12,8 @@ public class PlayerInventoryEntity : Entity, HarvestInterface
 
     public UI_Inventory UI_Inventory => Player.PlayerUIController.UI_Inventory;
 
+    private InputEntity inputEntity;
+
     public void Init()
     {
         inventory = new Inventory();
@@ -24,9 +26,10 @@ public class PlayerInventoryEntity : Entity, HarvestInterface
             Player.PlayerEquipEntity.UpdateEquip();
         };
         Player.PlayerUIController.UpdateUI();
-
+        inputEntity = new InputEntity(KeyCode.F, KeyCodeType.DOWN);
+        inputEntity.name = "PlayerInventoryEntity";
         //itemWorldÊ°È¡ÊÂ¼þ
-        UnitControllerComponent.inputComponent.BindInputAction(KeyCode.F, TouchItem, KeyCodeType.DOWN);
+        inputEntity.BindInputAction(TouchItem);
 
     }
 
@@ -89,7 +92,7 @@ public class PlayerInventoryEntity : Entity, HarvestInterface
     public override void OnDestroy()
     {
         base.OnDestroy();
-        UnitControllerComponent.inputComponent.UnBindInputAction(KeyCode.X, TouchItem, KeyCodeType.DOWN);
+        inputEntity.UnBindInputAction(TouchItem);
     }
 
 }

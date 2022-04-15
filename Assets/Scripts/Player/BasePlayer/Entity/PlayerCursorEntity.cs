@@ -5,12 +5,16 @@ using UnityEngine;
 
 public class PlayerCursorEntity : Entity
 {
-    InputComponent input = UnitControllerComponent.inputComponent;
     PlayerRotateEntity PlayerRotateEntity = Player.Instance.PlayerRotateEntity;
 
     public static bool isEnabled = true;
+
+    private InputEntity inputEntity;
+
     public void Init()
     {
+        inputEntity = new InputEntity(KeyCode.Mouse0, KeyCodeType.DOWN, false);
+        inputEntity.name = "PlayerCursorEntity";
         ////按住Z键显示鼠标指针
         //input.BindInputAction(KeyCode.Z,() => {
         //    CursorUnLock();
@@ -19,7 +23,7 @@ public class PlayerCursorEntity : Entity
         //    CursorLock();
         //}, KeyCodeType.UP);
         //鼠标指针显示之后，鼠标左键点击屏幕隐藏指针
-        input.BindInputAction(KeyCode.Mouse0, Execute, KeyCodeType.DOWN);
+        inputEntity.BindInputAction(Execute);
         //默认隐藏鼠标指针
         CursorLock();
     }
@@ -48,6 +52,6 @@ public class PlayerCursorEntity : Entity
     public override void OnDestroy()
     {
         base.OnDestroy();
-        input.UnBindInputAction(KeyCode.Mouse0, Execute, KeyCodeType.DOWN);
+        inputEntity.UnBindInputAction(Execute);
     }
 }
