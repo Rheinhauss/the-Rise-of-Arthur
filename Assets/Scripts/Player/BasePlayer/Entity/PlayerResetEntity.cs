@@ -15,7 +15,7 @@ public class PlayerResetEntity : Entity
 
     private Transform ResurrectionPoint;
     private UnitAnimatorComponent unitAnimatorComponent => Player.unitAnimatorComponent;
-    private CountDownTimer timer = new CountDownTimer(1, false, false);
+    public CountDownTimer timer = new CountDownTimer(1, false, false);
 
     public void Init()
     {
